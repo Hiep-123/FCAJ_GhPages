@@ -1,57 +1,148 @@
 ---
 title: "Week 3 Worklog"
-date: 2024-01-01
-weight: 1
+date: 2026-05-04
+weight: 3
 chapter: false
 pre: " <b> 1.3. </b> "
 ---
-{{% notice warning %}} 
-⚠️ **Note:** The following information is for reference purposes only. Please **do not copy verbatim** for your own report, including this warning.
-{{% /notice %}}
-
 
 ### Week 3 Objectives:
 
-* Connect and get acquainted with members of First Cloud Journey.
-* Understand basic AWS services, how to use the console & CLI.
+* Gain deeper understanding of AWS Compute and Storage services.
+* Practice EC2 deployment, Backup, Storage Gateway, and Amazon S3.
+* Learn backup/restore, static website hosting, and replication mechanisms.
 
-### Tasks to be carried out this week:
-| Day | Task                                                                                                                                                                                                   | Start Date | Completion Date | Reference Material                        |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | --------------- | ----------------------------------------- |
-| 2   | - Get acquainted with FCJ members <br> - Read and take note of internship unit rules and regulations                                                                                                   | 08/11/2025 | 08/11/2025      |
-| 3   | - Learn about AWS and its types of services <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                              | 08/12/2025 | 08/12/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Create AWS Free Tier account <br> - Learn about AWS Console & AWS CLI <br> - **Practice:** <br>&emsp; + Create AWS account <br>&emsp; + Install & configure AWS CLI <br> &emsp; + How to use AWS CLI | 08/13/2025 | 08/13/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Learn basic EC2: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - SSH connection methods to EC2 <br> - Learn about Elastic IP   <br>                            | 08/14/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Practice:** <br>&emsp; + Launch an EC2 instance <br>&emsp; + Connect via SSH <br>&emsp; + Attach an EBS volume                                                                                     | 08/15/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
+---
 
+### Weekly Tasks:
 
-### Week 3 Achievements:
+| Day | Tasks | Start | End |
+|-----|------|------|-----|
+| Mon | EC2 Fundamentals (Instance Types, AMI, EBS, Instance Store) | 04/05/2026 | 04/05/2026 |
+| Tue | User Data, Metadata, Auto Scaling | 05/05/2026 | 05/05/2026 |
+| Wed | EFS, FSx, Lightsail, MGN | 06/05/2026 | 06/05/2026 |
+| Thu | Lab 13 – AWS Backup | 07/05/2026 | 07/05/2026 |
+| Fri | Lab 24 – Storage Gateway | 08/05/2026 | 08/05/2026 |
+| Sat | Lab 57 – Amazon S3 & CloudFront | 09/05/2026 | 09/05/2026 |
 
-* Understood what AWS is and mastered the basic service groups: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+---
 
-* Successfully created and configured an AWS Free Tier account.
+# 🧪 Lab Details
 
-* Became familiar with the AWS Management Console and learned how to find, access, and use services via the web interface.
+---
 
-* Installed and configured AWS CLI on the computer, including:
-  * Access Key
-  * Secret Key
-  * Default Region
-  * ...
+## 🔹 Lab 13 – Deploy AWS Backup to the System
 
-* Used AWS CLI to perform basic operations such as:
+### Tasks:
 
-  * Check account & configuration information
-  * Retrieve the list of regions
-  * View EC2 service
-  * Create and manage key pairs
-  * Check information about running services
-  * ...
+- Create S3 Bucket
+- Deploy infrastructure
+- Create Backup Plan
+- Configure notifications
+- Test restore process
 
-* Acquired the ability to connect between the web interface and CLI to manage AWS resources in parallel.
-* ...
+### Learned:
+
+- Centralized AWS backup management
+- Backup lifecycle & retention policy
+- Disaster recovery & restore capability
+- Automated backup strategy
+
+---
+
+## 🔹 Lab 24 – Using AWS Storage Gateway
+
+### Tasks:
+
+- Create S3 Bucket
+- Deploy EC2 for Storage Gateway
+- Create File Gateway
+- Create File Shares
+- Mount shares from on-premises machine
+
+### Learned:
+
+- Hybrid storage architecture
+- On-premises ↔ AWS synchronization
+- File Gateway as NAS with S3 backend storage
+- Data upload flow:
+  - Client → Gateway → S3
+
+---
+
+## 🔹 Lab 57 – Starting with Amazon S3
+
+### 1. Static Website Hosting
+
+- Create S3 Bucket
+- Upload website files
+- Enable static website hosting
+- Configure public access
+- Test website
+
+### Learned:
+
+- Static website hosting on S3
+- Bucket policy & object permissions
+
+---
+
+### 2. CloudFront Integration
+
+- Block direct public access
+- Configure CloudFront distribution
+- Test CDN delivery
+
+### Learned:
+
+- CDN caching
+- Global content acceleration
+- Protecting S3 origin access
+
+---
+
+### 3. Bucket Versioning & Replication
+
+- Enable Versioning
+- Move objects
+- Configure Cross-Region Replication
+
+### Learned:
+
+- Data protection with Versioning
+- Disaster Recovery using replication
+- Multi-region synchronization
+
+---
+
+# ✅ Achievements:
+
+- Deep understanding of Amazon EC2:
+  - Instance Types
+  - AMI
+  - EBS vs Instance Store
+  - User Data & Metadata
+
+- Auto Scaling concepts:
+  - Scale in/out
+  - High availability
+
+- AWS Storage services:
+  - S3
+  - EFS
+  - FSx
+  - Storage Gateway
+
+- Backup & Restore:
+  - AWS Backup
+  - Retention policies
+
+- Static Website Deployment:
+  - S3 Website Hosting
+  - CloudFront CDN
+
+- Data protection:
+  - Versioning
+  - Cross-Region Replication
+
+---

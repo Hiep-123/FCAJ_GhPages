@@ -8,92 +8,141 @@ pre: " <b> 1.2. </b> "
 
 ### Week 2 Objectives:
 
-* Gain deeper understanding of AWS Networking (VPC).
-* Learn how to design network architecture in AWS.
-* Practice deploying networking components.
-* Explore Hybrid Networking, VPC Peering, and Transit Gateway.
+* Understand AWS VPC architecture in depth.
+* Learn traffic flow and routing mechanisms.
+* Practice Hybrid Networking and Multi-VPC connectivity.
 
 ---
 
 ### Weekly Tasks:
 
-| Day | Tasks | Start Date | End Date | Resources |
-|-----|------|------------|----------|------------|
-| Mon | - Module 02-01: AWS VPC <br> - Learn CIDR, Subnets | 27/04/2026 | 27/04/2026 | https://cloudjourney.awsstudygroup.com/ |
-| Tue | - Module 02-02 <br> - Security Group vs NACL | 28/04/2026 | 28/04/2026 | https://cloudjourney.awsstudygroup.com/ |
-| Wed | - Module 02-03 <br> - VPN, Direct Connect | 29/04/2026 | 29/04/2026 | https://cloudjourney.awsstudygroup.com/ |
-| Thu | - Lab 03: Build VPC | 30/04/2026 | 30/04/2026 | https://000003.awsstudygroup.com/ |
-| Fri | - Lab 10: Hybrid DNS | 01/05/2026 | 01/05/2026 | https://000010.awsstudygroup.com/ |
-| Sat | - Lab 19 & 20 <br> - Peering & Transit Gateway | 02/05/2026 | 02/05/2026 | https://000019.awsstudygroup.com/ |
+| Day | Tasks | Start | End |
+|-----|------|------|-----|
+| Mon | VPC fundamentals | 27/04 | 27/04 |
+| Tue | Security (SG vs NACL) | 28/04 | 28/04 |
+| Wed | VPN, Direct Connect | 29/04 | 29/04 |
+| Thu | Lab 03 | 30/04 | 30/04 |
+| Fri | Lab 10 | 01/05 | 01/05 |
+| Sat | Lab 19 & 20 | 02/05 | 02/05 |
 
 ---
 
-### Labs Practiced:
+##  Lab Details
 
-#### 🔹 Lab 03 – Amazon VPC
+---
 
-- Create VPC, Subnets
-- Configure Route Tables
-- Internet Gateway & NAT Gateway
-- Security Group & NACL
-- Deploy EC2 and test connectivity
+### 🔹 Lab 03 – VPC + VPN
+
+#### VPC Setup
+
+- Create VPC & Subnets
+- Configure Internet Gateway
+- Route Tables
+- Security Groups
+- Enable Flow Logs
 
  Learned:
-- Traffic flow in VPC
-- Public vs Private subnet
+- Traffic flow inside VPC
+- Public vs Private subnet behavior
 
 ---
 
-#### 🔹 Lab 10 – Hybrid DNS
+#### EC2 Deployment
 
-- Deploy CloudFormation
-- Configure Resolver Endpoints
-- Create DNS rules
+- Launch EC2
+- Test connectivity
+- Setup NAT Gateway
+- Use Reachability Analyzer
+- Use SSM Session Manager
 
  Learned:
-- Hybrid DNS architecture
+- Private subnet outbound access
+- Network troubleshooting
 
 ---
 
-#### 🔹 Lab 19 – VPC Peering
+#### Monitoring
+
+- CloudWatch metrics & alerts
+
+---
+
+#### Site-to-Site VPN
+
+- Create:
+  - Virtual Private Gateway
+  - Customer Gateway
+- Configure VPN tunnels
+
+ Learned:
+- AWS ↔ On-prem connectivity
+
+---
+
+#### (Optional) Transit Gateway VPN
+
+- TGW + VPN integration
+
+---
+
+### 🔹 Lab 10 – Hybrid DNS
+
+- CloudFormation deployment
+- Microsoft AD setup
+
+#### DNS:
+
+- Outbound Endpoint
+- Inbound Endpoint
+- Resolver Rules
+
+ Learned:
+- Hybrid DNS resolution
+
+---
+
+### 🔹 Lab 19 – VPC Peering
 
 - Create 2 VPCs
-- Setup Peering Connection
-- Configure routing
+- Peering connection
+- Route table updates
+- NACL updates
 
  Learned:
-- Cross-VPC communication
+- VPC-to-VPC communication
+- No transitive routing
 
 ---
 
-#### 🔹 Lab 20 – Transit Gateway
+### 🔹 Lab 20 – Transit Gateway
 
-- Create Transit Gateway
-- Attach multiple VPCs
+- Create TGW
+- Attach VPCs
 - Configure routing
 
  Learned:
 - Hub-and-Spoke architecture
+- Scalable network design
 
 ---
 
-### Achievements:
+##  Achievements:
 
-- Strong understanding of AWS VPC:
+- Deep understanding of VPC:
   - CIDR, Subnets, Routing
-  - IGW, NAT Gateway
+  - IGW vs NAT
 
-- Network security:
-  - Security Groups vs NACLs
+- Network Security:
+  - SG vs NACL
 
-- Architecture design:
-  - Public & Private subnets
-
-- Connectivity:
-  - VPC Peering
-  - Transit Gateway
+- Advanced Networking:
+  - VPN
   - Hybrid DNS
 
-- Hands-on:
-  - Deploy EC2
-  - Configure networking
+- Multi-VPC:
+  - Peering vs Transit Gateway
+
+- Monitoring & Debug:
+  - Flow Logs
+  - Reachability Analyzer
+  - CloudWatch
