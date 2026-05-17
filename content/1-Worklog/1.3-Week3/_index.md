@@ -16,14 +16,14 @@ pre: " <b> 1.3. </b> "
 
 ### Weekly Tasks:
 
-| Day | Tasks | Start | End |
-|-----|------|------|-----|
-| Mon | EC2 Fundamentals (Instance Types, AMI, EBS, Instance Store) | 04/05/2026 | 04/05/2026 |
-| Tue | User Data, Metadata, Auto Scaling | 05/05/2026 | 05/05/2026 |
-| Wed | EFS, FSx, Lightsail, MGN | 06/05/2026 | 06/05/2026 |
-| Thu | Lab 13 – AWS Backup | 07/05/2026 | 07/05/2026 |
-| Fri | Lab 24 – Storage Gateway | 08/05/2026 | 08/05/2026 |
-| Sat | Lab 57 – Amazon S3 & CloudFront | 09/05/2026 | 09/05/2026 |
+| Day | Task | Start Date | Completion Date | Reference Material |
+|-----|------|------------|-----------------|-------------------|
+| Mon | EC2 Fundamentals (Instance Types, AMI, EBS, Instance Store) | 04/05/2026 | 04/05/2026 | https://cloudjourney.awsstudygroup.com/ |
+| Tue | User Data, Metadata, Auto Scaling | 05/05/2026 | 05/05/2026 | https://cloudjourney.awsstudygroup.com/ |
+| Wed | EFS, FSx, Lightsail, MGN | 06/05/2026 | 06/05/2026 | https://cloudjourney.awsstudygroup.com/ |
+| Thu | Lab 13 – AWS Backup | 07/05/2026 | 07/05/2026 | https://cloudjourney.awsstudygroup.com/ |
+| Fri | Lab 24 – Storage Gateway | 08/05/2026 | 08/05/2026 | https://cloudjourney.awsstudygroup.com/ |
+| Sat | Lab 57 – Amazon S3 & CloudFront | 09/05/2026 | 09/05/2026 | https://cloudjourney.awsstudygroup.com/ |
 
 ---
 

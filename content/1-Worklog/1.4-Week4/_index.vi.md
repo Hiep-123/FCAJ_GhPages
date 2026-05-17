@@ -1,59 +1,186 @@
 ---
 title: "Worklog Tuần 4"
-date: 2024-01-01
-weight: 1
+date: 2026-05-11
+weight: 4
 chapter: false
 pre: " <b> 1.4. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
-
 
 ### Mục tiêu tuần 4:
 
-* Kết nối, làm quen với các thành viên trong First Cloud Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+* Hiểu sâu các dịch vụ lưu trữ trên AWS.
+* Thực hành triển khai Backup, Storage Gateway, FSx và Amazon S3.
+* Nắm được cơ chế migration, replication và storage optimization.
 
-### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
+---
 
+### Các công việc cần triển khai:
+---
 
-### Kết quả đạt được tuần 4:
+| Thứ | Nội dung học & thực hành | Ngày bắt đầu | Ngày hoàn thành | Tài liệu tham khảo |
+|-----|--------------------------|--------------|-----------------|--------------------|
+| 2 | Module 04-01: Dịch vụ lưu trữ trên AWS | 11/05/2026 | 11/05/2026 | https://cloudjourney.awsstudygroup.com/ |
+| 3 | Module 04-02: Amazon S3 - Access Point - Storage Class | 12/05/2026 | 12/05/2026 | https://cloudjourney.awsstudygroup.com/ |
+| 4 | Module 04-03 & 04-04: S3 Static Website, Glacier, Snow Family, Storage Gateway, Backup | 13/05/2026 | 13/05/2026 | https://cloudjourney.awsstudygroup.com/ |
+| 5 | Lab 13: Deploy AWS Backup to the System <br> Lab 14: VM Import/Export | 14/05/2026 | 14/05/2026 | https://000013.awsstudygroup.com/ |
+| 6 | Lab 24: Using File Storage Gateway <br> Lab 25: Amazon FSx for Windows File Server | 15/05/2026 | 15/05/2026 | https://000024.awsstudygroup.com/ |
+| 7 | Lab 57: Starting with Amazon S3 & CloudFront | 16/05/2026 | 16/05/2026 | https://000057.awsstudygroup.com/ |
 
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+---
 
-* Đã tạo và cấu hình AWS Free Tier account thành công.
+# 🧪 Chi tiết Lab đã thực hành
 
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
+---
 
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
+## 🔹 Lab 13 – Deploy AWS Backup to the System
 
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
+### Các bước thực hiện:
 
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
+- Tạo S3 Bucket
+- Deploy infrastructure
+- Tạo Backup Plan
+- Thiết lập notifications
+- Test restore dữ liệu
 
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
+### Hiểu được:
 
+- Cơ chế centralized backup trên AWS
+- Retention policy & lifecycle
+- Disaster recovery workflow
+- Tự động hóa backup tài nguyên AWS
 
+---
+
+## 🔹 Lab 14 – VM Import/Export
+
+### Import VM từ On-premises lên AWS
+
+- Export VM từ VMware Workstation
+- Upload VM lên S3
+- Import VM thành AMI
+- Deploy EC2 từ imported AMI
+
+### Export VM từ AWS
+
+- Export instance / AMI
+- Thiết lập ACL cho S3 Bucket
+- Download VM về On-premises
+
+### Hiểu được:
+
+- Migration workload từ On-premises → AWS
+- Chuyển đổi virtual machine thành AMI
+- Hybrid migration workflow
+
+---
+
+## 🔹 Lab 24 – Using File Storage Gateway
+
+### Các bước thực hiện:
+
+- Tạo S3 Bucket
+- Tạo EC2 cho Storage Gateway
+- Tạo File Gateway
+- Tạo File Shares
+- Mount file shares từ máy On-premises
+
+### Hiểu được:
+
+- Hybrid storage architecture
+- Đồng bộ dữ liệu On-premises ↔ AWS
+- File Gateway hoạt động như NAS sử dụng S3 backend
+
+---
+
+## 🔹 Lab 25 – Amazon FSx for Windows File Server
+
+### Các bước thực hiện:
+
+- Tạo:
+  - SSD Multi-AZ file system
+  - HDD Multi-AZ file system
+- Tạo file shares
+- Test & monitor performance
+- Enable:
+  - Data Deduplication
+  - Shadow Copies
+  - Storage Quotas
+  - Continuous Availability
+
+### Scale hệ thống:
+
+- Scale throughput capacity
+- Scale storage capacity
+
+### Hiểu được:
+
+- Managed Windows File Server trên AWS
+- High Availability với Multi-AZ
+- File sharing cho enterprise workloads
+- Storage optimization & monitoring
+
+---
+
+## 🔹 Lab 57 – Starting with Amazon S3
+
+### Static Website Hosting
+
+- Tạo S3 Bucket
+- Upload dữ liệu website
+- Enable static website hosting
+- Cấu hình public access
+- Test website
+
+### CloudFront Integration
+
+- Block public access
+- Tạo CloudFront distribution
+- Test CDN delivery
+
+### Versioning & Replication
+
+- Enable Bucket Versioning
+- Move objects
+- Configure Cross-Region Replication
+
+### Hiểu được:
+
+- Static website hosting trên S3
+- CDN acceleration với CloudFront
+- Data protection bằng Versioning
+- Disaster Recovery với Replication Multi-Region
+
+---
+
+# ✅ Kết quả đạt được tuần 4:
+
+- Hiểu sâu các dịch vụ Storage trên AWS:
+  - Amazon S3
+  - FSx
+  - Storage Gateway
+  - AWS Backup
+
+- Nắm được cơ chế:
+  - Storage Classes
+  - Lifecycle management
+  - Glacier storage
+
+- Triển khai:
+  - Static Website Hosting
+  - CloudFront CDN
+
+- Hiểu migration workflow:
+  - VM Import/Export
+  - On-premises ↔ AWS
+
+- Quản lý dữ liệu:
+  - Versioning
+  - Replication
+  - Backup & Restore
+
+- Storage optimization:
+  - Data Deduplication
+  - Storage Quotas
+  - Performance scaling
+
+---

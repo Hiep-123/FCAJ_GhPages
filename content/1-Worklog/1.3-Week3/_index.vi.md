@@ -18,12 +18,12 @@ pre: " <b> 1.3. </b> "
 
 | Thứ | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn |
 |-----|----------|-------------|-----------------|--------|
-| 2 | Module 03-01: EC2 Fundamentals (Instance Type, AMI, EBS, Instance Store) | 04/05/2026 | 04/05/2026 | AWS Study Group |
-| 3 | Module 03-01-05 → 03-01-07: User Data, Metadata, Auto Scaling | 05/05/2026 | 05/05/2026 | AWS Study Group |
-| 4 | Module 03-02: EFS, FSx, Lightsail, MGN | 06/05/2026 | 06/05/2026 | AWS Study Group |
-| 5 | Lab 13: AWS Backup | 07/05/2026 | 07/05/2026 | Lab |
-| 6 | Lab 24: AWS Storage Gateway | 08/05/2026 | 08/05/2026 | Lab |
-| 7 | Lab 57: Amazon S3 + CloudFront | 09/05/2026 | 09/05/2026 | Lab |
+| 2 | Module 03-01: EC2 Fundamentals (Instance Type, AMI, EBS, Instance Store) | 04/05/2026 | 04/05/2026 | https://cloudjourney.awsstudygroup.com/ |
+| 3 | Module 03-01-05 → 03-01-07: User Data, Metadata, Auto Scaling | 05/05/2026 | 05/05/2026 | https://cloudjourney.awsstudygroup.com/ |
+| 4 | Module 03-02: EFS, FSx, Lightsail, MGN | 06/05/2026 | 06/05/2026 | https://cloudjourney.awsstudygroup.com/ |
+| 5 | Lab 13: AWS Backup | 07/05/2026 | 07/05/2026 | https://cloudjourney.awsstudygroup.com/ |
+| 6 | Lab 24: AWS Storage Gateway | 08/05/2026 | 08/05/2026 | https://cloudjourney.awsstudygroup.com/ |
+| 7 | Lab 57: Amazon S3 + CloudFront | 09/05/2026 | 09/05/2026 | https://cloudjourney.awsstudygroup.com/ |
 
 ---
 

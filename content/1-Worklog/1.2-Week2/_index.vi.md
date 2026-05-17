@@ -18,12 +18,12 @@ pre: " <b> 1.2. </b> "
 
 | Thứ | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn |
 |-----|----------|-------------|-----------------|--------|
-| 2 | Module 02-01: AWS VPC (CIDR, Subnet, IP) | 27/04/2026 | 27/04/2026 | AWS Study Group |
-| 3 | Module 02-02: VPC Security (SG, NACL) | 28/04/2026 | 28/04/2026 | AWS Study Group |
-| 4 | Module 02-03: VPN, Direct Connect, LB | 29/04/2026 | 29/04/2026 | AWS Study Group |
-| 5 | Lab 03: VPC + VPN | 30/04/2026 | 30/04/2026 | Lab |
-| 6 | Lab 10: Hybrid DNS | 01/05/2026 | 01/05/2026 | Lab |
-| 7 | Lab 19 & 20: Peering & Transit Gateway | 02/05/2026 | 02/05/2026 | Lab |
+| 2 | Module 02-01: AWS VPC (CIDR, Subnet, IP) | 27/04/2026 | 27/04/2026 | https://cloudjourney.awsstudygroup.com/ |
+| 3 | Module 02-02: VPC Security (SG, NACL) | 28/04/2026 | 28/04/2026 | https://cloudjourney.awsstudygroup.com/ |
+| 4 | Module 02-03: VPN, Direct Connect, LB | 29/04/2026 | 29/04/2026 | https://cloudjourney.awsstudygroup.com/ |
+| 5 | Lab 03: VPC + VPN | 30/04/2026 | 30/04/2026 | https://cloudjourney.awsstudygroup.com/ |
+| 6 | Lab 10: Hybrid DNS | 01/05/2026 | 01/05/2026 | https://cloudjourney.awsstudygroup.com/ |
+| 7 | Lab 19 & 20: Peering & Transit Gateway | 02/05/2026 | 02/05/2026 | https://cloudjourney.awsstudygroup.com/ |
 
 ---
 

@@ -16,14 +16,14 @@ pre: " <b> 1.2. </b> "
 
 ### Weekly Tasks:
 
-| Day | Tasks | Start | End |
-|-----|------|------|-----|
-| Mon | VPC fundamentals | 27/04 | 27/04 |
-| Tue | Security (SG vs NACL) | 28/04 | 28/04 |
-| Wed | VPN, Direct Connect | 29/04 | 29/04 |
-| Thu | Lab 03 | 30/04 | 30/04 |
-| Fri | Lab 10 | 01/05 | 01/05 |
-| Sat | Lab 19 & 20 | 02/05 | 02/05 |
+| Day | Task | Start Date | Completion Date | Reference Material |
+|-----|------|------------|-----------------|-------------------|
+| Mon | Module 02-01: AWS VPC (CIDR, Subnet, IP) | 27/04/2026 | 27/04/2026 | https://cloudjourney.awsstudygroup.com/ |
+| Tue | Module 02-02: VPC Security (SG, NACL) | 28/04/2026 | 28/04/2026 | https://cloudjourney.awsstudygroup.com/ |
+| Web | Module 02-03: VPN, Direct Connect, LB | 29/04/2026 | 29/04/2026 | https://cloudjourney.awsstudygroup.com/ |
+| Thu | Lab 03: VPC + VPN | 30/04/2026 | 30/04/2026 | https://cloudjourney.awsstudygroup.com/ |
+| Fri | Lab 10: Hybrid DNS | 01/05/2026 | 01/05/2026 | https://cloudjourney.awsstudygroup.com/ |
+| Sat | Lab 19 & 20: Peering & Transit Gateway | 02/05/2026 | 02/05/2026 | https://cloudjourney.awsstudygroup.com/ |
 
 ---
 
