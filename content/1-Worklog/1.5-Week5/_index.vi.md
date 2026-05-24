@@ -1,59 +1,160 @@
 ---
 title: "Worklog Tuần 5"
-date: 2024-01-01
-weight: 1
+date: 2026-05-18
+weight: 5
 chapter: false
 pre: " <b> 1.5. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
-
 
 ### Mục tiêu tuần 5:
 
-* Kết nối, làm quen với các thành viên trong First Cloud Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+* Hiểu các dịch vụ bảo mật và quản lý quyền trên AWS.
+* Thực hành IAM, KMS, Security Hub và Resource Tagging.
+* Tìm hiểu cơ chế phân quyền, mã hóa dữ liệu và quản lý tài nguyên trên AWS.
 
-### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
+---
 
+### Các công việc cần triển khai:
 
-### Kết quả đạt được tuần 5:
+| Thứ | Nội dung học & thực hành | Ngày bắt đầu | Ngày hoàn thành | Tài liệu tham khảo |
+|-----|--------------------------|--------------|-----------------|--------------------|
+| 2 | Module 05-01 → 05-03: Shared Responsibility Model, IAM, Cognito | 18/05/2026 | 18/05/2026 | https://cloudjourney.awsstudygroup.com/ |
+| 3 | Module 05-04 → 05-06: AWS Organizations, Identity Center, AWS KMS | 19/05/2026 | 19/05/2026 | https://cloudjourney.awsstudygroup.com/ |
+| 4 | Module 05-07 & 05-08: Security Hub, Hands-on Research | 20/05/2026 | 20/05/2026 | https://cloudjourney.awsstudygroup.com/ |
+| 5 | Lab 18 & Lab 22: Security Hub, Optimizing EC2 Costs with Lambda | 21/05/2026 | 21/05/2026 | AWS Study Group Labs |
+| 6 | Lab 27, 28 & 30: Tags, IAM Policy, Permission Boundary | 22/05/2026 | 22/05/2026 | AWS Study Group Labs |
+| 7 | Lab 33, 44 & 48: AWS KMS, IAM Role & Condition, IAM Role for EC2 | 23/05/2026 | 23/05/2026 | AWS Study Group Labs |
 
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+---
 
-* Đã tạo và cấu hình AWS Free Tier account thành công.
+# 🧪 Chi tiết Lab đã thực hành
 
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
+---
 
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
+## 🔹 Lab 18 – Getting Started with AWS Security Hub
 
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
+- Enable AWS Security Hub
+- Kiểm tra Security Standards
+- Theo dõi Security Score
+- Clean up resources
 
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
+👉 Hiểu:
+- Centralized security monitoring
+- Security compliance & recommendations
 
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
+---
 
+## 🔹 Lab 22 – Optimizing EC2 Costs with Lambda
 
+- Tạo EC2 instance và Lambda Function
+- Tự động Start/Stop EC2 bằng Lambda
+- Tích hợp Slack Webhook notifications
+
+👉 Hiểu:
+- Cost optimization automation
+- Event-driven architecture với Lambda
+
+---
+
+## 🔹 Lab 27 – Manage Resources Using Tags and Resource Groups
+
+- Gắn Tags cho EC2 và AWS resources
+- Filter resources bằng Tags
+- Sử dụng Tags với AWS CLI
+- Tạo Resource Groups
+
+👉 Hiểu:
+- Resource organization & management
+- Quản lý tài nguyên theo môi trường / project
+
+---
+
+## 🔹 Lab 28 – Manage Access to EC2 Services with Resource Tags through IAM
+
+- Tạo IAM User, Role, Policy
+- Restrict EC2 access dựa trên Tags
+- Test IAM permissions theo Region & Tags
+
+👉 Hiểu:
+- Attribute-Based Access Control (ABAC)
+- Fine-grained access control với IAM
+
+---
+
+## 🔹 Lab 30 – IAM Permission Boundary
+
+- Tạo Restriction Policy
+- Tạo IAM Limited User
+- Test quyền bị giới hạn
+
+👉 Hiểu:
+- Permission Boundary hoạt động như guardrail
+- Giới hạn maximum permissions cho IAM User/Role
+
+---
+
+## 🔹 Lab 33 – Encrypt at Rest with AWS KMS
+
+- Tạo AWS KMS Key
+- Upload encrypted data lên S3
+- Logging với CloudTrail
+- Query logs bằng Athena
+
+👉 Hiểu:
+- Data encryption at rest
+- Audit logging & monitoring
+
+---
+
+## 🔹 Lab 44 – IAM Role & Condition
+
+- Tạo IAM Users, Groups, Roles
+- Configure Switch Role
+- Restrict role access theo:
+  - IP Address
+  - Time condition
+
+👉 Hiểu:
+- IAM Role Assume process
+- Conditional access control
+
+---
+
+## 🔹 Lab 48 – IAM Role for Applications
+
+- Tạo EC2 & S3 Bucket
+- Sử dụng Access Key
+- Gắn IAM Role vào EC2
+
+👉 Hiểu:
+- Best practice:
+  - dùng IAM Role thay vì hardcode Access Key
+- Secure application access tới AWS services
+
+---
+
+# ✅ Kết quả đạt được tuần 5:
+
+- Hiểu các dịch vụ bảo mật AWS:
+  - IAM
+  - Cognito
+  - KMS
+  - Security Hub
+
+- Thực hành:
+  - IAM Policy & Role
+  - Permission Boundary
+  - Resource Tags
+  - Security Monitoring
+
+- Hiểu:
+  - Encryption at rest
+  - Access Control
+  - Assume Role
+  - Conditional IAM Policy
+
+- Tự động hóa:
+  - Start/Stop EC2 với Lambda
+  - Cost optimization workflow
+
+---
