@@ -1,125 +1,112 @@
 ---
+
 title: "Event 1"
-date: 2024-01-01
+date: 2026-05-23
 weight: 1
 chapter: false
 pre: " <b> 4.1. </b> "
----
+----------------------
 
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
-
-# Bài thu hoạch “GenAI-powered App-DB Modernization workshop”
+# Bài thu hoạch “Build Second Brain – Context is Everything”
 
 ### Mục Đích Của Sự Kiện
 
-- Chia sẻ best practices trong thiết kế ứng dụng hiện đại
-- Giới thiệu phương pháp DDD và event-driven architecture
-- Hướng dẫn lựa chọn compute services phù hợp
-- Giới thiệu công cụ AI hỗ trợ development lifecycle
+* Giới thiệu phương pháp xây dựng hệ thống quản lý tri thức cá nhân (Second Brain).
+* Chia sẻ cách tổ chức và khai thác kiến thức hiệu quả trong thời đại số.
+* Giúp người tham dự hiểu vai trò của ngữ cảnh (context) trong việc học tập và làm việc.
+* Nâng cao khả năng lưu trữ, tìm kiếm và tái sử dụng thông tin.
 
 ### Danh Sách Diễn Giả
 
-- **Jignesh Shah** - Director, Open Source Databases
-- **Erica Liu** - Sr. GTM Specialist, AppMod
-- **Fabrianne Effendi** - Assc. Specialist SA, Serverless Amazon Web Services
+* **Anh Tịnh**
 
 ### Nội Dung Nổi Bật
 
-#### Đưa ra các ảnh hưởng tiêu cực của kiến trúc ứng dụng cũ
+#### Tại sao cần một “Second Brain”?
 
-- Thời gian release sản phẩm lâu → Mất doanh thu/bỏ lỡ cơ hội
-- Hoạt động kém hiệu quả → Mất năng suất, tốn kém chi phí
-- Không tuân thủ các quy định về bảo mật → Mất an ninh, uy tín
+Trong thời đại lượng thông tin tăng trưởng rất nhanh, việc ghi nhớ toàn bộ kiến thức là điều gần như không thể. Thay vì cố gắng lưu trữ mọi thứ trong trí nhớ, chúng ta cần xây dựng một hệ thống bên ngoài để hỗ trợ quản lý thông tin.
 
-#### Chuyển đổi sang kiến trúc ứng dụng mới - Microservice Architecture
+Một “Second Brain” không chỉ là nơi lưu ghi chú mà còn là hệ thống giúp:
 
-Chuyển đổi thành hệ thống modular – từng chức năng là một **dịch vụ độc lập** giao tiếp với nhau qua **sự kiện** với 3 trụ cột cốt lõi:
+* Thu thập thông tin có giá trị.
+* Tổ chức kiến thức theo cấu trúc rõ ràng.
+* Dễ dàng tìm kiếm và tái sử dụng khi cần.
 
-- **Queue Management**: Xử lý tác vụ bất đồng bộ
-- **Caching Strategy:** Tối ưu performance
-- **Message Handling:** Giao tiếp linh hoạt giữa services
+#### Context is Everything
 
-#### Domain-Driven Design (DDD)
+Một trong những thông điệp quan trọng nhất của buổi chia sẻ là:
 
-- **Phương pháp 4 bước**: Xác định domain events → sắp xếp timeline → identify actors → xác định bounded contexts
-- **Case study bookstore**: Minh họa cách áp dụng DDD thực tế
-- **Context mapping**: 7 patterns tích hợp bounded contexts
+> Thông tin không có ngữ cảnh sẽ rất khó tạo ra giá trị.
 
-#### Event-Driven Architecture
+Cùng một dữ liệu nhưng khi được đặt trong đúng ngữ cảnh sẽ trở thành kiến thức hữu ích. Vì vậy, việc lưu trữ cần gắn với:
 
-- **3 patterns tích hợp**: Publish/Subscribe, Point-to-point, Streaming
-- **Lợi ích**: Loose coupling, scalability, resilience
-- **So sánh sync vs async**: Hiểu rõ trade-offs (sự đánh đổi)
+* Dự án đang thực hiện.
+* Mục tiêu học tập.
+* Công việc hiện tại.
+* Kinh nghiệm thực tế.
 
-#### Compute Evolution
+Điều này giúp giảm thời gian tìm kiếm và tăng hiệu quả sử dụng kiến thức.
 
-- **Shared Responsibility Model**: Từ EC2 → ECS → Fargate → Lambda
-- **Serverless benefits**: No server management, auto-scaling, pay-for-value
-- **Functions vs Containers**: Criteria lựa chọn phù hợp
+#### Quản lý tri thức cá nhân
 
-#### Amazon Q Developer
+Diễn giả giới thiệu quy trình quản lý kiến thức gồm nhiều bước:
 
-- **SDLC automation**: Từ planning đến maintenance
-- **Code transformation**: Java upgrade, .NET modernization
-- **AWS Transform agents**: VMware, Mainframe, .NET migration
+* Thu thập thông tin từ nhiều nguồn.
+* Chọn lọc những nội dung thực sự hữu ích.
+* Chuẩn hóa và lưu trữ.
+* Liên kết các ghi chú liên quan.
+* Định kỳ xem lại và cập nhật.
+
+Thông qua quy trình này, kiến thức không bị thất lạc và ngày càng trở nên giá trị hơn theo thời gian.
+
+#### Ứng dụng AI trong quản lý tri thức
+
+Các công cụ AI hiện nay có thể hỗ trợ:
+
+* Tóm tắt tài liệu.
+* Tạo ghi chú tự động.
+* Tìm kiếm thông tin theo ngữ nghĩa.
+* Kết nối các ý tưởng liên quan.
+
+Tuy nhiên, AI chỉ thực sự hiệu quả khi dữ liệu đầu vào được tổ chức tốt và có đầy đủ ngữ cảnh.
 
 ### Những Gì Học Được
 
-#### Tư Duy Thiết Kế
+#### Tư duy học tập
 
-- **Business-first approach**: Luôn bắt đầu từ business domain, không phải technology
-- **Ubiquitous language**: Importance của common vocabulary giữa business và tech teams
-- **Bounded contexts**: Cách identify và manage complexity trong large systems
+* Không nên cố ghi nhớ mọi thứ.
+* Tập trung xây dựng hệ thống quản lý kiến thức thay vì lưu trữ rời rạc.
+* Ưu tiên khả năng tìm kiếm và tái sử dụng.
 
-#### Kiến Trúc Kỹ Thuật
+#### Quản lý kiến thức
 
-- **Event storming technique**: Phương pháp thực tế để mô hình hóa quy trình kinh doanh
-- Sử dụng **Event-driven communication** thay vì synchronous calls
-- **Integration patterns**: Hiểu khi nào dùng sync, async, pub/sub, streaming
-- **Compute spectrum**: Criteria chọn từ VM → containers → serverless
+* Context quan trọng hơn số lượng ghi chú.
+* Các ghi chú cần được liên kết với nhau.
+* Kiến thức nên được tổ chức theo mục tiêu và dự án.
 
-#### Chiến Lược Hiện Đại Hóa
+#### Ứng dụng công nghệ
 
-- **Phased approach**: Không rush, phải có roadmap rõ ràng
-- **7Rs framework**: Nhiều con đường khác nhau tùy thuộc vào đặc điểm của mỗi ứng dụng
-- **ROI measurement**: Cost reduction + business agility
+* AI có thể hỗ trợ quản lý tri thức nhưng không thay thế hoàn toàn tư duy con người.
+* Công cụ chỉ phát huy hiệu quả khi có phương pháp tổ chức dữ liệu phù hợp.
 
 ### Ứng Dụng Vào Công Việc
 
-- **Áp dụng DDD** cho project hiện tại: Event storming sessions với business team
-- **Refactor microservices**: Sử dụng bounded contexts để identify service boundaries
-- **Implement event-driven patterns**: Thay thế một số sync calls bằng async messaging
-- **Serverless adoption**: Pilot AWS Lambda cho một số use cases phù hợp
-- **Try Amazon Q Developer**: Integrate vào development workflow để boost productivity
+Sau buổi chia sẻ, tôi có thể áp dụng các kiến thức đã học vào quá trình thực tập:
+
+* Xây dựng kho tài liệu AWS cá nhân.
+* Lưu trữ kiến thức theo từng dịch vụ AWS như EC2, VPC, S3, IAM, RDS.
+* Ghi lại các lỗi phát sinh và cách khắc phục.
+* Tạo hệ thống ghi chú cho các workshop và lab đã tham gia.
+* Sử dụng AI để hỗ trợ tổng hợp tài liệu học tập.
 
 ### Trải nghiệm trong event
 
-Tham gia workshop **“GenAI-powered App-DB Modernization”** là một trải nghiệm rất bổ ích, giúp tôi có cái nhìn toàn diện về cách hiện đại hóa ứng dụng và cơ sở dữ liệu bằng các phương pháp và công cụ hiện đại. Một số trải nghiệm nổi bật:
+Buổi chia sẻ mang lại góc nhìn mới về việc học tập và quản lý kiến thức trong môi trường công nghệ. Tôi nhận ra rằng việc sở hữu nhiều thông tin không quan trọng bằng việc có khả năng tổ chức và khai thác thông tin đó hiệu quả.
 
-#### Học hỏi từ các diễn giả có chuyên môn cao
-- Các diễn giả đến từ AWS và các tổ chức công nghệ lớn đã chia sẻ **best practices** trong thiết kế ứng dụng hiện đại.
-- Qua các case study thực tế, tôi hiểu rõ hơn cách áp dụng **Domain-Driven Design (DDD)** và **Event-Driven Architecture** vào các project lớn.
-
-#### Trải nghiệm kỹ thuật thực tế
-- Tham gia các phiên trình bày về **event storming** giúp tôi hình dung cách **mô hình hóa quy trình kinh doanh** thành các domain events.
-- Học cách **phân tách microservices** và xác định **bounded contexts** để quản lý sự phức tạp của hệ thống lớn.
-- Hiểu rõ trade-offs giữa **synchronous và asynchronous communication** cũng như các pattern tích hợp như **pub/sub, point-to-point, streaming**.
-
-#### Ứng dụng công cụ hiện đại
-- Trực tiếp tìm hiểu về **Amazon Q Developer**, công cụ AI hỗ trợ SDLC từ lập kế hoạch đến maintenance.
-- Học cách **tự động hóa code transformation** và pilot serverless với **AWS Lambda**, từ đó nâng cao năng suất phát triển.
-
-#### Kết nối và trao đổi
-- Workshop tạo cơ hội trao đổi trực tiếp với các chuyên gia, đồng nghiệp và team business, giúp **nâng cao ngôn ngữ chung (ubiquitous language)** giữa business và tech.
-- Qua các ví dụ thực tế, tôi nhận ra tầm quan trọng của **business-first approach**, luôn bắt đầu từ nhu cầu kinh doanh thay vì chỉ tập trung vào công nghệ.
-
-#### Bài học rút ra
-- Việc áp dụng DDD và event-driven patterns giúp giảm **coupling**, tăng **scalability** và **resilience** cho hệ thống.
-- Chiến lược hiện đại hóa cần **phased approach** và đo lường **ROI**, không nên vội vàng chuyển đổi toàn bộ hệ thống.
-- Các công cụ AI như Amazon Q Developer có thể **boost productivity** nếu được tích hợp vào workflow phát triển hiện tại.
+Thông qua các ví dụ thực tế, tôi hiểu rõ hơn cách xây dựng một hệ thống quản lý tri thức cá nhân phục vụ cho học tập lâu dài và phát triển nghề nghiệp. Đây là một chủ đề rất hữu ích đối với sinh viên công nghệ thông tin, đặc biệt trong bối cảnh AI ngày càng phát triển và lượng kiến thức cần tiếp cận ngày càng lớn.
 
 #### Một số hình ảnh khi tham gia sự kiện
+
 * Thêm các hình ảnh của các bạn tại đây
-> Tổng thể, sự kiện không chỉ cung cấp kiến thức kỹ thuật mà còn giúp tôi thay đổi cách tư duy về thiết kế ứng dụng, hiện đại hóa hệ thống và phối hợp hiệu quả hơn giữa các team.
+
+> Tổng thể, sự kiện giúp tôi hiểu rõ hơn về phương pháp xây dựng hệ thống quản lý tri thức cá nhân, tối ưu hóa việc học tập và nâng cao hiệu suất làm việc trong môi trường công nghệ hiện đại.

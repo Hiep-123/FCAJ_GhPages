@@ -1,126 +1,113 @@
 ---
 title: "Event 1"
-date: 2024-01-01
+date: 2026-05-23
 weight: 1
 chapter: false
 pre: " <b> 4.1. </b> "
 ---
 
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy it verbatim** into your report, including this warning.
-{{% /notice %}}
+---
 
-# Summary Report: “GenAI-powered App-DB Modernization workshop”
+# Summary Report: “Build Second Brain – Context is Everything”
 
 ### Event Objectives
 
-- Share best practices in modern application design
-- Introduce Domain-Driven Design (DDD) and event-driven architecture
-- Provide guidance on selecting the right compute services
-- Present AI tools to support the development lifecycle
+* Introduce the concept of building a personal knowledge management system.
+* Share effective approaches to organizing and utilizing information.
+* Explain the importance of context in learning and productivity.
+* Improve the ability to capture, organize, and reuse knowledge.
 
-### Speakers
+### Speaker
 
-- **Jignesh Shah** – Director, Open Source Databases
-- **Erica Liu** – Sr. GTM Specialist, AppMod
-- **Fabrianne Effendi** – Assc. Specialist SA, Serverless Amazon Web Services
+* **Tinh**
 
 ### Key Highlights
 
-#### Identifying the drawbacks of legacy application architecture
+#### Why Do We Need a Second Brain?
 
-- Long product release cycles → Lost revenue/missed opportunities  
-- Inefficient operations → Reduced productivity, higher costs  
-- Non-compliance with security regulations → Security breaches, loss of reputation  
+In today’s information-rich world, it is impossible to remember everything. Instead of relying solely on memory, individuals should create an external system to store and manage knowledge effectively.
 
-#### Transitioning to modern application architecture – Microservices
+A Second Brain serves as:
 
-Migrating to a modular system — each function is an **independent service** communicating via **events**, built on three core pillars:
+* A repository for valuable information.
+* A structured knowledge management system.
+* A platform for retrieving and reusing information efficiently.
 
-- **Queue Management**: Handle asynchronous tasks  
-- **Caching Strategy**: Optimize performance  
-- **Message Handling**: Flexible inter-service communication  
+#### Context is Everything
 
-#### Domain-Driven Design (DDD)
+One of the key messages of the session was:
 
-- **Four-step method**: Identify domain events → arrange timeline → identify actors → define bounded contexts  
-- **Bookstore case study**: Demonstrates real-world DDD application  
-- **Context mapping**: 7 patterns for integrating bounded contexts  
+> Information without context has limited value.
 
-#### Event-Driven Architecture
+The same piece of information can become significantly more useful when connected to the right context, such as:
 
-- **3 integration patterns**: Publish/Subscribe, Point-to-point, Streaming  
-- **Benefits**: Loose coupling, scalability, resilience  
-- **Sync vs async comparison**: Understanding the trade-offs  
+* Ongoing projects.
+* Learning goals.
+* Daily work activities.
+* Real-world experiences.
 
-#### Compute Evolution
+This approach improves information retrieval and enhances productivity.
 
-- **Shared Responsibility Model**: EC2 → ECS → Fargate → Lambda  
-- **Serverless benefits**: No server management, auto-scaling, pay-for-value  
-- **Functions vs Containers**: Criteria for appropriate choice  
+#### Personal Knowledge Management
 
-#### Amazon Q Developer
+The speaker introduced a structured workflow for knowledge management:
 
-- **SDLC automation**: From planning to maintenance  
-- **Code transformation**: Java upgrade, .NET modernization  
-- **AWS Transform agents**: VMware, Mainframe, .NET migration  
+* Capture information.
+* Filter useful content.
+* Organize and standardize notes.
+* Create meaningful connections.
+* Review and update knowledge regularly.
+
+This process helps transform scattered information into long-term knowledge assets.
+
+#### AI and Knowledge Management
+
+Modern AI tools can support:
+
+* Document summarization.
+* Automatic note generation.
+* Semantic search.
+* Knowledge discovery and idea connections.
+
+However, AI can only deliver high-quality results when information is properly organized and contextualized.
 
 ### Key Takeaways
 
-#### Design Mindset
+#### Learning Mindset
 
-- **Business-first approach**: Always start from the business domain, not the technology  
-- **Ubiquitous language**: Importance of a shared vocabulary between business and tech teams  
-- **Bounded contexts**: Identifying and managing complexity in large systems  
+* Do not try to memorize everything.
+* Build systems rather than rely solely on memory.
+* Prioritize information retrieval and reuse.
 
-#### Technical Architecture
+#### Knowledge Management
 
-- **Event storming technique**: Practical method for modeling business processes  
-- Use **event-driven communication** instead of synchronous calls  
-- **Integration patterns**: When to use sync, async, pub/sub, streaming  
-- **Compute spectrum**: Criteria for choosing between VM, containers, and serverless  
+* Context matters more than the number of notes.
+* Knowledge should be interconnected.
+* Information should be organized around goals and projects.
 
-#### Modernization Strategy
+#### Technology Adoption
 
-- **Phased approach**: No rushing — follow a clear roadmap  
-- **7Rs framework**: Multiple modernization paths depending on the application  
-- **ROI measurement**: Cost reduction + business agility  
+* AI enhances productivity but does not replace human thinking.
+* Effective knowledge organization remains essential.
 
 ### Applying to Work
 
-- **Apply DDD** to current projects: Event storming sessions with business teams  
-- **Refactor microservices**: Use bounded contexts to define service boundaries  
-- **Implement event-driven patterns**: Replace some sync calls with async messaging  
-- **Adopt serverless**: Pilot AWS Lambda for suitable use cases  
-- **Try Amazon Q Developer**: Integrate into the dev workflow to boost productivity  
+I can apply these concepts to my internship activities by:
+
+* Building a personal AWS knowledge base.
+* Organizing notes by AWS services such as EC2, VPC, S3, IAM, and RDS.
+* Documenting troubleshooting experiences and solutions.
+* Managing workshop and lab notes systematically.
+* Using AI tools to summarize and organize learning materials.
 
 ### Event Experience
 
-Attending the **“GenAI-powered App-DB Modernization”** workshop was extremely valuable, giving me a comprehensive view of modernizing applications and databases using advanced methods and tools. Key experiences included:
+The session provided a valuable perspective on learning and knowledge management in the digital age. It highlighted the importance of creating systems that help individuals retain and utilize information effectively rather than relying entirely on memory.
 
-#### Learning from highly skilled speakers
-- Experts from AWS and major tech organizations shared **best practices** in modern application design.  
-- Through real-world case studies, I gained a deeper understanding of applying **DDD** and **Event-Driven Architecture** to large projects.  
+Through practical examples and real-world experiences, I gained a deeper understanding of how to build a sustainable knowledge management system that supports continuous learning and professional growth. This topic is particularly relevant for IT students, who constantly need to absorb and organize large amounts of technical information.
 
-#### Hands-on technical exposure
-- Participating in **event storming** sessions helped me visualize how to **model business processes** into domain events.  
-- Learned how to **split microservices** and define **bounded contexts** to manage large-system complexity.  
-- Understood trade-offs between **synchronous and asynchronous communication** and integration patterns like **pub/sub, point-to-point, streaming**.  
+#### Some Event Photos
 
-#### Leveraging modern tools
-- Explored **Amazon Q Developer**, an AI tool for SDLC support from planning to maintenance.  
-- Learned to **automate code transformation** and pilot serverless with **AWS Lambda** to improve productivity.  
+*Add your event photos here*
 
-#### Networking and discussions
-- The workshop offered opportunities to exchange ideas with experts, peers, and business teams, enhancing the **ubiquitous language** between business and tech.  
-- Real-world examples reinforced the importance of the **business-first approach** rather than focusing solely on technology.  
-
-#### Lessons learned
-- Applying DDD and event-driven patterns reduces **coupling** while improving **scalability** and **resilience**.  
-- Modernization requires a **phased approach** with **ROI measurement**; rushing the process can be risky.  
-- AI tools like Amazon Q Developer can significantly **boost productivity** when integrated into the current workflow.  
-
-#### Some event photos
-*Add your event photos here*  
-
-> Overall, the event not only provided technical knowledge but also helped me reshape my thinking about application design, system modernization, and cross-team collaboration.
+> Overall, the event helped me understand how to build a personal knowledge management system, improve learning efficiency, and increase productivity in a modern technology environment.
