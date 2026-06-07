@@ -16,7 +16,7 @@ pre: " <b> 1.5. </b> "
 
 ### Weekly Tasks:
 
-| Day | Learning & Practice Topics | Start Date | End Date | Reference |
+| Day | Learning & Practice Topics | Start Date | Completion Date | Reference Material |
 |-----|----------------------------|-------------|-----------|------------|
 | Mon | Shared Responsibility Model, IAM, Cognito | 18/05/2026 | 18/05/2026 | https://cloudjourney.awsstudygroup.com/ |
 | Tue | AWS Organizations, Identity Center, AWS KMS | 19/05/2026 | 19/05/2026 | https://cloudjourney.awsstudygroup.com/ |
