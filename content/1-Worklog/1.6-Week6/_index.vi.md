@@ -30,7 +30,7 @@ pre: " <b> 1.6. </b> "
 
 ### Các công việc cần triển khai:
 
-| Thứ | Nội dung học & thực hành | Ngày bắt đầu | Ngày hoàn thành | Tài liệu tham khảo |
+| Thứ | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu |
 |-----|--------------------------|--------------|-----------------|--------------------|
 | 2 | Module 06-01: Database Concepts Review | 25/05/2026 | 25/05/2026 | https://cloudjourney.awsstudygroup.com/ |
 | 3 | Module 06-02: Amazon RDS & Amazon Aurora | 26/05/2026 | 26/05/2026 | https://cloudjourney.awsstudygroup.com/ |

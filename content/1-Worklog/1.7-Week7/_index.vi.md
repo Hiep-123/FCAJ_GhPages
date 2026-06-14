@@ -14,7 +14,7 @@ pre: " <b> 1.7. </b> "
 
 ### Các công việc cần triển khai:
 
-| Thứ | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn |
+| Thứ | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu |
 |-----|----------|-------------|-----------------|--------|
 | 2 | Module 07-01: Data Lake trên AWS, AWS Glue, Athena | 01/06/2026 | 01/06/2026 | https://cloudjourney.awsstudygroup.com/ |
 | 3 | Lab 35: Xây dựng Data Lake với S3, Glue Crawler, Athena, QuickSight | 02/06/2026 | 02/06/2026 | https://cloudjourney.awsstudygroup.com/ |

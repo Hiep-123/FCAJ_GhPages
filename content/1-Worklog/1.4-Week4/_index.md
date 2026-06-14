@@ -17,7 +17,7 @@ pre: " <b> 1.4. </b> "
 ### Weekly Tasks:
 ---
 
-| Day | Learning & Practice Topics | Start Date | Completion Date | Reference Material |
+| Day | Task | Start Date | Completion Date | Reference Material |
 |-----|----------------------------|-------------|-----------|------------|
 | Mon | Module 04-01: AWS Storage Services | 11/05/2026 | 11/05/2026 | https://cloudjourney.awsstudygroup.com/ |
 | Tue | Module 04-02: Amazon S3 - Access Point - Storage Classes | 12/05/2026 | 12/05/2026 | https://cloudjourney.awsstudygroup.com/ |

@@ -16,7 +16,7 @@ pre: " <b> 1.6. </b> "
 
 ### Weekly Tasks:
 
-| Day | Learning & Practice Topics | Start Date | Completion Date | Reference Material |
+| Day | Task | Start Date | Completion Date | Reference Material |
 |-----|----------------------------|------------|----------|------------|
 | Mon | Database Concepts Review | 25/05/2026 | 25/05/2026 | https://cloudjourney.awsstudygroup.com/ |
 | Tue | Amazon RDS & Amazon Aurora | 26/05/2026 | 26/05/2026 | https://cloudjourney.awsstudygroup.com/ |

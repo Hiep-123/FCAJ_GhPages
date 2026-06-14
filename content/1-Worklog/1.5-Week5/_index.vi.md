@@ -16,7 +16,7 @@ pre: " <b> 1.5. </b> "
 
 ### Các công việc cần triển khai:
 
-| Thứ | Nội dung học & thực hành | Ngày bắt đầu | Ngày hoàn thành | Tài liệu tham khảo |
+| Thứ | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu |
 |-----|--------------------------|--------------|-----------------|--------------------|
 | 2 | Module 05-01 → 05-03: Shared Responsibility Model, IAM, Cognito | 18/05/2026 | 18/05/2026 | https://cloudjourney.awsstudygroup.com/ |
 | 3 | Module 05-04 → 05-06: AWS Organizations, Identity Center, AWS KMS | 19/05/2026 | 19/05/2026 | https://cloudjourney.awsstudygroup.com/ |

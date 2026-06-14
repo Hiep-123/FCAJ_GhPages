@@ -16,7 +16,7 @@ pre: " <b> 1.3. </b> "
 
 ### Các công việc cần triển khai:
 
-| Thứ | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn |
+| Thứ | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu |
 |-----|----------|-------------|-----------------|--------|
 | 2 | Module 03-01: EC2 Fundamentals (Instance Type, AMI, EBS, Instance Store) | 04/05/2026 | 04/05/2026 | https://cloudjourney.awsstudygroup.com/ |
 | 3 | Module 03-01-05 → 03-01-07: User Data, Metadata, Auto Scaling | 05/05/2026 | 05/05/2026 | https://cloudjourney.awsstudygroup.com/ |

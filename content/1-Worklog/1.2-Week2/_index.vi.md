@@ -16,7 +16,7 @@ pre: " <b> 1.2. </b> "
 
 ### Các công việc cần triển khai:
 
-| Thứ | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn |
+| Thứ | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu |
 |-----|----------|-------------|-----------------|--------|
 | 2 | Module 02-01: AWS VPC (CIDR, Subnet, IP) | 27/04/2026 | 27/04/2026 | https://cloudjourney.awsstudygroup.com/ |
 | 3 | Module 02-02: VPC Security (SG, NACL) | 28/04/2026 | 28/04/2026 | https://cloudjourney.awsstudygroup.com/ |

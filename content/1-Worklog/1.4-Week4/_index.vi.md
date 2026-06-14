@@ -17,7 +17,7 @@ pre: " <b> 1.4. </b> "
 ### Các công việc cần triển khai:
 ---
 
-| Thứ | Nội dung học & thực hành | Ngày bắt đầu | Ngày hoàn thành | Tài liệu tham khảo |
+| Thứ | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu |
 |-----|--------------------------|--------------|-----------------|--------------------|
 | 2 | Module 04-01: Dịch vụ lưu trữ trên AWS | 11/05/2026 | 11/05/2026 | https://cloudjourney.awsstudygroup.com/ |
 | 3 | Module 04-02: Amazon S3 - Access Point - Storage Class | 12/05/2026 | 12/05/2026 | https://cloudjourney.awsstudygroup.com/ |
