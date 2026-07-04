@@ -6,7 +6,7 @@ toc: true
 weight: 2
 chapter: false
 pre: "2."
-
+---
 
 # Nền tảng thương mại điện tử Serverless trên AWS
 ## Hệ thống mua sắm cloud-native sẵn sàng cho môi trường sản xuất, xây dựng trên kiến trúc AWS Serverless
