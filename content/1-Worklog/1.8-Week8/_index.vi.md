@@ -1,59 +1,86 @@
 ---
 title: "Worklog Tuần 8"
-date: 2024-01-01
+date: 2026-06-14
 weight: 1
 chapter: false
 pre: " <b> 1.8. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
 
+---
 
 ### Mục tiêu tuần 8:
 
-* Kết nối, làm quen với các thành viên trong First Cloud Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+* Hiểu kiến trúc Serverless trên AWS.
+* Xây dựng quy trình CI/CD bằng AWS CodePipeline.
+* Phát triển và triển khai ứng dụng sử dụng Lambda, API Gateway và DynamoDB.
+* Tự động hóa quá trình triển khai ứng dụng Frontend và Backend.
 
-### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
+### Các công việc cần triển khai:
 
+| Thứ | Công việc                                                                          | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                          |
+| --- | ---------------------------------------------------------------------------------- | ------------ | --------------- | --------------------------------------- |
+| 2   | Tìm hiểu kiến trúc Serverless và CI/CD trên AWS                                    | 08/06/2026   | 08/06/2026      | https://cloudjourney.awsstudygroup.com/ |
+| 3   | Xây dựng CI/CD Pipeline cho ứng dụng AWS SAM bằng CodePipeline                     | 09/06/2026   | 09/06/2026      | https://cloudjourney.awsstudygroup.com/ |
+| 4   | Xây dựng CI/CD Pipeline cho Frontend                                               | 10/06/2026   | 10/06/2026      | https://cloudjourney.awsstudygroup.com/ |
+| 5   | Thực hành Serverless Bookstore với Lambda, S3, IAM và DynamoDB                     | 11/06/2026   | 11/06/2026      | https://cloudjourney.awsstudygroup.com/ |
+| 6   | Xây dựng Frontend tích hợp API Gateway và Lambda                                   | 12/06/2026   | 12/06/2026      | https://cloudjourney.awsstudygroup.com/ |
+| 7   | Triển khai ứng dụng lên EC2 bằng CodeCommit, CodeBuild, CodeDeploy và CodePipeline | 13/06/2026   | 14/06/2026      | https://cloudjourney.awsstudygroup.com/ |
+
+---
 
 ### Kết quả đạt được tuần 8:
 
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+* Hiểu kiến trúc Serverless trên AWS:
 
-* Đã tạo và cấu hình AWS Free Tier account thành công.
+  * AWS Lambda
+  * Amazon API Gateway
+  * Amazon DynamoDB
+  * AWS SAM
 
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
+* Xây dựng quy trình CI/CD cho ứng dụng Serverless:
 
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
+  * Tích hợp Git Repository
+  * AWS SAM Pipeline
+  * Tự động Build và Deploy
 
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
+* Tự động hóa triển khai Frontend:
 
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
+  * Quản lý mã nguồn
+  * Tự động triển khai ứng dụng
+  * Continuous Delivery Workflow
 
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
+* Phát triển ứng dụng với AWS Lambda:
 
+  * Xử lý và thay đổi kích thước hình ảnh
+  * Tích hợp Amazon S3
+  * Quản lý quyền bằng IAM
+  * Thao tác dữ liệu với DynamoDB
 
+* Xây dựng REST API bằng API Gateway:
+
+  * Tạo API Methods
+  * Cấu hình CORS
+  * Tích hợp Lambda Functions
+  * Kiểm thử API bằng Postman
+
+* Tích hợp Frontend với Backend Serverless:
+
+  * API Gateway
+  * Lambda Functions
+  * DynamoDB
+
+* Tự động hóa triển khai ứng dụng trên EC2:
+
+  * AWS CodeCommit
+  * AWS CodeBuild
+  * AWS CodeDeploy
+  * AWS CodePipeline
+
+* Hiểu các thành phần trong quy trình DevOps:
+
+  * Continuous Integration
+  * Continuous Delivery
+  * Automated Deployment
+  * Troubleshooting Pipeline
+
+* Có khả năng xây dựng và triển khai ứng dụng theo mô hình Serverless kết hợp CI/CD trên AWS.

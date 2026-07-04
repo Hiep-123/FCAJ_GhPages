@@ -1,31 +1,57 @@
 ---
 title: "Workshop"
-date: 2024-01-01
+date: 2026-07-04
 weight: 5
 chapter: false
 pre: " <b> 5. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy verbatim** for your report, including this warning.
-{{% /notice %}}
 
-# Secure Hybrid Access to S3 using VPC Endpoints
+# AWS Serverless E-commerce Platform — Deployment Workshop
 
-#### Overview
+This workshop walks you through deploying the complete AWS Serverless E-commerce Platform from scratch on AWS. By the end, you will have a fully functional, publicly accessible e-commerce application running in **ap-southeast-1 (Singapore)**.
 
-**AWS PrivateLink** provides private connectivity to AWS services from VPCs and your on-premises networks, without exposing your traffic to the Public Internet.
+**Estimated time:** 90–120 minutes  
+**Deployment region:** ap-southeast-1 (Singapore)  
+**WAF region:** us-east-1 (required for CloudFront)
 
-In this lab, you will learn how to create, configure, and test VPC endpoints that enable your workloads to reach AWS services without traversing the Public Internet.
+---
 
-You will create two types of endpoints to access Amazon S3: a Gateway VPC endpoint, and an Interface VPC endpoint. These two types of VPC endpoints offer different benefits depending on if you are accessing Amazon S3 from the cloud or your on-premises location
-+ **Gateway** - Create a gateway endpoint to send traffic to Amazon S3 or DynamoDB using private IP addresses.You route traffic from your VPC to the gateway endpoint using route tables.
-+ **Interface** - Create an interface endpoint to send traffic to endpoint services that use a Network Load Balancer to distribute traffic. Traffic destined for the endpoint service is resolved using DNS.
+## Architecture Overview
 
-#### Content
+> **Note:** This is a simplified deployment overview. Refer to Proposal Section 5 for the complete production architecture including WAF rule details, X-Ray tracing, log retention, and security headers configuration.
 
-1. [Workshop overview](5.1-Workshop-overview)
-2. [Prerequiste](5.2-Prerequiste/)
-3. [Access S3 from VPC](5.3-S3-vpc/)
-4. [Access S3 from On-premises](5.4-S3-onprem/)
-5. [VPC Endpoint Policies (Bonus)](5.5-Policy/)
-6. [Clean up](5.6-Cleanup/)
+This is a simplified deployment overview. Refer to Proposal Section 5 for the complete production architecture.
+
+```
+Browser
+  └── CloudFront (HTTPS, HTTP/2+3, WAF, OAC)
+        └── S3 FrontendBucket (private, React SPA)
+
+API Gateway REST (100 rps / 200 burst)
+  ├── Cognito Authorizer (JWT)
+  ├── GET /products       → ProductServiceFunction  (public)
+  ├── GET/POST/PUT/DELETE /cart → CartServiceFunction (auth)
+  └── POST /orders, GET /orders, GET /orders/{id} → OrderServiceFunction (auth)
+                                    │ PutEvents
+                                    ▼
+                    EcommerceEventBus (EventBridge)
+                          └── OrderCreated rule
+                                └── OrderQueue (SQS, maxReceive=3)
+                                      ├── OrderProcessorFunction
+                                      └── OrderDLQ (dead-letter)
+
+EcommerceTable (DynamoDB, PAY_PER_REQUEST, PITR, 3 GSIs)
+CloudWatch Dashboard + 6 Alarms → SNS → Email
+WAF WebACL: IP Reputation + OWASP CRS + Rate Limit
+```
+
+---
+
+## Workshop Contents
+
+1. [Environment Setup](5.1-environment-setup/)
+2. [Deploy Backend Stacks](5.2-deploy-backend/)
+3. [Deploy Frontend Stack](5.3-deploy-frontend/)
+4. [Seed Data & Create Users](5.4-seed-and-users/)
+5. [Verify & Test Everything](5.5-verify-and-test/)
+6. [Cleanup](5.6-cleanup/)

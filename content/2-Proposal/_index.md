@@ -1,115 +1,252 @@
 ---
 title: "Proposal"
-date: 2024-01-01
+date: 2026-07-04
 weight: 2
 chapter: false
-pre: " <b> 2. </b> "
+pre: "2."
 ---
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy verbatim** for your report, including this warning.
-{{% /notice %}}
 
-In this section, you need to summarize the contents of the workshop that you **plan** to conduct.
+# AWS Serverless E-commerce Platform
 
-# IoT Weather Platform for Lab Research
-## A Unified AWS Serverless Solution for Real-Time Weather Monitoring
+> A production-ready cloud-native shopping system built on AWS Serverless Architecture
 
-### 1. Executive Summary
-The IoT Weather Platform is designed for the ITea Lab team in Ho Chi Minh City to enhance weather data collection and analysis. It supports up to 5 weather stations, with potential scalability to 10-15, utilizing Raspberry Pi edge devices with ESP32 sensors to transmit data via MQTT. The platform leverages AWS Serverless services to deliver real-time monitoring, predictive analytics, and cost efficiency, with access restricted to 5 lab members via Amazon Cognito.
+## 1. Executive Summary
 
-### 2. Problem Statement
-### What’s the Problem?
-Current weather stations require manual data collection, becoming unmanageable with multiple units. There is no centralized system for real-time data or analytics, and third-party platforms are costly and overly complex.
+This project delivers a fully functional, production-grade e-commerce platform built entirely on AWS serverless and managed services. The system supports the complete customer shopping lifecycle — product browsing, cart management, order placement, and real-time order tracking — with no server infrastructure to manage or maintain.
 
-### The Solution
-The platform uses AWS IoT Core to ingest MQTT data, AWS Lambda and API Gateway for processing, Amazon S3 for storage (including a data lake), and AWS Glue Crawlers and ETL jobs to extract, transform, and load data from the S3 data lake to another S3 bucket for analysis. AWS Amplify with Next.js provides the web interface, and Amazon Cognito ensures secure access. Similar to Thingsboard and CoreIoT, users can register new devices and manage connections, though this platform operates on a smaller scale and is designed for private use. Key features include real-time dashboards, trend analysis, and low operational costs.
+The platform is deployed to the **ap-southeast-1 (Singapore)** region using **AWS Cloud Development Kit (CDK) with TypeScript** as the infrastructure-as-code framework. It demonstrates applied knowledge of AWS Well-Architected principles across security, reliability, performance, cost optimization, and operational excellence.
 
-### Benefits and Return on Investment
-The solution establishes a foundational resource for lab members to develop a larger IoT platform, serving as a study resource, and provides a data foundation for AI enthusiasts for model training or analysis. It reduces manual reporting for each station via a centralized platform, simplifying management and maintenance, and improves data reliability. Monthly costs are $0.66 USD per the AWS Pricing Calculator, with a 12-month total of $7.92 USD. All IoT equipment costs are covered by the existing weather station setup, eliminating additional development expenses. The break-even period of 6-12 months is achieved through significant time savings from reduced manual work.
+The project was developed and delivered during a three-month internship as a practical demonstration of cloud architecture design, serverless development, and production deployment on AWS.
 
-### 3. Solution Architecture
-The platform employs a serverless AWS architecture to manage data from 5 Raspberry Pi-based stations, scalable to 15. Data is ingested via AWS IoT Core, stored in an S3 data lake, and processed by AWS Glue Crawlers and ETL jobs to transform and load it into another S3 bucket for analysis. Lambda and API Gateway handle additional processing, while Amplify with Next.js hosts the dashboard, secured by Cognito. The architecture is detailed below:
 
-![IoT Weather Station Architecture](/images/2-Proposal/edge_architecture.jpeg)
+## 2. Problem Statement
 
-![IoT Weather Platform Architecture](/images/2-Proposal/platform_architecture.jpeg)
+#### Background
 
-### AWS Services Used
-- **AWS IoT Core**: Ingests MQTT data from 5 stations, scalable to 15.
-- **AWS Lambda**: Processes data and triggers Glue jobs (two functions).
-- **Amazon API Gateway**: Facilitates web app communication.
-- **Amazon S3**: Stores raw data in a data lake and processed outputs (two buckets).
-- **AWS Glue**: Crawlers catalog data, and ETL jobs transform and load it.
-- **AWS Amplify**: Hosts the Next.js web interface.
-- **Amazon Cognito**: Secures access for lab users.
+Modern e-commerce businesses require infrastructure that can handle unpredictable traffic, maintain high availability, enforce security at every layer, and remain cost-efficient during periods of low activity. Traditional server-based deployments carry significant operational overhead: servers must be provisioned, patched, scaled, and monitored continuously regardless of actual traffic.
 
-### Component Design
-- **Edge Devices**: Raspberry Pi collects and filters sensor data, sending it to IoT Core.
-- **Data Ingestion**: AWS IoT Core receives MQTT messages from the edge devices.
-- **Data Storage**: Raw data is stored in an S3 data lake; processed data is stored in another S3 bucket.
-- **Data Processing**: AWS Glue Crawlers catalog the data, and ETL jobs transform it for analysis.
-- **Web Interface**: AWS Amplify hosts a Next.js app for real-time dashboards and analytics.
-- **User Management**: Amazon Cognito manages user access, allowing up to 5 active accounts.
+#### Key Challenges
 
-### 4. Technical Implementation
-**Implementation Phases**
-This project has two parts—setting up weather edge stations and building the weather platform—each following 4 phases:
-- Build Theory and Draw Architecture: Research Raspberry Pi setup with ESP32 sensors and design the AWS serverless architecture (1 month pre-internship)
-- Calculate Price and Check Practicality: Use AWS Pricing Calculator to estimate costs and adjust if needed (Month 1).
-- Fix Architecture for Cost or Solution Fit: Tweak the design (e.g., optimize Lambda with Next.js) to stay cost-effective and usable (Month 2).
-- Develop, Test, and Deploy: Code the Raspberry Pi setup, AWS services with CDK/SDK, and Next.js app, then test and release to production (Months 2-3).
+**Operational complexity:** Server-based systems require dedicated operations teams, scheduled maintenance windows, and manual scaling decisions that introduce risk and cost.
 
-**Technical Requirements**
-- Weather Edge Station: Sensors (temperature, humidity, rainfall, wind speed), a microcontroller (ESP32), and a Raspberry Pi as the edge device. Raspberry Pi runs Raspbian, handles Docker for filtering, and sends 1 MB/day per station via MQTT over Wi-Fi.
-- Weather Platform: Practical knowledge of AWS Amplify (hosting Next.js), Lambda (minimal use due to Next.js), AWS Glue (ETL), S3 (two buckets), IoT Core (gateway and rules), and Cognito (5 users). Use AWS CDK/SDK to code interactions (e.g., IoT Core rules to S3). Next.js reduces Lambda workload for the fullstack web app.
+**Cost inefficiency at variable load:** Fixed-capacity servers incur costs even when idle. An e-commerce platform naturally has periods of very low traffic (overnight, off-season) where idle capacity is wasted.
 
-### 5. Timeline & Milestones
-**Project Timeline**
-- Pre-Internship (Month 0): 1 month for planning and old station review.
-- Internship (Months 1-3): 3 months.
-    - Month 1: Study AWS and upgrade hardware.
-    - Month 2: Design and adjust architecture.
-    - Month 3: Implement, test, and launch.
-- Post-Launch: Up to 1 year for research.
+**Security surface area:** Publicly exposed servers, unencrypted data at rest and in transit, and weak authentication mechanisms remain the leading causes of e-commerce data breaches.
 
-### 6. Budget Estimation
-You can find the budget estimation on the [AWS Pricing Calculator](https://calculator.aws/#/estimate?id=621f38b12a1ef026842ba2ddfe46ff936ed4ab01).  
-Or you can download the [Budget Estimation File](../attachments/budget_estimation.pdf).
+**Developer velocity:** Tightly coupled monolithic backends slow down iteration and make it difficult to deploy improvements to individual service areas without risking the entire system.
 
-### Infrastructure Costs
-- AWS Services:
-    - AWS Lambda: $0.00/month (1,000 requests, 512 MB storage).
-    - S3 Standard: $0.15/month (6 GB, 2,100 requests, 1 GB scanned).
-    - Data Transfer: $0.02/month (1 GB inbound, 1 GB outbound).
-    - AWS Amplify: $0.35/month (256 MB, 500 ms requests).
-    - Amazon API Gateway: $0.01/month (2,000 requests).
-    - AWS Glue ETL Jobs: $0.02/month (2 DPUs).
-    - AWS Glue Crawlers: $0.07/month (1 crawler).
-    - MQTT (IoT Core): $0.08/month (5 devices, 45,000 messages).
+#### The Opportunity
 
-Total: $0.7/month, $8.40/12 months
+AWS provides a fully managed serverless ecosystem that addresses all of these challenges. By combining API Gateway, Lambda, DynamoDB, EventBridge, and CloudFront, it is possible to build a scalable, secure, observable e-commerce backend that costs nothing when idle and scales automatically under load — without managing a single server.
 
-- Hardware: $265 one-time (Raspberry Pi 5 and sensors).
 
-### 7. Risk Assessment
+## 3. Objectives
+
+1. Design and implement a production-ready serverless e-commerce API covering products, cart, and orders.
+2. Implement event-driven asynchronous order processing using EventBridge and SQS to decouple order creation from order fulfillment.
+3. Enforce authentication and authorization using Amazon Cognito with JWT token verification at the API layer.
+4. Deploy the complete infrastructure as code using AWS CDK TypeScript, ensuring repeatable and auditable deployments.
+5. Secure the customer-facing application with AWS WAF, CloudFront, TLS 1.2+, and least-privilege IAM.
+6. Achieve full observability with a CloudWatch Dashboard, six operational alarms, X-Ray tracing, and SNS-based email alerting.
+7. Deliver a responsive React 19 single-page application served via CloudFront with content-hashed asset caching.
+8. Demonstrate alignment with all six pillars of the AWS Well-Architected Framework.
+
+
+## 4. Proposed Solution
+
+The solution is a cloud-native e-commerce platform composed of independently deployable infrastructure stacks, each responsible for a clearly defined domain.
+
+#### Architecture Philosophy
+
+The system follows a **serverless-first, event-driven** design pattern. No EC2 instances, no containers, and no persistent server processes are used. Every compute unit is a Lambda function invoked on demand. Every infrastructure resource is defined in TypeScript using AWS CDK and deployed through CloudFormation.
+
+#### Customer Flow
+
+A customer interacts with a React 19 single-page application served from CloudFront. API calls travel from the browser through CloudFront to API Gateway, which validates the Cognito JWT and routes the request to the appropriate Lambda function. Lambda reads from and writes to DynamoDB using a single-table design. When a customer places an order, the Order Service publishes an `OrderCreated` event to EventBridge, which routes it to an SQS queue. The Order Processor Lambda consumes the queue message asynchronously, updates the order status through the `PENDING → PROCESSING → COMPLETED` lifecycle, and publishes status events back to EventBridge. The customer's browser polls the order detail endpoint every three seconds to display live status updates.
+
+#### Key Design Decisions
+
+- **Single-table DynamoDB design** — all entities (products, cart items, orders) share one table with GSI-based access patterns, eliminating the need for joins and enabling O(1) key-based reads for all hot paths.
+- **HTTP 202 Accepted for order creation** — the Order Service returns immediately after persisting the PENDING order and publishing the event, keeping the API response time deterministic regardless of downstream processing complexity.
+- **Runtime configuration injection** — Cognito pool IDs and the API URL are injected at deploy time via a `/config.json` file served from CloudFront, preventing environment-specific values from being baked into the JavaScript bundle.
+- **WAF in us-east-1** — the WAF WebACL is deployed in us-east-1 as required for CloudFront-scoped web ACLs, and its ARN is passed to the FrontendStack as an environment variable to work around the cross-region limitation of CloudFormation exports.
+
+
+## 5. AWS Architecture Overview
+
+```text
+Browser
+└── CloudFront (HTTPS, HTTP/2 + HTTP/3, WAF, OAC, PRICE_CLASS_200)
+    └── S3 FrontendBucket (private, SSE-S3, versioned)
+
+API Gateway REST (ap-southeast-1, 100 rps / 200 burst)
+├── Cognito Authorizer (5-minute cache, JWT validation)
+├── GET /products[?category][?search][?sort]      → ProductServiceFunction
+├── GET /products/{slugOrId}                      → ProductServiceFunction
+├── GET /cart, POST /cart, PUT /cart, DELETE /cart/{productId} → CartServiceFunction
+└── POST /orders, GET /orders, GET /orders/{id}   → OrderServiceFunction
+    └── PutEvents
+        └── EcommerceEventBus (EventBridge custom bus)
+            └── Rule: OrderCreated
+                └── OrderQueue (SQS, 180s visibility, maxReceiveCount=3)
+                    ├── OrderProcessorFunction (ARM64, Node.js 22)
+                    │   ├── DynamoDB UpdateItem (PROCESSING / COMPLETED / FAILED)
+                    │   └── PutEvents (OrderProcessing / OrderCompleted / OrderFailed)
+                    └── OrderDLQ (SQS, 14-day retention)
+
+EcommerceTable (DynamoDB, PAY_PER_REQUEST, PITR, SSE, TTL)
+├── GSI1 — CATEGORY#{category} → products by category
+├── GSI2 — USER#{userId}       → orders by user, newest first
+└── GSI3 — PRODUCT             → full product catalog access
+
+CloudWatch Dashboard + 6 Alarms
+└── SNS Topic
+    └── Email notification
+
+WAF WebACL (us-east-1)
+├── IP Reputation List
+├── OWASP Common Rule Set
+├── Known Bad Inputs
+└── Rate limit: 1000 requests / 5 minutes / IP
+
+Cognito UserPool
+└── Email authentication, SRP, CUSTOMER and ADMIN groups
+```
+
+
+## 6. AWS Services
+
+| Service | Role in the Platform |
+|---------|---------------------|
+| **Amazon Cognito** | User registration and authentication. Email-based sign-up with verification, SRP and USER_PASSWORD auth flows, CUSTOMER and ADMIN groups, JWT tokens attached to every protected API request. |
+| **Amazon API Gateway** | REST API entry point. 100 rps steady-state throttle, 200 burst. Cognito JWT authorizer with 5-minute result cache. Structured JSON access logs with 30-day retention. Public routes for products, protected routes for cart and orders. |
+| **AWS Lambda** | Four functions on ARM64 Graviton2 (Node.js 22): ProductServiceFunction, CartServiceFunction, OrderServiceFunction, OrderProcessorFunction. All bundled with esbuild (minified, source-mapped). All traced with AWS X-Ray. |
+| **Amazon DynamoDB** | Single-table design. PAY_PER_REQUEST billing. Point-in-time recovery enabled. AWS managed key encryption. TTL attribute for cart item expiry. Three GSIs covering category queries, user order history, and full product catalog access. |
+| **Amazon EventBridge** | Custom event bus `EcommerceEventBus`. OrderCreated events routed to SQS via pattern matching on `source=ecommerce.orders, detail-type=OrderCreated`. |
+| **Amazon SQS** | `EcommerceOrderQueue` (primary, 180s visibility timeout, 4-day retention) and `EcommerceOrderDLQ` (dead-letter, 14-day retention, maxReceiveCount=3). SQS-managed encryption. |
+| **Amazon S3** | Private bucket (`ecommerce-frontend-{account}-ap-southeast-1`) hosting the React SPA. Block all public access, SSE-S3 encryption, versioning enabled, HTTPS-only enforced. Accessed exclusively via CloudFront OAC. |
+| **Amazon CloudFront** | Global CDN serving the React SPA. OAC (not legacy OAI). HTTP/2+3. PRICE_CLASS_200. TLS 1.2 minimum. Two cache behaviors: CACHING_DISABLED for `index.html`/`config.json`, CachingOptimized for `/assets/*` (Vite content-hashed bundles). OWASP security headers via managed response headers policy. SPA routing via 403/404 → `index.html`. |
+| **AWS WAF v2** | WebACL attached to CloudFront (us-east-1). Four managed rule groups: IP Reputation List, Common Rule Set (OWASP CRS), Known Bad Inputs (Log4j, Spring4Shell, SSRF). Rate-based rule: 1000 requests per 5 minutes per IP. WAF logs to CloudWatch (30-day retention). |
+| **Amazon CloudWatch** | Dashboard (`EcommerceDashboard`) with five rows: API Gateway, EventBridge, OrderService, OrderProcessor, SQS. Six alarms covering Lambda errors, Lambda throttles, DLQ messages, and API 5XX errors. All alarms publish to SNS on breach. |
+| **Amazon SNS** | `EcommerceAlarmsTopic` receives alarm notifications. Email subscription delivers alerts to the operations mailbox. |
+| **AWS CDK (TypeScript)** | All infrastructure defined as code across eight stacks: AuthStack, DatabaseStack, EventStack, ApiStack, MonitoringStack, SecurityStack, FrontendStack, InfrastructureStack. Deployed to ap-southeast-1. |
+| **AWS X-Ray** | Active tracing enabled on all four Lambda functions. Traces downstream DynamoDB and EventBridge calls end-to-end. |
+
+
+## 7. Well-Architected Considerations
+
+#### Operational Excellence
+All infrastructure is defined as code in AWS CDK TypeScript. Every stack is independently deployable with `npx cdk deploy <StackName>`. CloudWatch provides a five-row operational dashboard covering all service tiers. Six alarms with `TreatMissingData=NOT_BREACHING` prevent false positives during quiet periods. Lambda source maps enable readable stack traces in CloudWatch. X-Ray active tracing on all functions provides end-to-end request visibility.
+
+#### Security
+Authentication is enforced via Amazon Cognito JWT on all non-public routes. API Gateway's Cognito authorizer caches results for five minutes, reducing latency without compromising security. IAM policies follow least privilege — each Lambda function has a dedicated role with only the specific DynamoDB actions it requires (e.g., OrderProcessorFunction has only `GetItem` and `UpdateItem`, not `PutItem` or `Scan`). S3 is private with HTTPS enforced. CloudFront redirects all HTTP to HTTPS. WAF blocks known malicious IPs, OWASP Top 10 attack patterns, and rate-abusive clients. CORS uses an explicit allowed origin (the CloudFront domain) rather than a wildcard. No hardcoded credentials exist anywhere in the codebase — all sensitive values are read from environment variables at CDK synth time or from the runtime `config.json` injected at deploy time.
+
+#### Reliability
+SQS `maxReceiveCount=3` ensures failed order processing attempts are retried before routing to the DLQ. `visibilityTimeout=180s` is six times the Lambda timeout (30s), following AWS best practice. DLQ retention of 14 days provides ample time for investigation and replay. `ConditionExpression: attribute_not_exists(PK)` on order creation prevents duplicate orders under retry conditions. The Order Processor checks `status !== 'PENDING'` before processing, providing idempotency against duplicate SQS delivery. DynamoDB PITR allows point-in-time recovery to any second in the last 35 days.
+
+#### Performance Efficiency
+All Lambda functions run on ARM64 Graviton2, providing approximately 20% better price-performance compared to x86. Node.js 22 with esbuild bundling and minification reduces cold-start package size. AWS SDK v3 is bundled directly, eliminating runtime version dependencies. DynamoDB PAY_PER_REQUEST scales to zero at zero traffic and handles any burst automatically. CloudFront's CachingOptimized behavior with Vite content-hashed filenames allows browser caches to hold assets indefinitely, reducing origin load. The CACHING_DISABLED behavior on `index.html` and `config.json` ensures deployments are reflected immediately. HTTP/2 and HTTP/3 reduce connection overhead for the SPA.
+
+#### Cost Optimization
+The entire platform is serverless — there is zero cost when idle. DynamoDB PAY_PER_REQUEST means no over-provisioned capacity units. Lambda is billed per 100ms invocation. CloudFront PRICE_CLASS_200 limits edge locations to US, Europe, and Israel, reducing CDN cost without significant latency impact for the target region (ap-southeast-1 is the origin). CloudWatch log groups have explicit 30-day retention policies, preventing unbounded storage costs. No EC2, no RDS, no ALB, and no NAT Gateway costs.
+
+#### Sustainability
+ARM64 Graviton2 processors consume less energy per unit of compute compared to x86. CloudFront caching reduces the number of Lambda invocations and DynamoDB reads required to serve repeat requests. PAY_PER_REQUEST means compute resources are allocated only when actually needed, with zero idle consumption.
+
+
+## 8. Timeline
+
+| Phase | Description | Duration |
+|-------|-------------|---------|
+| **Phase 1** | Infrastructure foundation: CDK project setup, AuthStack (Cognito), DatabaseStack (DynamoDB single-table design with GSI1/GSI2/GSI3), initial project structure | Week 1–2 |
+| **Phase 2–4** | Core API development: ProductServiceFunction (public catalog with category filter), CartServiceFunction (authenticated CRUD), OrderServiceFunction (order placement) | Week 3–4 |
+| **Phase 5–6** | Event-driven order processing: EventBridge custom bus, SQS OrderQueue + DLQ, OrderProcessorFunction (PENDING → PROCESSING → COMPLETED lifecycle), X-Ray tracing | Week 5–6 |
+| **Phase 7** | Frontend delivery: React 19 + Vite SPA, FrontendStack (S3 + CloudFront OAC), runtime config injection via `config.json`, Cognito SDK integration, SPA routing | Week 7–8 |
+| **Phase 8** | Security hardening: WAF WebACL (SecurityStack in us-east-1), IP reputation, OWASP CRS, Known Bad Inputs, rate limiting, HTTPS enforcement, security response headers | Week 9 |
+| **Phase 9** | Observability: MonitoringStack (CloudWatch Dashboard, 6 alarms, SNS email subscription), structured access logs, alarm action wiring | Week 10 |
+| **Phase 10** | Product improvements and UX refinement: live search, price sorting, slug-based URLs, cart product name enrichment, order status polling, frontend clean-up | Week 11 |
+| **Finalization** | Backend security fixes (order ownership check, input validation, env var guards), backend and frontend cleanup, documentation | Week 12 |
+
+
+## 9. Cost Estimation
+
+All cost estimates use the **AWS Asia Pacific (Singapore) ap-southeast-1** region and reflect expected usage for a demo-scale platform with moderate traffic (approximately 1,000 API requests per day).
+
+| Service | Usage Assumption | Estimated Monthly Cost |
+|---------|-----------------|----------------------|
+| AWS Lambda | 30,000 invocations/month, 512 MB, avg 200ms | ~$0.00 (free tier: 1M invocations) |
+| Amazon API Gateway | 30,000 REST API calls/month | ~$0.11 |
+| Amazon DynamoDB | PAY_PER_REQUEST, ~50,000 reads + 10,000 writes/month | ~$0.04 |
+| Amazon SQS | ~1,000 order messages/month | ~$0.00 (free tier: 1M requests) |
+| Amazon EventBridge | ~1,000 custom events/month | ~$0.00 (free tier: 1M events) |
+| Amazon S3 | ~100 MB SPA assets, ~10,000 CloudFront requests | ~$0.01 |
+| Amazon CloudFront | ~5 GB data transfer/month, PRICE_CLASS_200 | ~$0.43 |
+| AWS WAF | 1 WebACL, ~30,000 requests/month | ~$5.00 (WebACL: $5.00/month) |
+| Amazon Cognito | <50,000 MAU | ~$0.00 (free tier: 50,000 MAU) |
+| Amazon CloudWatch | 1 dashboard, 6 alarms, ~5 GB logs/month | ~$3.50 |
+| Amazon SNS | <1,000 email notifications/month | ~$0.00 |
+| **Total** | | **~$9.09/month** |
+
+The dominant cost is the WAF WebACL flat fee ($5.00/month). At zero traffic, the platform costs approximately $5.00/month. All other services fall within AWS free tier limits at demo scale.
+
+For a production-scale deployment with 100,000 requests/day and 10,000 monthly active users, estimated cost would be approximately $35–$60/month, still substantially below equivalent server-based deployments.
+
+
+## 10. Risk Assessment
+
 #### Risk Matrix
-- Network Outages: Medium impact, medium probability.
-- Sensor Failures: High impact, low probability.
-- Cost Overruns: Medium impact, low probability.
 
-#### Mitigation Strategies
-- Network: Local storage on Raspberry Pi with Docker.
-- Sensors: Regular checks and spares.
-- Cost: AWS budget alerts and optimization.
+| Risk | Likelihood | Impact | Mitigation |
+|------|-----------|--------|-----------|
+| Lambda cold starts affecting perceived latency | Medium | Low | ARM64 Graviton2 reduces cold start duration; esbuild bundling minimizes package size; DynamoDB PAY_PER_REQUEST eliminates warm-up waits |
+| DynamoDB hot partition under high write concurrency | Low | High | Single-table design uses randomized `orderId` (UUID v4) as partition key prefix, distributing writes across partitions evenly |
+| SQS message processing failure causing stuck orders | Low | High | DLQ with 14-day retention and `maxReceiveCount=3` prevents message loss; 6× visibility timeout prevents premature requeue; CloudWatch alarm fires on first DLQ message |
+| Cognito JWT expiry causing 401 during long sessions | Medium | Medium | Axios response interceptor performs silent token refresh via Cognito SDK on 401; redirects to login only if refresh token is also expired |
+| WAF false positives blocking legitimate requests | Low | Medium | Managed rule groups are set to block (not count-only) but can be switched to COUNT mode via CDK override if false positives are observed |
+| Cross-region WAF ARN dependency (SecurityStack → FrontendStack) | Low | Medium | WAF ARN is passed as env var (`WAF_WEB_ACL_ARN`) rather than `Fn.importValue` to work around the cross-region CloudFormation export limitation; documented in `.env.example` |
+| ALLOWED_ORIGIN misconfiguration causing CORS failures | Medium | High | `ALLOWED_ORIGIN` must be set to the CloudFront URL after FrontendStack deploy; documented in `.env.example`; API falls back to `localhost:5173` if empty |
+| Account-level Lambda concurrency exhaustion | Low | Medium | Serverless platform with no reserved concurrency shares the account pool; adding reserved concurrency to OrderProcessorFunction would isolate the order pipeline |
 
 #### Contingency Plans
-- Revert to manual methods if AWS fails.
-- Use CloudFormation for cost-related rollbacks.
 
-### 8. Expected Outcomes
-#### Technical Improvements: 
-Real-time data and analytics replace manual processes.  
-Scalable to 10-15 stations.
-#### Long-term Value
-1-year data foundation for AI research.  
-Reusable for future projects.
+- All stacks are independently redeployable via `npx cdk deploy <StackName>`.
+- DynamoDB PITR allows recovery to any second within the last 35 days.
+- The `dist/` build output directory and all CDK stacks are fully reproducible from source code.
+
+
+## 11. Expected Outcomes
+
+#### Technical Deliverables
+
+1. **Eight independently deployable CDK stacks** covering the complete platform — authentication, database, API, event processing, monitoring, security, and frontend delivery.
+
+2. **Three production Lambda functions** handling public product catalog browsing (with category filtering, text search, price sorting, and slug-based URLs) and authenticated cart and order management.
+
+3. **Event-driven order processing pipeline** demonstrating asynchronous architecture: API decoupled from processing, SQS as a reliable buffer, DLQ for failure isolation, and idempotent state transitions in DynamoDB.
+
+4. **Secure customer-facing SPA** with Cognito authentication, real-time order status polling (3-second interval with terminal-state detection), and responsive design.
+
+5. **Complete observability stack** with a five-row CloudWatch dashboard, six operational alarms, email notification via SNS, and X-Ray traces across all Lambda functions.
+
+6. **WAF protection** covering IP reputation, OWASP Top 10, known exploit patterns, and per-IP rate limiting.
+
+#### Learning Outcomes
+
+- Applied AWS CDK TypeScript for infrastructure-as-code across 8 stacks and ~2,000 lines of CDK definitions.
+- Implemented DynamoDB single-table design with GSI-based access patterns and zero Scan operations.
+- Built an event-driven asynchronous processing pipeline with EventBridge, SQS, and Lambda.
+- Applied the AWS Well-Architected Framework across all six pillars in a real deployment.
+- Delivered a full-stack serverless application from a blank AWS account to a publicly accessible CloudFront URL.
+
+#### Well-Architected Alignment
+
+The final deployed system achieves the following scores against the AWS Well-Architected Framework:
+
+| Pillar | Status |
+|--------|--------|
+| Operational Excellence | ✅ IaC, structured logging, CloudWatch Dashboard, 6 alarms, X-Ray |
+| Security | ✅ Cognito JWT, least-privilege IAM, WAF, private S3, TLS 1.2+, no wildcards |
+| Reliability | ✅ DLQ, retry logic, PITR, idempotency, SQS visibility timeout best practice |
+| Performance Efficiency | ✅ ARM64, Node.js 22, esbuild, PAY_PER_REQUEST, CloudFront caching |
+| Cost Optimization | ✅ Zero idle cost, no over-provisioned resources, log retention policies |
+| Sustainability | ✅ ARM64 energy efficiency, caching reduces compute, scale-to-zero |
