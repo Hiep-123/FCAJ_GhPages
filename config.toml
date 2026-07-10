@@ -1,5 +1,5 @@
 baseURL = "https://hiep-123.github.io/FCAJ_GhPages/"
-relativeURLs = false
+relativeURLs = true
 canonifyURLs = false
 defaultContentLanguage = "en"
 
