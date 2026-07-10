@@ -1,55 +1,36 @@
 ---
 title: "Worklog Tuần 12"
-date: 2024-01-01
+date: 2026-07-06
 weight: 12
 chapter: false
 pre: " <b> 1.12. </b> "
 ---
 
-### Mục tiêu tuần 12:
 
-* Kết nối, làm quen với các thành viên trong First Cloud Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+### Mục tiêu tuần 12 (06/07/2026 - 12/07/2026):
 
-### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
+* Tối ưu các triển khai AWS theo 5 trụ cột: Vận hành, Bảo mật, Độ tin cậy, Hiệu năng và Tối ưu chi phí.
+* Thực hành các giải pháp cụ thể: Lambda tự động, CloudWatch + Grafana, Systems Manager (SSM), CloudFormation (IaC), SSO, ECS, phân tích chi phí.
 
+### Công việc triển khai trong tuần:
+| Ngày | Công việc | Ngày bắt đầu | Ngày hoàn thành | Tài liệu / Tham khảo |
+|------|----------|--------------|-----------------|----------------------|
+| Thứ Hai (06/07/2026) | Operate: Tự động tắt server & gửi Slack bằng **AWS Lambda** | 06/07/2026 | 06/07/2026 | https://000022.awsstudygroup.com/ |
+| Thứ Ba (07/07/2026) | Operate: Tạo dashboard giám sát với **CloudWatch + Grafana** | 07/07/2026 | 07/07/2026 | https://000029.awsstudygroup.com/ |
+| Thứ Tư (08/07/2026) | Operate: Dùng **AWS Systems Manager (Session Manager)** để truy cập instance an toàn | 08/07/2026 | 08/07/2026 | https://000058.awsstudygroup.com/ |
+| Thứ Năm (09/07/2026) | Operate/IaC: Khởi tạo template **CloudFormation** đơn giản để provision tài nguyên | 09/07/2026 | 09/07/2026 | https://000037.awsstudygroup.com/ |
+| Thứ Sáu (10/07/2026) | Security: Bảo vệ ứng dụng và API bằng **AWS WAF** | 10/07/2026 | 10/07/2026 | https://000026.awsstudygroup.com/ |
+| Thứ Bảy (11/07/2026) | Performance: Containerize và deploy ứng dụng lên **Amazon ECS** | 11/07/2026 | 11/07/2026 | https://000016.awsstudygroup.com/ |
+| Chủ Nhật (12/07/2026) | Cost Optimization: So sánh Savings Plans / RIs và visualise chi phí | 12/07/2026 | 12/07/2026 | https://000042.awsstudygroup.com/ |
 
-### Kết quả đạt được tuần 12:
+### Kết quả đạt được:
 
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+- Vận hành: Thử nghiệm kịch bản Lambda tự động tắt server và gửi Slack; cấu hình dashboard CloudWatch → Grafana. (Tham khảo: https://000022.awsstudygroup.com/ , https://000029.awsstudygroup.com/)
+- Operate: Dùng **Session Manager (SSM)** để truy cập instance an toàn. (Tham khảo: https://000058.awsstudygroup.com/)
+- IaC: Tạo template CloudFormation đơn giản để provision môi trường thử nghiệm. (Tham khảo: https://000037.awsstudygroup.com/)
+- Bảo mật: Cấu hình rule **AWS WAF** để bảo vệ ứng dụng và API (proof-of-concept). (Tham khảo: https://000026.awsstudygroup.com/)
+- Hiệu năng: Containerize và deploy ứng dụng mẫu lên Amazon ECS. (Tham khảo: https://000016.awsstudygroup.com/)
+- Tối ưu chi phí: So sánh Savings Plans và Reserved Instances; visualise xu hướng chi phí. (Tham khảo: https://000042.awsstudygroup.com/)
 
-* Đã tạo và cấu hình AWS Free Tier account thành công.
-
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
-
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
-
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
-
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
 
 
