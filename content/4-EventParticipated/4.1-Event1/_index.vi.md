@@ -485,6 +485,6 @@ Ví dụ về startup credit scoring rất dễ hiểu vì nó cho thấy tại 
 #### Một số hình ảnh khi tham gia sự kiện
 
 
-![Images event](/images/4-EventParticipated/4.1-Event1/event1.jpg)
-![Images event](/images/4-EventParticipated/4.1-Event1/event1a.png)
+{{< img src="images/4-EventParticipated/4.1-Event1/event1.jpg" alt="Images event" >}}
+{{< img src="images/4-EventParticipated/4.1-Event1/event1a.png" alt="Images event" >}}
 ---

@@ -80,7 +80,7 @@ Khách hàng tương tác với ứng dụng React 19 single-page được phân
 ### 5. Tổng quan kiến trúc AWS
 
 
-![AWS Serverless Architecture](/images/2-Proposal/diagram.png)
+{{< img src="images/2-Proposal/diagram.png" alt="AWS Serverless Architecture" >}}
 
 
 ### 6. Dịch vụ AWS

@@ -361,7 +361,8 @@ Buổi chia sẻ giúp tôi hiểu rõ hơn rằng khi triển khai AI trong doa
 
 Phần trình bày về Amazon Quick kết nối MCP Server thông qua VPC Connection giúp tôi hình dung rõ hơn cách xây dựng kiến trúc AI an toàn, phù hợp với doanh nghiệp lớn và các hệ thống yêu cầu bảo mật cao.
 
-
+{{< img src="images/4-EventParticipated/4.2-Event2/event2.jpg" alt="Images event" >}}
+{{< img src="images/4-EventParticipated/4.2-Event2/event2a.png" alt="Images event" >}}
 ---
-![Images event](/images/4-EventParticipated/4.2-Event2/event2.jpg)
-![Images event](/images/4-EventParticipated/4.2-Event2/event2a.png)
+
+

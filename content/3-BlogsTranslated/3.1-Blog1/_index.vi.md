@@ -43,8 +43,7 @@ Nhờ việc tách biệt hai loại token, hệ thống vừa đảm bảo tín
 
 Sự kết hợp này tạo nên một kiến trúc vừa an toàn, vừa dễ mở rộng khi số lượng người chơi tăng lên.
 
-![Kiến trúc tổng quan](/images/3-BlogsTranslated/3.1-Blog1/blog3_1.jpg)
-
+{{< img src="images/3-BlogsTranslated/3.1-Blog1/blog3_1.jpg" alt="Kiến trúc tổng quan" >}}
 ## 3. Điểm nổi bật của mô hình
 
 Một điểm đáng chú ý là AWS sử dụng đồng thời **ALB** và **NLB** thay vì chỉ một Load Balancer.

@@ -482,6 +482,6 @@ The startup credit scoring example was easy to understand because it showed why 
 
 #### Some event photos
 
-![Images event](/images/4-EventParticipated/4.1-Event1/event1.jpg)
-![Images event](/images/4-EventParticipated/4.1-Event1/event1a.png)
+{{< img src="images/4-EventParticipated/4.1-Event1/event1.jpg" alt="Images event" >}}
+{{< img src="images/4-EventParticipated/4.1-Event1/event1a.png" alt="Images event" >}}
 

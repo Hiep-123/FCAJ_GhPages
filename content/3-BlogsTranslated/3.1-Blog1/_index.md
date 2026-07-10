@@ -42,7 +42,8 @@ To implement this solution, AWS combines several services that work together:
 
 This creates a modern architecture that is both secure and scalable as the number of players grows.
 
-![Kiến trúc tổng quan](/images/3-BlogsTranslated/3.1-Blog1/blog3_1.jpg)
+{{< img src="images/3-BlogsTranslated/3.1-Blog1/blog3_1.jpg" alt="Kiến trúc tổng quan" >}}
+
 
 ## 3. Why this model stands out
 

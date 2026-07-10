@@ -23,16 +23,14 @@ chapter: false
 
 &emsp; **Vị trí thực tập:** FCJ Cloud Intern
 
-&emsp; **Thời gian thực tập:** Từ ngày 20/04/2026 đến ngày 12/11/2025
+&emsp; **Thời gian thực tập:** Từ ngày 20/04/2026 đến ngày 10/7/2026
 
-![Ảnh đại diện của bạn](/images/avatar.png)
+{{< img src="images/avatar.png" alt="Ảnh đại diện của bạn" >}}
 
-
-
-### Nội dung báo cáo
+### Nội dung báo cáo    
 
 1.  [Worklog](1-Worklog/)
-2.  [Proposal](2-Proposal/)
+2.  [Proposal](2-Proposal/)     
 3.  [Các bài blogs đã dịch](3-BlogsTranslated/)
 4.  [Các events đã tham gia](4-EventParticipated/)
 5.  [Workshop](5-Workshop/)

@@ -369,6 +369,6 @@ The presentation about Amazon Quick connecting to MCP Server through VPC Connect
 
 #### Some event photos
 
-![Images event](/images/4-EventParticipated/4.2-Event2/event2.jpg)
-![Images event](/images/4-EventParticipated/4.2-Event2/event2a.png)
+{{< img src="images/4-EventParticipated/4.2-Event2/event2.jpg" alt="Images event" >}}
+{{< img src="images/4-EventParticipated/4.2-Event2/event2a.png" alt="Images event" >}}
 ---

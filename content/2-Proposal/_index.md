@@ -76,7 +76,7 @@ A customer interacts with a React 19 single-page application served from CloudFr
 
 ## 5. AWS Architecture Overview
 
-![AWS Serverless Architecture](/images/2-Proposal/diagram.png)
+{{< img src="images/2-Proposal/diagram.png" alt="AWS Serverless Architecture" >}}
 
 
 ## 6. AWS Services

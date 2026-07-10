@@ -24,7 +24,7 @@ This is a simplified deployment overview. Refer to Proposal Section 5 for the co
 
 > **Important for full end-to-end testing:** the checkout flow includes a payment step via VNPay. Before deploying the backend, prepare VNPay credentials in AWS Secrets Manager; otherwise the payment route will not work even though the rest of the storefront can still be deployed.
 
-![AWS Serverless Architecture](/images/2-Proposal/diagram.png)
+{{< img src="images/2-Proposal/diagram.png" alt="AWS Serverless Architecture" >}}
 
 
 ---
