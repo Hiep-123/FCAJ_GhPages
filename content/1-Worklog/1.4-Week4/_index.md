@@ -34,7 +34,7 @@ pre: " <b> 1.4. </b> "
 
 ---
 
-## 🔹 Lab 13 – Deploy AWS Backup to the System
+## Lab 13 – Deploy AWS Backup to the System
 
 ### Tasks:
 
@@ -53,7 +53,7 @@ pre: " <b> 1.4. </b> "
 
 ---
 
-## 🔹 Lab 14 – VM Import/Export
+## Lab 14 – VM Import/Export
 
 ### Import VM to AWS
 
@@ -76,7 +76,7 @@ pre: " <b> 1.4. </b> "
 
 ---
 
-## 🔹 Lab 24 – Using File Storage Gateway
+## Lab 24 – Using File Storage Gateway
 
 ### Tasks:
 
@@ -94,7 +94,7 @@ pre: " <b> 1.4. </b> "
 
 ---
 
-## 🔹 Lab 25 – Amazon FSx for Windows File Server
+## Lab 25 – Amazon FSx for Windows File Server
 
 ### Tasks:
 
@@ -123,7 +123,7 @@ pre: " <b> 1.4. </b> "
 
 ---
 
-## 🔹 Lab 57 – Starting with Amazon S3
+## Lab 57 – Starting with Amazon S3
 
 ### Static Website Hosting
 

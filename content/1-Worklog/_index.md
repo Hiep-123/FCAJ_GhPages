@@ -6,11 +6,6 @@ chapter: false
 pre: " <b> 1. </b> "
 ---
 
-{{% notice warning %}}
-**Note:** The information below is for reference purposes only. Please **do not copy verbatim** for your report, including this warning.
-{{% /notice %}}
-
-**On this page**, I summarize the 12-week internship journey and the main AWS-related tasks completed throughout the program. The worklog was structured as a progressive learning path, starting from basic cloud concepts and gradually moving toward more advanced topics such as networking, storage, security, databases, analytics, serverless architecture, CI/CD, and observability.
 
 Over the 12 weeks, I studied the core AWS services and practiced hands-on labs to build both theoretical understanding and practical cloud skills. The internship helped me become more familiar with the AWS ecosystem, understand how services work together in real applications, and strengthen my ability to design, deploy, and manage cloud-based solutions.
 

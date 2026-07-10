@@ -31,7 +31,7 @@ pre: " <b> 1.5. </b> "
 
 ---
 
-## 🔹 Lab 18 – Getting Started with AWS Security Hub
+## Lab 18 – Getting Started with AWS Security Hub
 
 - Enable AWS Security Hub
 - Kiểm tra Security Standards
@@ -44,7 +44,7 @@ pre: " <b> 1.5. </b> "
 
 ---
 
-## 🔹 Lab 22 – Optimizing EC2 Costs with Lambda
+## Lab 22 – Optimizing EC2 Costs with Lambda
 
 - Tạo EC2 instance và Lambda Function
 - Tự động Start/Stop EC2 bằng Lambda
@@ -56,7 +56,7 @@ pre: " <b> 1.5. </b> "
 
 ---
 
-## 🔹 Lab 27 – Manage Resources Using Tags and Resource Groups
+## Lab 27 – Manage Resources Using Tags and Resource Groups
 
 - Gắn Tags cho EC2 và AWS resources
 - Filter resources bằng Tags
@@ -69,7 +69,7 @@ pre: " <b> 1.5. </b> "
 
 ---
 
-## 🔹 Lab 28 – Manage Access to EC2 Services with Resource Tags through IAM
+## Lab 28 – Manage Access to EC2 Services with Resource Tags through IAM
 
 - Tạo IAM User, Role, Policy
 - Restrict EC2 access dựa trên Tags
@@ -81,7 +81,7 @@ pre: " <b> 1.5. </b> "
 
 ---
 
-## 🔹 Lab 30 – IAM Permission Boundary
+## Lab 30 – IAM Permission Boundary
 
 - Tạo Restriction Policy
 - Tạo IAM Limited User
@@ -93,7 +93,7 @@ pre: " <b> 1.5. </b> "
 
 ---
 
-## 🔹 Lab 33 – Encrypt at Rest with AWS KMS
+## Lab 33 – Encrypt at Rest with AWS KMS
 
 - Tạo AWS KMS Key
 - Upload encrypted data lên S3
@@ -106,7 +106,7 @@ pre: " <b> 1.5. </b> "
 
 ---
 
-## 🔹 Lab 44 – IAM Role & Condition
+## Lab 44 – IAM Role & Condition
 
 - Tạo IAM Users, Groups, Roles
 - Configure Switch Role
@@ -120,7 +120,7 @@ pre: " <b> 1.5. </b> "
 
 ---
 
-## 🔹 Lab 48 – IAM Role for Applications
+## Lab 48 – IAM Role for Applications
 
 - Tạo EC2 & S3 Bucket
 - Sử dụng Access Key

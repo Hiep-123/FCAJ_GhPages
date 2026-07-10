@@ -8,7 +8,7 @@ pre: " <b> 5.4. </b> "
 
 ## Seed dữ liệu & Tạo người dùng
 
-Đưa 12 sản phẩm demo vào DynamoDB và tạo hai tài khoản Cognito (customer và admin) để kiểm thử end-to-end.
+Đưa 12 sản phẩm demo vào DynamoDB và tạo một tài khoản demo Cognito để kiểm thử end-to-end.
 
 ---
 
@@ -62,32 +62,17 @@ Kết quả mong đợi:
 }
 ```
 
-**Xác minh API trả về sản phẩm:**
-```bash
-curl -s "https://xxxxxxxxxx.execute-api.ap-southeast-1.amazonaws.com/prod/products" \
-  | python3 -m json.tool | grep '"count"'
-# Kết quả mong đợi: "count": 12
-```
-
-**Xác minh lọc theo danh mục:**
-```bash
-curl -s "https://xxxxxxxxxx.execute-api.ap-southeast-1.amazonaws.com/prod/products?category=laptops" \
-  | python3 -m json.tool | grep '"count"'
-# Kết quả mong đợi: "count": 3
-```
 
 ---
 
 ### 5.4.2 Tạo người dùng demo
 
-Script tạo tài khoản CUSTOMER và ADMIN trong Cognito với mật khẩu vĩnh viễn. Script là idempotent — nếu người dùng đã tồn tại, nó xác nhận group membership và thoát gọn gàng.
+Script tạo một tài khoản CUSTOMER trong Cognito với mật khẩu vĩnh viễn. Script là idempotent — nếu người dùng đã tồn tại, nó xác nhận group membership và thoát gọn gàng.
 
 **Điều kiện:** Các biến sau phải được đặt trong `infrastructure/.env`:
 - `COGNITO_USER_POOL_ID`
 - `DEMO_CUSTOMER_EMAIL`
 - `DEMO_CUSTOMER_PASSWORD`
-- `DEMO_ADMIN_EMAIL`
-- `DEMO_ADMIN_PASSWORD`
 
 ```bash
 npm run seed:users
@@ -98,12 +83,10 @@ Kết quả mong đợi:
 👤 Creating demo users in pool: ap-southeast-1_XXXXXXXXX (region: ap-southeast-1)
 
   Created CUSTOMER  | customer@demo.com
-  Created ADMIN     | admin@demo.com
 
 Demo users ready.
 
   Customer: customer@demo.com
-  Admin:    admin@demo.com
 ```
 
 **Xác minh người dùng ở trạng thái CONFIRMED:**
@@ -117,7 +100,6 @@ aws cognito-idp list-users \
 Kết quả mong đợi:
 ```json
 [
-    {"Username": "admin@demo.com",    "Status": "CONFIRMED"},
     {"Username": "customer@demo.com", "Status": "CONFIRMED"}
 ]
 ```
@@ -129,26 +111,11 @@ aws cognito-idp list-users-in-group \
   --group-name CUSTOMER \
   --region ap-southeast-1 \
   --query "Users[*].Username" --output text
-# Kết quả mong đợi: customer@demo.com
-
-aws cognito-idp list-users-in-group \
-  --user-pool-id ap-southeast-1_XXXXXXXXX \
-  --group-name ADMIN \
-  --region ap-southeast-1 \
-  --query "Users[*].Username" --output text
-# Kết quả mong đợi: admin@demo.com
-```
-
-**Xác minh đăng nhập hoạt động — lấy JWT token:**
-```bash
-aws cognito-idp initiate-auth \
-  --auth-flow USER_PASSWORD_AUTH \
-  --client-id <your-user-pool-client-id> \
-  --auth-parameters USERNAME=customer@demo.com,PASSWORD=Demo@Pass2024! \
-  --region ap-southeast-1 \
-  --query "AuthenticationResult.IdToken" \
-  --output text | cut -c1-60
-# Kết quả mong đợi: eyJraWQiOiJ...  (JWT token)
+# Kết quả mong đợi:
+```json
+[
+    {"Username": "customer@demo.com", "Status": "CONFIRMED"}
+]
 ```
 
 Dùng giá trị `AuthStack.UserPoolClientId` từ outputs ở bước 5.2.1 cho `<your-user-pool-client-id>`.
@@ -161,6 +128,6 @@ Dùng giá trị `AuthStack.UserPoolClientId` từ outputs ở bước 5.2.1 cho
 |-----|----------|
 | `Could not resolve table name` | Đảm bảo `CDK_DEFAULT_REGION=ap-southeast-1` trong `.env` và DatabaseStack đã được deploy |
 | `AccessDeniedException` khi seed | IAM user cần quyền `dynamodb:PutItem` trên EcommerceTable |
-| `Demo user env vars not set` | Đặt tất cả năm biến trong `infrastructure/.env` |
+| `Demo user env vars not set` | Đặt các biến cần thiết trong `infrastructure/.env` |
 | `InvalidPasswordException` | Mật khẩu phải có chữ hoa, chữ thường, số và ký tự đặc biệt — ví dụ `Demo@Pass2024!` |
 | Người dùng tồn tại nhưng status là `FORCE_CHANGE_PASSWORD` | Script không hoàn thành việc đặt mật khẩu vĩnh viễn; xóa người dùng trong Cognito console và chạy lại `seed:users` |

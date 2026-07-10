@@ -31,7 +31,7 @@ pre: " <b> 1.2. </b> "
 
 ---
 
-### 🔹 Lab 03 – VPC + VPN
+### Lab 03 – VPC + VPN
 
 #### VPC Setup
 
@@ -85,7 +85,7 @@ pre: " <b> 1.2. </b> "
 
 ---
 
-### 🔹 Lab 10 – Hybrid DNS
+### Lab 10 – Hybrid DNS
 
 - CloudFormation deployment
 - Microsoft AD setup
@@ -101,7 +101,7 @@ pre: " <b> 1.2. </b> "
 
 ---
 
-### 🔹 Lab 19 – VPC Peering
+### Lab 19 – VPC Peering
 
 - Create 2 VPCs
 - Peering connection
@@ -114,7 +114,7 @@ pre: " <b> 1.2. </b> "
 
 ---
 
-### 🔹 Lab 20 – Transit Gateway
+### Lab 20 – Transit Gateway
 
 - Create TGW
 - Attach VPCs

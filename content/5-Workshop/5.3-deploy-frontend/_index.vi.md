@@ -114,20 +114,6 @@ cd ../frontend && npm run build && cd ../infrastructure
 npx cdk deploy FrontendStack --require-approval never
 ```
 
-**Bước 4 — Xác minh CORS header từ API:**
-```bash
-curl -I \
-  -H "Origin: https://dXXXXXXXXXXXXXX.cloudfront.net" \
-  "https://xxxxxxxxxx.execute-api.ap-southeast-1.amazonaws.com/prod/products"
-```
-
-Kết quả mong đợi:
-```
-access-control-allow-origin: https://dXXXXXXXXXXXXXX.cloudfront.net
-access-control-allow-credentials: true
-```
-
----
 
 ### 5.3.5 Triển khai InfrastructureStack
 

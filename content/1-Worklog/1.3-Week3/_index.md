@@ -31,7 +31,7 @@ pre: " <b> 1.3. </b> "
 
 ---
 
-## 🔹 Lab 13 – Deploy AWS Backup to the System
+## Lab 13 – Deploy AWS Backup to the System
 
 ### Tasks:
 
@@ -50,7 +50,7 @@ pre: " <b> 1.3. </b> "
 
 ---
 
-## 🔹 Lab 24 – Using AWS Storage Gateway
+## Lab 24 – Using AWS Storage Gateway
 
 ### Tasks:
 
@@ -70,7 +70,7 @@ pre: " <b> 1.3. </b> "
 
 ---
 
-## 🔹 Lab 57 – Starting with Amazon S3
+## Lab 57 – Starting with Amazon S3
 
 ### 1. Static Website Hosting
 

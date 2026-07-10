@@ -31,7 +31,7 @@ pre: " <b> 1.2. </b> "
 
 ---
 
-### 🔹 Lab 03 – Amazon VPC + VPN
+### Lab 03 – Amazon VPC + VPN
 
 #### 1. Xây dựng VPC cơ bản
 
@@ -100,7 +100,7 @@ pre: " <b> 1.2. </b> "
 
 ---
 
-### 🔹 Lab 10 – Hybrid DNS
+### Lab 10 – Hybrid DNS
 
 - Tạo Key Pair
 - Deploy hạ tầng bằng CloudFormation
@@ -118,7 +118,7 @@ pre: " <b> 1.2. </b> "
 
 ---
 
-### 🔹 Lab 19 – VPC Peering
+### Lab 19 – VPC Peering
 
 - Tạo EC2 ở 2 VPC
 - Update NACL
@@ -132,7 +132,7 @@ pre: " <b> 1.2. </b> "
 
 ---
 
-### 🔹 Lab 20 – Transit Gateway
+### Lab 20 – Transit Gateway
 
 - Tạo Transit Gateway
 - Attach nhiều VPC

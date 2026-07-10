@@ -31,7 +31,7 @@ pre: " <b> 1.6. </b> "
 
 ---
 
-## 🔹 Lab 05 – Amazon Relational Database Service (Amazon RDS)
+## Lab 05 – Amazon Relational Database Service (Amazon RDS)
 
 ### Tasks:
 
@@ -51,7 +51,7 @@ pre: " <b> 1.6. </b> "
 
 ---
 
-## 🔹 Lab 43 – Database Schema Conversion and Migration
+## Lab 43 – Database Schema Conversion and Migration
 
 ### Tasks:
 

@@ -21,7 +21,7 @@ Bootstrap → AuthStack → DatabaseStack → EventStack → ApiStack → Securi
 
 ### 5.2.1 Deploy AuthStack
 
-**Purpose:** Creates the Cognito User Pool, User Pool Client, and CUSTOMER/ADMIN groups. All protected API routes validate tokens issued by this pool.
+**Purpose:** Creates the Cognito User Pool, User Pool Client, and the CUSTOMER group. All protected API routes validate tokens issued by this pool.
 
 ```bash
 cd infrastructure

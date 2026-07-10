@@ -31,7 +31,7 @@ pre: " <b> 1.5. </b> "
 
 ---
 
-## 🔹 Lab 18 – AWS Security Hub
+## Lab 18 – AWS Security Hub
 
 - Enable Security Hub
 - Review security standards

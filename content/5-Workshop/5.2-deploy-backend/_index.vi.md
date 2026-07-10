@@ -21,7 +21,7 @@ Bootstrap → AuthStack → DatabaseStack → EventStack → ApiStack → Securi
 
 ### 5.2.1 Triển khai AuthStack
 
-**Mục đích:** Tạo Cognito User Pool, User Pool Client và hai nhóm CUSTOMER/ADMIN. Tất cả các route API được bảo vệ đều xác thực token được phát hành bởi pool này.
+**Mục đích:** Tạo Cognito User Pool, User Pool Client và nhóm CUSTOMER. Tất cả các route API được bảo vệ đều xác thực token được phát hành bởi pool này.
 
 ```bash
 cd infrastructure

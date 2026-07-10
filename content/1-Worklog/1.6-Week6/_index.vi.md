@@ -34,7 +34,7 @@ pre: " <b> 1.6. </b> "
 
 ---
 
-## 🔹 Lab 05 – Amazon Relational Database Service (Amazon RDS)
+## Lab 05 – Amazon Relational Database Service (Amazon RDS)
 
 ### Các bước thực hiện:
 
@@ -54,7 +54,7 @@ pre: " <b> 1.6. </b> "
 
 ---
 
-## 🔹 Lab 43 – Chuyển đổi lược đồ và di dời cơ sở dữ liệu
+## Lab 43 – Chuyển đổi lược đồ và di dời cơ sở dữ liệu
 
 ### Các bước thực hiện:
 

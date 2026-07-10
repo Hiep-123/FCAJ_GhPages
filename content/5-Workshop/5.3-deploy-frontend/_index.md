@@ -114,19 +114,6 @@ cd ../frontend && npm run build && cd ../infrastructure
 npx cdk deploy FrontendStack --require-approval never
 ```
 
-**Step 4 — Verify CORS header from API:**
-```bash
-curl -I \
-  -H "Origin: https://dXXXXXXXXXXXXXX.cloudfront.net" \
-  "https://xxxxxxxxxx.execute-api.ap-southeast-1.amazonaws.com/prod/products"
-```
-
-Expected response headers:
-```
-access-control-allow-origin: https://dXXXXXXXXXXXXXX.cloudfront.net
-access-control-allow-credentials: true
-```
-
 ---
 
 ### 5.3.5 Deploy InfrastructureStack

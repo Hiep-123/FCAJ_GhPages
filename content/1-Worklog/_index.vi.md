@@ -6,11 +6,6 @@ chapter: false
 pre: " <b> 1. </b> "
 ---
 
-{{% notice warning %}}
-**Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
-
-**Trong trang này**, mình tổng hợp lại hành trình 12 tuần thực tập và các công việc chính đã thực hiện liên quan đến AWS. Worklog được thiết kế theo lộ trình học tăng dần từ những khái niệm cơ bản về điện toán đám mây, sau đó chuyển dần sang các chủ đề nâng cao như mạng, lưu trữ, bảo mật, cơ sở dữ liệu, phân tích dữ liệu, kiến trúc serverless, CI/CD và giám sát hệ thống.
 
 Trong suốt 12 tuần, mình đã nghiên cứu các dịch vụ cốt lõi của AWS và thực hành nhiều lab để củng cố kiến thức lý thuyết cũng như kỹ năng vận hành trên môi trường cloud. Quá trình này giúp mình hiểu rõ hơn về hệ sinh thái AWS, cách các dịch vụ phối hợp với nhau trong các ứng dụng thực tế, và nâng cao khả năng thiết kế, triển khai cũng như quản lý các giải pháp trên nền tảng đám mây.
 
