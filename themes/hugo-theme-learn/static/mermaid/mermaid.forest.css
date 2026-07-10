@@ -124,6 +124,7 @@ text.actor {
   text-height: 14px;
 }
 /* Grid and axis */
+
 .grid .tick {
   stroke: lightgrey;
   opacity: 0.3;

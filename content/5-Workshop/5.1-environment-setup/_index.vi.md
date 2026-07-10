@@ -14,7 +14,7 @@ Trước khi triển khai bất cứ thứ gì lên AWS, bạn cần cài đặt
 
 ### Chi phí triển khai ước tính
 
-Chi phí hàng tháng ước tính: ~$9.09/tháng.
+Chi phí hàng tháng ước tính: ~$10.92/tháng.
 
 Nhắc lại: hủy tài nguyên sau khi kiểm thử để tránh phát sinh chi phí tiếp diễn.
 
@@ -167,6 +167,11 @@ CDK_DEFAULT_REGION=ap-southeast-1
 # ── Điền SAU KHI deploy FrontendStack ────────────────────────────────
 ALLOWED_ORIGIN=                         # https://dXXXX.cloudfront.net
 
+# ── VNPay (stack ApiStack dùng để tạo secret VNPayConfig) ─────────────
+VNP_TMN_CODE=                           # mã merchant VNPay của bạn
+VNP_HASH_SECRET=                        # hash secret VNPay của bạn
+VNP_URL=https://sandbox.vnpayment.vn/paymentv2/vpcpay.html
+
 # ── Email nhận cảnh báo ───────────────────────────────────────────────
 ALERT_EMAIL=your@email.com
 
@@ -179,8 +184,6 @@ COGNITO_USER_POOL_ID=                   # ap-southeast-1_XXXXXXXXX
 # ── Thông tin đăng nhập demo ──────────────────────────────────────────
 DEMO_CUSTOMER_EMAIL=customer@demo.com
 DEMO_CUSTOMER_PASSWORD=Demo@Pass2024!  # tối thiểu 8 ký tự, chữ hoa+thường+số+ký tự đặc biệt
-DEMO_ADMIN_EMAIL=admin@demo.com
-DEMO_ADMIN_PASSWORD=Admin@Pass2024!
 ```
 
 #### Tạo file môi trường cho frontend
@@ -205,6 +208,44 @@ VITE_ENABLE_MOCKS=false
 cd ../infrastructure
 ```
 
+### 5.1.4.1 Chuẩn bị thông tin VNPay (bắt buộc cho quy trình thanh toán đầy đủ)
+
+Trong kiến trúc hiện tại, `ApiStack` đọc các giá trị VNPay từ `infrastructure/.env` và dùng chúng để tự tạo secret `VNPayConfig` trong AWS Secrets Manager khi deploy. Lambda thanh toán sẽ đọc secret này khi chạy.
+
+#### Các giá trị cần điền trong `infrastructure/.env`
+
+- `VNP_TMN_CODE`: mã merchant VNPay được cấp từ tài khoản sandbox.
+- `VNP_HASH_SECRET`: khóa hash secret tương ứng với merchant đó.
+- `VNP_URL`: URL thanh toán của VNPay. Với sandbox, dùng `https://sandbox.vnpayment.vn/paymentv2/vpcpay.html`.
+- `ALLOWED_ORIGIN`: URL CloudFront đã deploy, ví dụ `https://d123abc.cloudfront.net`. Stack sẽ dùng giá trị này để tạo `VNP_RETURN_URL` theo dạng `${ALLOWED_ORIGIN}/payment/vnpay-return`.
+
+Ví dụ:
+
+```bash
+VNP_TMN_CODE=YOUR_TMN_CODE
+VNP_HASH_SECRET=YOUR_HASH_SECRET
+VNP_URL=https://sandbox.vnpayment.vn/paymentv2/vpcpay.html
+ALLOWED_ORIGIN=https://YOUR_CLOUDFRONT_DOMAIN
+```
+
+Secret được stack tạo sẽ chứa các trường JSON sau:
+
+- `VNP_TMN_CODE`
+- `VNP_HASH_SECRET`
+- `VNP_URL`
+- `VNP_RETURN_URL`
+
+Nếu chỉ kiểm tra các luồng sản phẩm, giỏ hàng và đặt hàng, bạn có thể bỏ qua bước này, nhưng luồng VNPay checkout sẽ không hoạt động đầy đủ.
+
+#### Xác minh secret sau khi deploy
+
+```bash
+aws secretsmanager describe-secret --secret-id VNPayConfig --region ap-southeast-1
+aws secretsmanager get-secret-value --secret-id VNPayConfig --region ap-southeast-1 --query SecretString --output text
+```
+
+Bạn sẽ thấy các trường trên xuất hiện trong payload của secret.
+
 #### Kiểm tra TypeScript biên dịch thành công
 
 ```bash
@@ -228,7 +269,7 @@ npx cdk bootstrap aws://123456789012/ap-southeast-1
 
 Kết quả mong đợi:
 ```
-✅  Environment aws://123456789012/ap-southeast-1 bootstrapped.
+Environment aws://123456789012/ap-southeast-1 bootstrapped.
 ```
 
 #### Bootstrap us-east-1 (bắt buộc cho WAF WebACL)
@@ -241,7 +282,7 @@ npx cdk bootstrap aws://123456789012/us-east-1
 
 Kết quả mong đợi:
 ```
-✅  Environment aws://123456789012/us-east-1 bootstrapped.
+Environment aws://123456789012/us-east-1 bootstrapped.
 ```
 
 #### Xác minh

@@ -27,7 +27,7 @@ pre: " <b> 1.5. </b> "
 
 ---
 
-# 🧪 Chi tiết Lab đã thực hành
+# Chi tiết Lab đã thực hành
 
 ---
 
@@ -133,7 +133,7 @@ pre: " <b> 1.5. </b> "
 
 ---
 
-# ✅ Kết quả đạt được tuần 5:
+# Kết quả đạt được tuần 5:
 
 - Hiểu các dịch vụ bảo mật AWS:
   - IAM

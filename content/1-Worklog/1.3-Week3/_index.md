@@ -27,7 +27,7 @@ pre: " <b> 1.3. </b> "
 
 ---
 
-# 🧪 Lab Details
+# Lab Details
 
 ---
 
@@ -115,7 +115,7 @@ pre: " <b> 1.3. </b> "
 
 ---
 
-# ✅ Achievements:
+#  Achievements:
 
 - Deep understanding of Amazon EC2:
   - Instance Types

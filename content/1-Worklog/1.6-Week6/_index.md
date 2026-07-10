@@ -27,7 +27,7 @@ pre: " <b> 1.6. </b> "
 
 ---
 
-# 🧪 Lab Details
+# Lab Details
 
 ---
 
@@ -76,7 +76,7 @@ pre: " <b> 1.6. </b> "
 
 ---
 
-# ✅ Achievements:
+# Achievements:
 
 - Learned AWS database fundamentals
 - Practiced Amazon RDS and Aurora

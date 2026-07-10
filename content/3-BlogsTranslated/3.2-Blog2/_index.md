@@ -1,126 +1,59 @@
 ---
 title: "Blog 2"
-date: 2024-01-01
+date: 2026-07-08
 weight: 1
 chapter: false
 pre: " <b> 3.2. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy verbatim** for your report, including this warning.
-{{% /notice %}}
 
-# Getting Started with Healthcare Data Lakes: Using Microservices
+# AWS GenAIIC Partner Agent Factory – Bringing AI Agents to AWS Marketplace
 
-Data lakes can help hospitals and healthcare facilities turn data into business insights, maintain business continuity, and protect patient privacy. A **data lake** is a centralized, managed, and secure repository to store all your data, both in its raw and processed forms for analysis. Data lakes allow you to break down data silos and combine different types of analytics to gain insights and make better business decisions.
+Hello everyone in the AWS Study Group VN community!
 
-This blog post is part of a larger series on getting started with setting up a healthcare data lake. In my final post of the series, *“Getting Started with Healthcare Data Lakes: Diving into Amazon Cognito”*, I focused on the specifics of using Amazon Cognito and Attribute Based Access Control (ABAC) to authenticate and authorize users in the healthcare data lake solution. In this blog, I detail how the solution evolved at a foundational level, including the design decisions I made and the additional features used. You can access the code samples for the solution in this Git repo for reference.
+As AI agents become more widely adopted in businesses, the biggest challenge is no longer building a prototype, but deploying them in real production environments at scale. To help organizations shorten this gap, AWS introduced the Generative AI Innovation Center Partner Agent Factory (PAF).
 
----
+This program is a collaboration between the AWS Generative AI Innovation Center and AWS Partners, aimed at developing AI agents that have been validated and are ready to be deployed through AWS Marketplace.
 
-## Architecture Guidance
+In this article, we will explore:
 
-The main change since the last presentation of the overall architecture is the decomposition of a single service into a set of smaller services to improve maintainability and flexibility. Integrating a large volume of diverse healthcare data often requires specialized connectors for each format; by keeping them encapsulated separately as microservices, we can add, remove, and modify each connector without affecting the others. The microservices are loosely coupled via publish/subscribe messaging centered in what I call the “pub/sub hub.”
+- what Partner Agent Factory is
+- why this program brings real value to businesses
+- some of the notable AI agents recently introduced on AWS Marketplace
 
-This solution represents what I would consider another reasonable sprint iteration from my last post. The scope is still limited to the ingestion and basic parsing of **HL7v2 messages** formatted in **Encoding Rules 7 (ER7)** through a REST interface.
+## 1. What is Partner Agent Factory?
 
-**The solution architecture is now as follows:**
+PAF is a co-innovation model between AWS and its partners to create AI agents that solve real business problems across many industries.
 
-> *Figure 1. Overall architecture; colored boxes represent distinct services.*
+These solutions are built on services such as Amazon Bedrock, Amazon Bedrock AgentCore, and Strands Agents, allowing organizations to adopt AI faster without starting from scratch.
 
----
+## 2. Why this program matters
 
-While the term *microservices* has some inherent ambiguity, certain traits are common:  
-- Small, autonomous, loosely coupled  
-- Reusable, communicating through well-defined interfaces  
-- Specialized to do one thing well  
-- Often implemented in an **event-driven architecture**
+Compared with building AI agents on their own, solutions in PAF offer several advantages:
 
-When determining where to draw boundaries between microservices, consider:  
-- **Intrinsic**: technology used, performance, reliability, scalability  
-- **Extrinsic**: dependent functionality, rate of change, reusability  
-- **Human**: team ownership, managing *cognitive load*
+- shorten the time from idea to real deployment
+- leverage AWS and partner expertise in specific industries
+- use the latest AWS AI services
+- deploy and purchase easily through AWS Marketplace while integrating with existing AWS spending
 
----
+## 3. Notable AI agents introduced
 
-## Technology Choices and Communication Scope
+In the latest announcement, AWS highlighted several solutions designed for different needs, including:
 
-| Communication scope                       | Technologies / patterns to consider                                                        |
-| ----------------------------------------- | ------------------------------------------------------------------------------------------ |
-| Within a single microservice              | Amazon Simple Queue Service (Amazon SQS), AWS Step Functions                               |
-| Between microservices in a single service | AWS CloudFormation cross-stack references, Amazon Simple Notification Service (Amazon SNS) |
-| Between services                          | Amazon EventBridge, AWS Cloud Map, Amazon API Gateway                                      |
+- **AIR Document Translation**: automatically analyzes, translates, and checks document quality using AI.
+- **SPACE LENS**: extracts insights from video using natural language queries.
+- **AIR Agent Governance**: manages the full lifecycle of AI agents, including deployment, operations, cost control, and compliance.
 
----
+These solutions target many sectors such as finance, retail, customer service, healthcare, and enterprise AI governance.
 
-## The Pub/Sub Hub
+## Conclusion
 
-Using a **hub-and-spoke** architecture (or message broker) works well with a small number of tightly related microservices.  
-- Each microservice depends only on the *hub*  
-- Inter-microservice connections are limited to the contents of the published message  
-- Reduces the number of synchronous calls since pub/sub is a one-way asynchronous *push*
+Partner Agent Factory is a new step for AWS in moving AI agents from experimentation to real-world deployment. By combining Amazon Bedrock, Amazon Bedrock AgentCore, Strands Agents, and AWS Marketplace, the program helps organizations:
 
-Drawback: **coordination and monitoring** are needed to avoid microservices processing the wrong message.
+- shorten AI deployment time
+- access validated AI agents
+- reduce development complexity
+- scale and manage AI more easily at the enterprise level
 
----
+For organizations looking for Generative AI solutions on AWS, this is a direction worth considering to accelerate digital transformation and unlock the full value of AI.
 
-## Core Microservice
-
-Provides foundational data and communication layer, including:  
-- **Amazon S3** bucket for data  
-- **Amazon DynamoDB** for data catalog  
-- **AWS Lambda** to write messages into the data lake and catalog  
-- **Amazon SNS** topic as the *hub*  
-- **Amazon S3** bucket for artifacts such as Lambda code
-
-> Only allow indirect write access to the data lake through a Lambda function → ensures consistency.
-
----
-
-## Front Door Microservice
-
-- Provides an API Gateway for external REST interaction  
-- Authentication & authorization based on **OIDC** via **Amazon Cognito**  
-- Self-managed *deduplication* mechanism using DynamoDB instead of SNS FIFO because:  
-  1. SNS deduplication TTL is only 5 minutes  
-  2. SNS FIFO requires SQS FIFO  
-  3. Ability to proactively notify the sender that the message is a duplicate  
-
----
-
-## Staging ER7 Microservice
-
-- Lambda “trigger” subscribed to the pub/sub hub, filtering messages by attribute  
-- Step Functions Express Workflow to convert ER7 → JSON  
-- Two Lambdas:  
-  1. Fix ER7 formatting (newline, carriage return)  
-  2. Parsing logic  
-- Result or error is pushed back into the pub/sub hub  
-
----
-
-## New Features in the Solution
-
-### 1. AWS CloudFormation Cross-Stack References
-Example *outputs* in the core microservice:
-```yaml
-Outputs:
-  Bucket:
-    Value: !Ref Bucket
-    Export:
-      Name: !Sub ${AWS::StackName}-Bucket
-  ArtifactBucket:
-    Value: !Ref ArtifactBucket
-    Export:
-      Name: !Sub ${AWS::StackName}-ArtifactBucket
-  Topic:
-    Value: !Ref Topic
-    Export:
-      Name: !Sub ${AWS::StackName}-Topic
-  Catalog:
-    Value: !Ref Catalog
-    Export:
-      Name: !Sub ${AWS::StackName}-Catalog
-  CatalogArn:
-    Value: !GetAtt Catalog.Arn
-    Export:
-      Name: !Sub ${AWS::StackName}-CatalogArn
+Source: https://aws.amazon.com

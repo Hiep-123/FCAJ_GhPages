@@ -27,7 +27,7 @@ pre: " <b> 1.5. </b> "
 
 ---
 
-# 🧪 Lab Details
+#  Lab Details
 
 ---
 
@@ -37,89 +37,89 @@ pre: " <b> 1.5. </b> "
 - Review security standards
 - Monitor security score
 
-👉 Learned:
+ Learned:
 - Centralized security monitoring
 - Security compliance management
 
 ---
 
-## 🔹 Lab 22 – Optimizing EC2 Costs with Lambda
+## Lab 22 – Optimizing EC2 Costs with Lambda
 
 - Create Lambda functions
 - Automate EC2 start/stop
 - Configure Slack notifications
 
-👉 Learned:
+ Learned:
 - Cost optimization automation
 - Event-driven architecture
 
 ---
 
-## 🔹 Lab 27 – Tags & Resource Groups
+## Lab 27 – Tags & Resource Groups
 
 - Apply tags to resources
 - Filter resources by tags
 - Create Resource Groups
 
-👉 Learned:
+ Learned:
 - Resource organization & governance
 
 ---
 
-## 🔹 Lab 28 – IAM Access with Resource Tags
+## Lab 28 – IAM Access with Resource Tags
 
 - Create IAM policies & roles
 - Restrict EC2 access using tags
 
-👉 Learned:
+Learned:
 - Attribute-Based Access Control (ABAC)
 
 ---
 
-## 🔹 Lab 30 – IAM Permission Boundary
+##  Lab 30 – IAM Permission Boundary
 
 - Create restriction policies
 - Limit IAM user permissions
 
-👉 Learned:
+ Learned:
 - Permission guardrails
 
 ---
 
-## 🔹 Lab 33 – AWS KMS Encryption
+##  Lab 33 – AWS KMS Encryption
 
 - Create KMS Key
 - Encrypt S3 data
 - Monitor with CloudTrail & Athena
 
-👉 Learned:
+ Learned:
 - Encryption at rest
 - Audit logging
 
 ---
 
-## 🔹 Lab 44 – IAM Role & Conditions
+##  Lab 44 – IAM Role & Conditions
 
 - Configure Assume Role
 - Restrict access by IP & time
 
-👉 Learned:
+ Learned:
 - Conditional IAM access control
 
 ---
 
-## 🔹 Lab 48 – IAM Role for Applications
+##  Lab 48 – IAM Role for Applications
 
 - Attach IAM Role to EC2
 - Access AWS services securely
 
-👉 Learned:
+ Learned:
 - IAM Role best practices
 - Avoid hardcoded access keys
 
 ---
 
-# ✅ Achievements:
+# Achievements:
 
 - Learned AWS security services:
   - IAM

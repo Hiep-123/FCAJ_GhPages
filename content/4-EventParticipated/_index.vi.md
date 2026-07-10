@@ -1,46 +1,41 @@
 ---
-title: "Các events đã tham gia"
-date: 2024-01-01
+title: "Các sự kiện đã tham gia"
+date: 2026-07-09
 weight: 4
 chapter: false
 pre: " <b> 4. </b> "
 ---
 
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
+Trong quá trình thực tập tại **First Cloud AI Journey**, em đã tham gia **02 sự kiện chuyên môn** do chương trình tổ chức. Mỗi sự kiện đều mang đến nhiều kiến thức mới về Trí tuệ nhân tạo (AI), Điện toán đám mây (Cloud Computing), DevOps và các xu hướng công nghệ hiện đại. Bên cạnh việc học hỏi từ các diễn giả giàu kinh nghiệm, em còn có cơ hội giao lưu với các anh chị trong ngành, mở rộng góc nhìn nghề nghiệp và tích lũy thêm nhiều kinh nghiệm thực tế.
 
-> Trong phần này, các bạn cần liệt kê và mô tả chi tiết các sự kiện (event) mà mình đã tham gia trong suốt quá trình thực tập hoặc làm việc. 
-> 
-> Mỗi sự kiện nên được trình bày theo định dạng Event 1, Event 2, Event 3…, kèm theo các thông tin:
-> * Tên sự kiện
-> * Thời gian tổ chức
-> * Địa điểm (nếu có)
-> * Vai trò của bạn trong sự kiện (người tham dự, hỗ trợ tổ chức, diễn giả, v.v.)
-> * Mô tả ngắn gọn nội dung và hoạt động chính trong sự kiện
-> * Kết quả hoặc giá trị đạt được (bài học, kỹ năng mới, đóng góp cho nhóm/dự án)
-> * Việc liệt kê này giúp thể hiện rõ sự tham gia thực tế của bạn, cũng như các kỹ năng mềm và kinh nghiệm bạn đã tích lũy qua từng sự kiện.
+### Event 1
 
+**Tên sự kiện:** AI Summit Day 1 – Technical Sharing Sessions
 
-Trong quá trình thực tập, em đã tham gia 2 events, với mỗi event là một trải nghiệm đáng nhớ với những kiến thức mới, hay và bổ ích, cùng với đó là nhứng món quà và những khoảnh khắc rất tuyệt vời.
+**Thời gian:** 23/05/2026
 
-### [Event 1](4.1-Event1/)
-&emsp;**Tên sự kiện:** GenAI-powered App-DB Modernization workshop
+**Địa điểm:** Chương trình First Cloud AI Journey (địa điểm tổ chức theo chương trình)
 
-&emsp;**Thời gian:** 09:00 ngày 13/08/2025
+**Vai trò trong sự kiện:** Người tham dự
 
-&emsp;**Địa điểm:** Tầng 26, tòa nhà Bitexco, số 02 đường Hải Triều, phường Sài Gòn, thành phố Hồ Chí Minh
+**Mô tả:** Sự kiện gồm nhiều phiên chia sẻ chuyên sâu về AI và Cloud như Build Second Brain, Amazon Quick Suite, Amazon CloudFront, LotusHacks, Large Language Models (LLMs) và Enterprise Multi-Agent Systems. Các diễn giả đã chia sẻ nhiều kinh nghiệm thực tế trong việc xây dựng hệ thống AI, phát triển sản phẩm và triển khai giải pháp trên nền tảng AWS.
 
-&emsp;**Vai trò trong sự kiện:** Người tham dự 
+**Giá trị đạt được:** Em nâng cao hiểu biết về AI, Cloud Computing, kiến trúc hệ thống, Context Engineering, Multi-Agent Systems và các dịch vụ AWS. Những kiến thức này đã được em áp dụng trong quá trình xây dựng dự án AWS Serverless E-Commerce cũng như định hướng phát triển nghề nghiệp trong lĩnh vực Cloud Engineer.
 
+---
 
+### Event 2
 
-### [Event 2](4.2-Event2/)
-&emsp;**Tên sự kiện:** GenAI-powered App-DB Modernization workshop
+**Tên sự kiện:** AI Summit Day 2 – Enterprise AI & Cloud Applications
 
-&emsp;**Thời gian:** 09:00 ngày 13/08/2025
+**Thời gian:** 27/06/2026
 
-&emsp;**Địa điểm:** Tầng 26, tòa nhà Bitexco, số 02 đường Hải Triều, phường Sài Gòn, thành phố Hồ Chí Minh
+**Địa điểm:** Chương trình First Cloud AI Journey (địa điểm tổ chức theo chương trình)
 
-&emsp;**Vai trò trong sự kiện:** Người tham dự 
+**Vai trò trong sự kiện:** Người tham dự
 
+**Mô tả:** Sự kiện tập trung vào các chủ đề như AI Agents trong Cloud Operation, Voice AI, DevOps AI Agent, Amazon Quick, Workforce Planning và kiến trúc bảo mật khi triển khai MCP Server trong môi trường doanh nghiệp. Các phiên trình bày kết hợp giữa lý thuyết và demo thực tế giúp người tham dự hiểu rõ cách triển khai AI trong môi trường production.
+
+**Giá trị đạt được:** Em hiểu rõ hơn về cách ứng dụng AI vào vận hành hệ thống Cloud, DevOps, bảo mật, Voice AI và Enterprise AI. Đồng thời, em học được các nguyên tắc về bảo mật, phân quyền, observability và kiến trúc AI doanh nghiệp để áp dụng vào các dự án thực tế sau này.
+
+Nhìn chung, hai sự kiện trên đã giúp em mở rộng kiến thức chuyên môn, cập nhật các xu hướng công nghệ mới, nâng cao kỹ năng tự học và tư duy giải quyết vấn đề. Đây là những trải nghiệm ý nghĩa góp phần hỗ trợ em hoàn thành tốt quá trình thực tập cũng như phát triển dự án AWS Serverless E-Commerce.

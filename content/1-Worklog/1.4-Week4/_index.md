@@ -30,7 +30,7 @@ pre: " <b> 1.4. </b> "
 
 ---
 
-# 🧪 Lab Details
+# Lab Details
 
 ---
 
@@ -154,7 +154,7 @@ pre: " <b> 1.4. </b> "
 
 ---
 
-# ✅ Achievements:
+#  Achievements:
 
 - Deep understanding of AWS Storage services:
   - Amazon S3

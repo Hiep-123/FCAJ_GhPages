@@ -10,6 +10,8 @@ pre: " <b> 5.2. </b> "
 
 Deploy all backend CDK stacks in dependency order. Each stack exports CloudFormation values consumed by the next.
 
+> **Prerequisite for the full checkout flow:** before deploying ApiStack, make sure the VNPay values are present in `infrastructure/.env`. The stack uses them to create or update the `VNPayConfig` secret in AWS Secrets Manager during deployment, and the payment Lambda reads it at runtime. Checkout will not work without these values. The return URL is derived from `ALLOWED_ORIGIN` and points to `/payment/vnpay-return`.
+
 **Deployment order:**
 ```
 Bootstrap → AuthStack → DatabaseStack → EventStack → ApiStack → SecurityStack → MonitoringStack → FrontendStack → InfrastructureStack → Seed Data → Verification → Cleanup
@@ -28,7 +30,7 @@ npx cdk deploy AuthStack --require-approval never
 
 Expected:
 ```
-✅  AuthStack
+AuthStack
 
 Outputs:
 AuthStack.CognitoRegion = ap-southeast-1
@@ -74,7 +76,7 @@ npx cdk deploy DatabaseStack --require-approval never
 
 Expected:
 ```
-✅  DatabaseStack
+DatabaseStack
 
 Outputs:
 DatabaseStack.TableArn = arn:aws:dynamodb:ap-southeast-1:123456789012:table/EcommerceTable
@@ -104,7 +106,7 @@ This step takes ~2 minutes because CDK bundles the Lambda with esbuild.
 
 Expected:
 ```
-✅  EventStack
+EventStack
 
 Outputs:
 EventStack.EventBusName = EcommerceEventBus
@@ -112,30 +114,6 @@ EventStack.OrderDLQName = EcommerceOrderDLQ
 EventStack.OrderQueueName = EcommerceOrderQueue
 EventStack.OrderProcessorFunctionName = OrderProcessorFunction
 ```
-
-**Verify EventBridge rule:**
-```bash
-aws events list-rules \
-  --event-bus-name EcommerceEventBus \
-  --region ap-southeast-1 \
-  --query "Rules[*].{Name:Name,State:State}"
-# Expected: [{Name: EcommerceOrderCreatedRule, State: ENABLED}]
-```
-
-**Verify DLQ is empty:**
-```bash
-aws sqs get-queue-attributes \
-  --queue-url $(aws sqs get-queue-url \
-    --queue-name EcommerceOrderDLQ \
-    --region ap-southeast-1 \
-    --query QueueUrl --output text) \
-  --attribute-names ApproximateNumberOfMessages \
-  --region ap-southeast-1 \
-  --query "Attributes.ApproximateNumberOfMessages" \
-  --output text
-# Expected: 0
-```
-
 ---
 
 ### 5.2.4 Deploy ApiStack
@@ -150,7 +128,7 @@ Takes ~3 minutes (bundles three Lambda functions).
 
 Expected:
 ```
-✅  ApiStack
+ApiStack
 
 Outputs:
 ApiStack.ApiUrl = https://xxxxxxxxxx.execute-api.ap-southeast-1.amazonaws.com/prod/
@@ -159,21 +137,6 @@ ApiStack.ApiUrl = https://xxxxxxxxxx.execute-api.ap-southeast-1.amazonaws.com/pr
 **Post-deploy — update frontend/.env:**
 ```bash
 VITE_API_URL=https://xxxxxxxxxx.execute-api.ap-southeast-1.amazonaws.com/prod/
-```
-
-**Verify public endpoint:**
-```bash
-curl -s "https://xxxxxxxxxx.execute-api.ap-southeast-1.amazonaws.com/prod/products" \
-  | python3 -m json.tool | grep '"count"'
-# Expected: "count": 0  (products not seeded yet — normal)
-```
-
-> Linux/macOS: use `python3`. Windows: use `python`.
-
-**Verify auth is enforced:**
-```bash
-curl -s "https://xxxxxxxxxx.execute-api.ap-southeast-1.amazonaws.com/prod/cart"
-# Expected: {"message":"Unauthorized"}
 ```
 
 ---
@@ -190,7 +153,7 @@ npx cdk deploy SecurityStack --require-approval never
 
 Expected:
 ```
-✅  SecurityStack
+SecurityStack
 
 Outputs:
 SecurityStack.WafWebAclArn = arn:aws:wafv2:us-east-1:123456789012:global/webacl/EcommerceWebACL/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
@@ -225,7 +188,7 @@ npx cdk deploy MonitoringStack --require-approval never
 
 Expected:
 ```
-✅  MonitoringStack
+MonitoringStack
 
 Outputs:
 MonitoringStack.AlarmsTopicArn = arn:aws:sns:ap-southeast-1:123456789012:EcommerceAlarmsTopic
@@ -251,20 +214,14 @@ aws cloudwatch describe-alarms \
   --output table
 # Expected: 6 alarms all showing OK or INSUFFICIENT_DATA
 ```
+or
 
 **How to open the dashboard:**
 
-AWS Console
-↓
-CloudWatch
-↓
-Dashboards
-↓
-EcommerceDashboard
+![cloudwtach buoc 1](/images/5-Workshop/5.2-deploy-backend/cloudwatcha.png)
+![cloudwtach buoc 2](/images/5-Workshop/5.2-deploy-backend/cloudwatchb.png)
 
 This dashboard name is created by MonitoringStack.
-
-The dashboard shows five rows: API Gateway, EventBridge, OrderService, OrderProcessor, and SQS metrics.
 
 ---
 

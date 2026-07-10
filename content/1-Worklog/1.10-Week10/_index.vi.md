@@ -1,59 +1,33 @@
 ---
 title: "Worklog Tuần 10"
-date: 2024-01-01
-weight: 2
+date: 2026-06-28
+weight: 10
 chapter: false
 pre: " <b> 1.10. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
-
 
 ### Mục tiêu tuần 10:
 
-* Kết nối, làm quen với các thành viên trong First Cloud Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+* Củng cố hiểu biết về quản trị xác thực, phân quyền và bảo mật trên AWS.
+* Tìm hiểu cách Amazon Cognito và AWS WAF cải thiện độ bảo mật cho ứng dụng.
+* Liên hệ các khái niệm bảo mật với yêu cầu xác thực và bảo vệ frontend của dự án.
 
-### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
+### Các công việc đã thực hiện:
 
+| Thứ | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu |
+| --- | --- | --- | --- | --- |
+| 2 | Tìm hiểu IAM và các nguyên tắc phân quyền theo least privilege | 22/06/2026 | 22/06/2026 | https://000002.awsstudygroup.com/ |
+| 3 | Nghiên cứu xác thực người dùng và Amazon Cognito | 23/06/2026 | 23/06/2026 | https://000141.awsstudygroup.com/ |
+| 4 | Tìm hiểu cách AWS WAF bảo vệ ứng dụng web khỏi các tấn công thường gặp | 24/06/2026 | 24/06/2026 | https://000026.awsstudygroup.com/ |
+| 5 | Thực hành cấu hình chính sách bảo mật và quyền truy cập tối thiểu | 25/06/2026 | 25/06/2026 | https://000044.awsstudygroup.com/ |
+| 6 | Nghiên cứu cách Secrets Manager giúp bảo mật thông tin đăng nhập và cấu hình ứng dụng | 26/06/2026 | 26/06/2026 | https://000096.awsstudygroup.com/ |
+| 7 | Tổng hợp các lựa chọn thiết kế bảo mật phù hợp với dự án | 27/06/2026 | 28/06/2026 | Ghi chú cá nhân |
 
 ### Kết quả đạt được tuần 10:
 
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
-
-* Đã tạo và cấu hình AWS Free Tier account thành công.
-
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
-
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
-
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
-
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
+* Hiểu sâu hơn về IAM, phân quyền theo nguyên tắc tối thiểu và phân công vai trò.
+* Nắm được cách Amazon Cognito có thể hỗ trợ xác thực người dùng trong ứng dụng web.
+* Biết cách AWS WAF bảo vệ các dịch vụ công khai khỏi các cuộc tấn công phổ biến.
+* Liên kết được các nguyên tắc bảo mật với bản đề xuất và kế hoạch triển khai của dự án.
 
 

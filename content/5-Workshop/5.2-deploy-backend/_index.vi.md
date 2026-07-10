@@ -10,6 +10,8 @@ pre: " <b> 5.2. </b> "
 
 Triển khai tất cả CDK stack backend theo đúng thứ tự phụ thuộc. Mỗi stack export các giá trị CloudFormation được stack tiếp theo sử dụng.
 
+> **Điều kiện cần cho quy trình thanh toán đầy đủ:** trước khi triển khai ApiStack, hãy chắc chắn các giá trị VNPay đã được điền vào `infrastructure/.env`. Stack sẽ dùng chúng để tạo hoặc cập nhật secret `VNPayConfig` trong AWS Secrets Manager trong quá trình deploy, và Lambda thanh toán sẽ đọc secret này khi chạy. Nếu thiếu các giá trị này thì luồng checkout/payment sẽ không hoạt động. Giá trị `VNP_RETURN_URL` được xây dựng từ `ALLOWED_ORIGIN` và trỏ về `/payment/vnpay-return`.
+
 **Thứ tự triển khai:**
 ```
 Bootstrap → AuthStack → DatabaseStack → EventStack → ApiStack → SecurityStack → MonitoringStack → FrontendStack → InfrastructureStack → Seed Data → Verification → Cleanup
@@ -28,7 +30,7 @@ npx cdk deploy AuthStack --require-approval never
 
 Kết quả mong đợi:
 ```
-✅  AuthStack
+AuthStack
 
 Outputs:
 AuthStack.CognitoRegion = ap-southeast-1
@@ -74,7 +76,7 @@ npx cdk deploy DatabaseStack --require-approval never
 
 Kết quả mong đợi:
 ```
-✅  DatabaseStack
+DatabaseStack
 
 Outputs:
 DatabaseStack.TableArn = arn:aws:dynamodb:ap-southeast-1:123456789012:table/EcommerceTable
@@ -104,36 +106,13 @@ Mất khoảng ~2 phút vì CDK bundle Lambda với esbuild.
 
 Kết quả mong đợi:
 ```
-✅  EventStack
+EventStack
 
 Outputs:
 EventStack.EventBusName = EcommerceEventBus
 EventStack.OrderDLQName = EcommerceOrderDLQ
 EventStack.OrderQueueName = EcommerceOrderQueue
 EventStack.OrderProcessorFunctionName = OrderProcessorFunction
-```
-
-**Xác minh EventBridge rule:**
-```bash
-aws events list-rules \
-  --event-bus-name EcommerceEventBus \
-  --region ap-southeast-1 \
-  --query "Rules[*].{Name:Name,State:State}"
-# Kết quả mong đợi: [{Name: EcommerceOrderCreatedRule, State: ENABLED}]
-```
-
-**Xác minh DLQ trống:**
-```bash
-aws sqs get-queue-attributes \
-  --queue-url $(aws sqs get-queue-url \
-    --queue-name EcommerceOrderDLQ \
-    --region ap-southeast-1 \
-    --query QueueUrl --output text) \
-  --attribute-names ApproximateNumberOfMessages \
-  --region ap-southeast-1 \
-  --query "Attributes.ApproximateNumberOfMessages" \
-  --output text
-# Kết quả mong đợi: 0
 ```
 
 ---
@@ -150,7 +129,7 @@ Mất ~3 phút (bundle ba Lambda function).
 
 Kết quả mong đợi:
 ```
-✅  ApiStack
+ApiStack
 
 Outputs:
 ApiStack.ApiUrl = https://xxxxxxxxxx.execute-api.ap-southeast-1.amazonaws.com/prod/
@@ -159,19 +138,6 @@ ApiStack.ApiUrl = https://xxxxxxxxxx.execute-api.ap-southeast-1.amazonaws.com/pr
 **Sau khi deploy — cập nhật frontend/.env:**
 ```bash
 VITE_API_URL=https://xxxxxxxxxx.execute-api.ap-southeast-1.amazonaws.com/prod/
-```
-
-**Xác minh endpoint public:**
-```bash
-curl -s "https://xxxxxxxxxx.execute-api.ap-southeast-1.amazonaws.com/prod/products" \
-  | python3 -m json.tool | grep '"count"'
-# Kết quả mong đợi: "count": 0  (chưa seed data — bình thường)
-```
-
-**Xác minh auth được thực thi:**
-```bash
-curl -s "https://xxxxxxxxxx.execute-api.ap-southeast-1.amazonaws.com/prod/cart"
-# Kết quả mong đợi: {"message":"Unauthorized"}
 ```
 
 ---
@@ -188,7 +154,7 @@ npx cdk deploy SecurityStack --require-approval never
 
 Kết quả mong đợi:
 ```
-✅  SecurityStack
+SecurityStack
 
 Outputs:
 SecurityStack.WafWebAclArn = arn:aws:wafv2:us-east-1:123456789012:global/webacl/EcommerceWebACL/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
@@ -224,7 +190,7 @@ npx cdk deploy MonitoringStack --require-approval never
 
 Kết quả mong đợi:
 ```
-✅  MonitoringStack
+MonitoringStack
 
 Outputs:
 MonitoringStack.AlarmsTopicArn = arn:aws:sns:ap-southeast-1:123456789012:EcommerceAlarmsTopic
@@ -250,16 +216,11 @@ aws cloudwatch describe-alarms \
   --output table
 # Kết quả mong đợi: 6 alarm tất cả đều OK hoặc INSUFFICIENT_DATA
 ```
+hoặc 
 
 **Cách mở dashboard:**
-
-AWS Console
-↓
-CloudWatch
-↓
-Dashboards
-↓
-EcommerceDashboard
+![cloudwtach buoc 1](/images/5-Workshop/5.2-deploy-backend/cloudwatcha.png)
+![cloudwtach buoc 2](/images/5-Workshop/5.2-deploy-backend/cloudwatchb.png)
 
 Dashboard này được tạo bởi MonitoringStack.
 

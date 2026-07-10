@@ -28,7 +28,7 @@ pre: " <b> 1.4. </b> "
 
 ---
 
-# 🧪 Chi tiết Lab đã thực hành
+#  Chi tiết Lab đã thực hành
 
 ---
 
@@ -152,7 +152,7 @@ pre: " <b> 1.4. </b> "
 
 ---
 
-# ✅ Kết quả đạt được tuần 4:
+#  Kết quả đạt được tuần 4:
 
 - Hiểu sâu các dịch vụ Storage trên AWS:
   - Amazon S3

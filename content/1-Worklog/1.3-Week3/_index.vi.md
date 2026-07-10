@@ -27,7 +27,7 @@ pre: " <b> 1.3. </b> "
 
 ---
 
-# 🧪 Chi tiết Lab đã thực hành
+#  Chi tiết Lab đã thực hành
 
 ---
 
@@ -117,7 +117,7 @@ pre: " <b> 1.3. </b> "
 
 ---
 
-# ✅ Kết quả đạt được tuần 3:
+#  Kết quả đạt được tuần 3:
 
 - Hiểu sâu Amazon EC2:
   - Instance Types

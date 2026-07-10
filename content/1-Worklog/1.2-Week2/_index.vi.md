@@ -145,7 +145,7 @@ pre: " <b> 1.2. </b> "
 
 ---
 
-## ✅ Kết quả đạt được:
+## Kết quả đạt được:
 
 - Hiểu sâu VPC:
   - CIDR, Subnet, Routing

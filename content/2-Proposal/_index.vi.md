@@ -5,7 +5,7 @@ draft: false
 toc: true
 weight: 2
 chapter: false
-pre: "2."
+pre: "2. "
 ---
 
 # Nền tảng thương mại điện tử Serverless trên AWS
@@ -20,8 +20,6 @@ Dự án này xây dựng một nền tảng thương mại điện tử hoàn c
 Nền tảng được triển khai tại region **ap-southeast-1 (Singapore)** sử dụng **AWS Cloud Development Kit (CDK) với TypeScript** làm framework infrastructure-as-code. Dự án chứng minh khả năng áp dụng thực tế các nguyên tắc AWS Well-Architected Framework trên cả năm trụ cột: bảo mật, độ tin cậy, hiệu năng, tối ưu chi phí và xuất sắc vận hành.
 
 Dự án được nghiên cứu và triển khai trong suốt kỳ thực tập ba tháng như một minh chứng thực tiễn về thiết kế kiến trúc cloud, phát triển serverless và triển khai trên AWS.
-
-
 
 ### 2. Tuyên bố vấn đề
 
@@ -47,14 +45,14 @@ AWS cung cấp một hệ sinh thái serverless được quản lý hoàn toàn 
 
 ### 3. Mục tiêu
 
-1. Thiết kế và triển khai API thương mại điện tử serverless cấp độ sản xuất bao gồm sản phẩm, giỏ hàng và đơn hàng.
-2. Triển khai xử lý đơn hàng bất đồng bộ theo hướng sự kiện sử dụng EventBridge và SQS để tách biệt việc tạo đơn hàng khỏi quy trình xử lý.
-3. Thực thi xác thực và phân quyền sử dụng Amazon Cognito với xác minh JWT token tại lớp API.
-4. Triển khai toàn bộ cơ sở hạ tầng dưới dạng code sử dụng AWS CDK TypeScript, đảm bảo triển khai có thể lặp lại và kiểm toán được.
-5. Bảo mật ứng dụng hướng đến khách hàng bằng AWS WAF, CloudFront, TLS 1.2+ và IAM với quyền tối thiểu cần thiết.
-6. Đạt khả năng quan sát đầy đủ với CloudWatch Dashboard, sáu cảnh báo vận hành, X-Ray tracing và thông báo email qua SNS.
-7. Cung cấp ứng dụng React 19 single-page có khả năng phản hồi, phục vụ qua CloudFront với caching tài nguyên theo content-hash.
-8. Chứng minh sự phù hợp với tất cả năm trụ cột của AWS Well-Architected Framework.
+1. Thiết kế và triển khai API thương mại điện tử serverless cấp độ sản xuất cho các chức năng sản phẩm, giỏ hàng, đơn hàng và thanh toán.
+2. Xây dựng quy trình xử lý đơn hàng bất đồng bộ theo hướng sự kiện bằng EventBridge và SQS, nhằm tách riêng khâu tạo đơn hàng khỏi khâu xử lý hậu kỳ.
+3. Thực thi xác thực và phân quyền bằng Amazon Cognito, đồng thời kiểm tra JWT token tại lớp API.
+4. Triển khai toàn bộ hạ tầng dưới dạng code bằng AWS CDK với TypeScript, đảm bảo khả năng triển khai lặp lại và kiểm soát được.
+5. Bảo mật ứng dụng phía khách hàng bằng AWS WAF, CloudFront, TLS 1.2+ và IAM theo nguyên tắc tối thiểu hóa quyền.
+6. Đảm bảo khả năng quan sát đầy đủ thông qua CloudWatch Dashboard, cảnh báo vận hành, tracing bằng X-Ray và thông báo qua SNS.
+7. Cung cấp giao diện người dùng React 19 single-page có khả năng phản hồi, được phân phối qua CloudFront với cơ chế cache tài nguyên theo content-hash.
+8. Minh họa tính phù hợp với tất cả năm trụ cột của AWS Well-Architected Framework.
 
 
 
@@ -68,7 +66,7 @@ Hệ thống tuân theo mô hình thiết kế **serverless-first, event-driven*
 
 #### Luồng khách hàng
 
-Khách hàng tương tác với ứng dụng React 19 single-page được phục vụ từ CloudFront. Các lời gọi API đi từ trình duyệt qua CloudFront đến API Gateway, nơi xác thực JWT Cognito và định tuyến yêu cầu đến Lambda function phù hợp. Lambda đọc và ghi vào DynamoDB sử dụng thiết kế single-table. Khi khách hàng đặt hàng, Order Service xuất bản sự kiện `OrderCreated` lên EventBridge, nơi định tuyến đến hàng đợi SQS. Lambda Order Processor tiêu thụ thông điệp hàng đợi bất đồng bộ, cập nhật trạng thái đơn hàng qua vòng đời `PENDING → PROCESSING → COMPLETED` và xuất bản sự kiện trạng thái trở lại EventBridge. Trình duyệt của khách hàng thực hiện polling endpoint chi tiết đơn hàng mỗi ba giây để hiển thị cập nhật trạng thái trực tiếp.
+Khách hàng tương tác với ứng dụng React 19 single-page được phân phối thông qua CloudFront. Các yêu cầu API được chuyển từ trình duyệt đến API Gateway, nơi JWT Cognito được xác thực và yêu cầu được định tuyến đến Lambda function phù hợp. Lambda tương tác với DynamoDB theo mô hình single-table để đọc và ghi dữ liệu. Khi khách hàng đặt hàng, Order Service phát sự kiện `OrderCreated` lên EventBridge để kích hoạt quy trình xử lý bất đồng bộ qua SQS. Order Processor tiêu thụ tin nhắn, cập nhật trạng thái đơn hàng trong vòng đời `PENDING → PROCESSING → COMPLETED` và phát lại sự kiện trạng thái về EventBridge. Ứng dụng phía client thực hiện polling đối với endpoint chi tiết đơn hàng theo chu kỳ 3 giây để hiển thị trạng thái mới nhất một cách trực tiếp.
 
 #### Các quyết định thiết kế chính
 
@@ -82,35 +80,27 @@ Khách hàng tương tác với ứng dụng React 19 single-page được phụ
 ### 5. Tổng quan kiến trúc AWS
 
 
-```text
-Trình duyệt └── CloudFront (HTTPS, HTTP/2+3, WAF, OAC, PRICE_CLASS_200) └── S3 FrontendBucket (private, SSE-S3, versioned)
-
-API Gateway REST (ap-southeast-1, 100 rps / 200 burst) ├── Cognito Authorizer (cache 5 phút, xác thực JWT) ├── GET /products[?category][?search][?sort] → ProductServiceFunction ├── GET /products/{slugOrId} → ProductServiceFunction ├── GET /cart, POST /cart, PUT /cart, DELETE /cart/{productId} → CartServiceFunction └── POST /orders, GET /orders, GET /orders/{id} → OrderServiceFunction │ PutEvents │ ▼ EcommerceEventBus (EventBridge custom bus) │ └── Rule: OrderCreated └── OrderQueue (SQS, 180s visibility, maxReceiveCount=3) ├── OrderProcessorFunction (ARM64, Node22) │ ├── DynamoDB UpdateItem (PROCESSING/COMPLETED/FAILED) │ └── PutEvents (OrderProcessing/OrderCompleted/OrderFailed) └── OrderDLQ (SQS, lưu trữ 14 ngày)
-
-EcommerceTable (DynamoDB, PAY_PER_REQUEST, PITR, SSE, TTL) ├── GSI1 — CATEGORY#{category} → sản phẩm theo danh mục ├── GSI2 — USER#{userId} → đơn hàng theo người dùng (mới nhất trước) └── GSI3 — PRODUCT → toàn bộ catalog sản phẩm
-
-CloudWatch Dashboard + 6 Alarms → SNS Topic → Email WAF WebACL (us-east-1): IP Reputation + OWASP CRS + Known Bad Inputs + giới hạn 1000 req/5min Cognito UserPool (ap-southeast-1): xác thực email, SRP, nhóm CUSTOMER/ADMIN
-
-```
+![AWS Serverless Architecture](/images/2-Proposal/diagram.png)
 
 
 ### 6. Dịch vụ AWS
 
 | Dịch vụ | Vai trò trong nền tảng |
 |---------|----------------------|
-| **Amazon Cognito** | Đăng ký và xác thực người dùng. Đăng ký qua email với xác minh, luồng xác thực SRP và USER_PASSWORD, nhóm CUSTOMER và ADMIN, JWT token đính kèm mọi yêu cầu API được bảo vệ. |
-| **Amazon API Gateway** | Điểm vào REST API. Throttle 100 rps ổn định, burst 200. Cognito JWT authorizer với cache kết quả 5 phút. Nhật ký truy cập JSON có cấu trúc lưu trữ 30 ngày. Route public cho sản phẩm, route được bảo vệ cho giỏ hàng và đơn hàng. |
-| **AWS Lambda** | Bốn function trên ARM64 Graviton2 (Node.js 22): ProductServiceFunction, CartServiceFunction, OrderServiceFunction, OrderProcessorFunction. Tất cả được bundle bằng esbuild (minified, source-mapped). Tất cả được trace bằng AWS X-Ray. |
-| **Amazon DynamoDB** | Thiết kế single-table. Tính phí PAY_PER_REQUEST. Point-in-time recovery được bật. Mã hóa bằng khóa quản lý AWS. Thuộc tính TTL cho item giỏ hàng hết hạn. Ba GSI bao gồm truy vấn theo danh mục, lịch sử đơn hàng theo người dùng và truy cập toàn bộ catalog sản phẩm. |
-| **Amazon EventBridge** | Custom event bus `EcommerceEventBus`. Sự kiện OrderCreated được định tuyến đến SQS qua pattern matching theo `source=ecommerce.orders, detail-type=OrderCreated`. |
-| **Amazon SQS** | `EcommerceOrderQueue` (chính, visibility timeout 180s, lưu trữ 4 ngày) và `EcommerceOrderDLQ` (dead-letter, lưu trữ 14 ngày, maxReceiveCount=3). Mã hóa được quản lý bởi SQS. |
-| **Amazon S3** | Bucket private (`ecommerce-frontend-{account}-ap-southeast-1`) lưu trữ React SPA. Chặn tất cả truy cập public, mã hóa SSE-S3, versioning được bật, chỉ cho phép HTTPS. Truy cập độc quyền qua CloudFront OAC. |
-| **Amazon CloudFront** | CDN toàn cầu phục vụ React SPA. OAC (không dùng OAI legacy). HTTP/2+3. PRICE_CLASS_200. TLS 1.2 tối thiểu. Hai cache behavior: CACHING_DISABLED cho `index.html`/`config.json`, CachingOptimized cho `/assets/*` (Vite content-hashed bundle). Bảo mật header OWASP qua managed response headers policy. SPA routing qua 403/404 → `index.html`. |
-| **AWS WAF v2** | WebACL đính kèm CloudFront (us-east-1). Bốn managed rule group: IP Reputation List, Common Rule Set (OWASP CRS), Known Bad Inputs (Log4j, Spring4Shell, SSRF). Rule rate-based: 1000 yêu cầu mỗi 5 phút mỗi IP. Nhật ký WAF ghi vào CloudWatch (lưu trữ 30 ngày). |
-| **Amazon CloudWatch** | Dashboard (`EcommerceDashboard`) với năm hàng: API Gateway, EventBridge, OrderService, OrderProcessor, SQS. Sáu alarm bao gồm lỗi Lambda, throttle Lambda, tin nhắn DLQ và lỗi 5XX của API. Tất cả alarm xuất bản lên SNS khi vi phạm. |
-| **Amazon SNS** | `EcommerceAlarmsTopic` nhận thông báo alarm. Subscription email gửi cảnh báo đến hộp thư vận hành. |
-| **AWS CDK (TypeScript)** | Toàn bộ cơ sở hạ tầng được định nghĩa dưới dạng code trên tám stack: AuthStack, DatabaseStack, EventStack, ApiStack, MonitoringStack, SecurityStack, FrontendStack, InfrastructureStack. Triển khai tại ap-southeast-1. |
-| **AWS X-Ray** | Active tracing được bật trên tất cả bốn Lambda function. Trace các lời gọi DynamoDB và EventBridge downstream từ đầu đến cuối. |
+| **Amazon Cognito** | Đăng ký và xác thực người dùng. Hỗ trợ đăng ký qua email có xác minh, luồng SRP và USER_PASSWORD, nhóm CUSTOMER và ADMIN, cùng JWT token cho các yêu cầu API được bảo vệ. |
+| **Amazon API Gateway** | Điểm vào REST API với throttling, authorizer Cognito JWT, logging có cấu trúc và các route công khai/được bảo vệ cho catalog, giỏ hàng, đơn hàng và thanh toán. |
+| **AWS Lambda** | Hệ thống hiện đang dùng năm function: ProductServiceFunction, CartServiceFunction, OrderServiceFunction, PaymentServiceFunction và OrderProcessorFunction. Chúng chạy trên ARM64 Graviton2 (Node.js 22), được đóng gói bằng esbuild và bật tracing bằng AWS X-Ray. |
+| **Amazon DynamoDB** | Thiết kế single-table với thanh toán PAY_PER_REQUEST, PITR, TTL cho giỏ hàng hết hạn và các GSI phục vụ truy vấn catalog, lịch sử đơn hàng và truy cập theo người dùng. |
+| **Amazon EventBridge** | Event bus tùy chỉnh `EcommerceEventBus` dùng để phát hành sự kiện `OrderCreated` và kích hoạt xử lý đơn hàng bất đồng bộ. |
+| **Amazon SQS** | `EcommerceOrderQueue` và `EcommerceOrderDLQ` đảm bảo xử lý tin nhắn theo cơ chế retry, buffering và tách lỗi khỏi luồng chính. |
+| **Amazon Secrets Manager** | Lưu trữ thông tin xác thực VNPay cho PaymentServiceFunction, giúp cấu hình nhạy cảm không bị hardcode trong mã nguồn. |
+| **Amazon S3** | Bucket riêng tư lưu trữ build frontend React, có mã hóa, versioning, HTTPS-only và chỉ được truy cập qua CloudFront OAC. |
+| **Amazon CloudFront** | CDN toàn cầu phân phát frontend với OAC, TLS 1.2+, HTTP/2 và HTTP/3, fallback SPA routing và các policy cache cho file build của Vite. |
+| **AWS WAF v2** | WebACL gắn trên CloudFront ở us-east-1 để chặn IP đáng ngờ, pattern tấn công OWASP, input độc hại và giới hạn tốc độ theo IP. |
+| **Amazon CloudWatch** | Dashboard, alarm và log aggregation cho API Gateway, Lambda, EventBridge và SQS. |
+| **Amazon SNS** | `EcommerceAlarmsTopic` gửi thông báo từ CloudWatch alarm tới kênh email vận hành. |
+| **AWS CDK (TypeScript)** | Toàn bộ hạ tầng được định nghĩa bằng code trên tám stack: AuthStack, DatabaseStack, EventStack, ApiStack, MonitoringStack, SecurityStack, FrontendStack và InfrastructureStack. |
+| **AWS X-Ray** | Bật tracing trên các Lambda function để theo dõi toàn bộ luồng request từ API xuống DynamoDB và EventBridge. |
 
 
 
@@ -140,39 +130,41 @@ Bộ xử lý ARM64 Graviton2 tiêu thụ ít năng lượng hơn trên mỗi đ
 
 | Giai đoạn | Mô tả | Thời gian |
 |-----------|-------|----------|
-| **Giai đoạn 1** | Nền tảng cơ sở hạ tầng: thiết lập dự án CDK, AuthStack (Cognito), DatabaseStack (thiết kế DynamoDB single-table với GSI1/GSI2/GSI3), cấu trúc dự án ban đầu | Tuần 1–2 |
-| **Giai đoạn 2–4** | Phát triển API lõi: ProductServiceFunction (catalog công khai với lọc danh mục), CartServiceFunction (CRUD có xác thực), OrderServiceFunction (đặt hàng) | Tuần 3–4 |
-| **Giai đoạn 5–6** | Xử lý đơn hàng theo hướng sự kiện: EventBridge custom bus, SQS OrderQueue + DLQ, OrderProcessorFunction (vòng đời PENDING → PROCESSING → COMPLETED), X-Ray tracing | Tuần 5–6 |
-| **Giai đoạn 7** | Phát triển frontend: React 19 + Vite SPA, FrontendStack (S3 + CloudFront OAC), tiêm cấu hình runtime qua `config.json`, tích hợp Cognito SDK, SPA routing | Tuần 7–8 |
-| **Giai đoạn 8** | Tăng cường bảo mật: WAF WebACL (SecurityStack tại us-east-1), IP reputation, OWASP CRS, Known Bad Inputs, rate limiting, HTTPS enforcement, security response headers | Tuần 9 |
-| **Giai đoạn 9** | Quan sát hệ thống: MonitoringStack (CloudWatch Dashboard, 6 alarm, SNS email subscription), structured access log, wiring alarm action | Tuần 10 |
-| **Giai đoạn 10** | Cải tiến sản phẩm và UX: tìm kiếm trực tiếp, sắp xếp theo giá, URL theo slug, làm phong phú tên sản phẩm trong giỏ hàng, polling trạng thái đơn hàng, dọn dẹp frontend | Tuần 11 |
-| **Hoàn thiện** | Sửa bảo mật backend (kiểm tra quyền sở hữu đơn hàng, xác thực đầu vào, kiểm tra biến môi trường), dọn dẹp backend và frontend, tài liệu hóa | Tuần 12 |
-
+| **Giai đoạn 1** | Nền tảng hạ tầng: thiết lập dự án CDK, Cognito, DynamoDB single-table, API Gateway và khung Lambda ban đầu | Tuần 1 |
+| **Giai đoạn 2–4** | Phát triển API lõi: ProductServiceFunction, CartServiceFunction, OrderServiceFunction và PaymentServiceFunction; thiết lập EventBridge và SQS | Tuần 1–2 |
+| **Giai đoạn 5–6** | Xử lý đơn hàng theo hướng sự kiện: EventBridge custom bus, hàng đợi OrderQueue + DLQ, OrderProcessorFunction và tracing bằng X-Ray | Tuần 2 |
+| **Giai đoạn 7** | Phát triển frontend: React 19 + Vite SPA, FrontendStack (S3 + CloudFront OAC), tiêm cấu hình runtime qua `config.json` và tích hợp Cognito SDK | Tuần 2–3 |
+| **Giai đoạn 8** | Tăng cường bảo mật: WAF WebACL (SecurityStack tại us-east-1), IP reputation, OWASP CRS, Known Bad Inputs và rate limiting | Tuần 3 |
+| **Giai đoạn 9** | Quan sát hệ thống: MonitoringStack (CloudWatch Dashboard, alarm, SNS email subscription) và cấu hình logging | Tuần 3 |
+| **Giai đoạn 10** | Cải tiến UX và tối ưu hóa: tìm kiếm, sắp xếp giá, polling trạng thái đơn hàng và dọn dẹp frontend | Tuần 3 |
+| **Hoàn thiện** | Kiểm thử, hardening backend/frontend, xử lý bảo mật và hoàn thiện tài liệu | Tuần 3 |
 
 
 ### 9. Ước tính chi phí
 
-Tất cả ước tính chi phí sử dụng region **AWS Asia Pacific (Singapore) ap-southeast-1** và phản ánh mức sử dụng dự kiến cho nền tảng ở quy mô demo với lưu lượng vừa phải (khoảng 1.000 yêu cầu API mỗi ngày).
+Để tham khảo, tệp dự toán hỗ trợ có thể tải xuống tại đây: <a href="/files/my-estimate.csv" download>Tải xuống my-estimate.csv</a>.
+
+Tất cả ước tính chi phí sử dụng region **AWS Asia Pacific (Singapore) ap-southeast-1** và phản ánh mức sử dụng dự kiến cho nền tảng ở quy mô demo với lưu lượng vừa phải (khoảng 1.000 yêu cầu API mỗi ngày). Số liệu được tính theo **AWS Pricing Calculator** (ap-southeast-1, tháng 7/2025).
 
 | Dịch vụ | Giả định sử dụng | Chi phí ước tính/tháng |
 |---------|----------------|----------------------|
-| AWS Lambda | 30.000 lần gọi/tháng, 512 MB, trung bình 200ms | ~$0,00 (free tier: 1M lần gọi) |
-| Amazon API Gateway | 30.000 lời gọi REST API/tháng | ~$0,11 |
-| Amazon DynamoDB | PAY_PER_REQUEST, ~50.000 đọc + 10.000 ghi/tháng | ~$0,04 |
+| AWS Lambda | 30.000 lần gọi/tháng, ARM64, 512 MB, 200ms | ~$0,00 (free tier: 1M lần gọi) |
+| Amazon API Gateway | 30.000 lời gọi REST API/tháng | ~$0,13 |
+| Amazon DynamoDB | PAY_PER_REQUEST, 0,1 GB storage, PITR 1 GB | ~$0,27 |
 | Amazon SQS | ~1.000 tin nhắn đơn hàng/tháng | ~$0,00 (free tier: 1M request) |
-| Amazon EventBridge | ~1.000 sự kiện tùy chỉnh/tháng | ~$0,00 (free tier: 1M sự kiện) |
-| Amazon S3 | ~100 MB tài nguyên SPA, ~10.000 yêu cầu CloudFront | ~$0,01 |
-| Amazon CloudFront | ~5 GB truyền dữ liệu/tháng, PRICE_CLASS_200 | ~$0,43 |
-| AWS WAF | 1 WebACL, ~30.000 yêu cầu/tháng | ~$5,00 (WebACL: $5,00/tháng) |
-| Amazon Cognito | <50.000 MAU | ~$0,00 (free tier: 50.000 MAU) |
-| Amazon CloudWatch | 1 dashboard, 6 alarm, ~5 GB log/tháng | ~$3,50 |
+| Amazon EventBridge | ~3.000 sự kiện tùy chỉnh/tháng | ~$0,00 (free tier: 1M sự kiện) |
+| Amazon Secrets Manager | 1 secret, thời gian lưu trữ 30 ngày, ~100 API calls/tháng | ~$0,40 |
+| Amazon S3 | ~10 MB tài nguyên SPA, 100 PUT request | ~$0,00 |
+| Amazon CloudFront | ~1 GB truyền dữ liệu/tháng, PRICE_CLASS_200 | ~$0,14 |
+| **AWS WAF** | 1 WebACL, 1 custom rule, 3 managed rule groups, ~30.000 request | **~$9,02** |
+| Amazon Cognito | <50.000 MAU, Lite Tier | ~$0,01 |
+| Amazon CloudWatch | 1 dashboard, 6 alarm, 0,5 GB log/tháng | ~$0,95 |
 | Amazon SNS | <1.000 thông báo email/tháng | ~$0,00 |
-| **Tổng cộng** | | **~$9,09/tháng** |
+| **Tổng cộng** | | **$10,92/tháng (~$131,07/năm)** |
 
-Chi phí lớn nhất là phí cố định WAF WebACL ($5,00/tháng). Ở mức zero traffic, nền tảng tốn khoảng $5,00/tháng. Tất cả dịch vụ khác nằm trong giới hạn free tier AWS ở quy mô demo.
+Chi phí lớn nhất là **AWS WAF (~$9,02/tháng, chiếm khoảng 83% tổng chi phí)** gồm: $5,00 phí WebACL cố định + $3,00 cho 3 managed rule group + $1,00 cho 1 custom rate-limit rule. Ở mức zero traffic, nền tảng tốn khoảng **$9,10/tháng** (chỉ phí cố định WAF + CloudWatch), còn Secrets Manager chỉ làm tăng chi phí rất nhỏ.
 
-Đối với triển khai quy mô sản xuất với 100.000 yêu cầu/ngày và 10.000 người dùng hoạt động hàng tháng, chi phí ước tính sẽ vào khoảng $35–$60/tháng — vẫn thấp hơn đáng kể so với các triển khai dựa trên máy chủ tương đương.
+Đối với triển khai quy mô sản xuất với 100.000 yêu cầu/ngày và 10.000 người dùng hoạt động hàng tháng, chi phí ước tính sẽ vào khoảng **$40–$70/tháng** — vẫn thấp hơn đáng kể so với các triển khai dựa trên máy chủ tương đương.
 
 
 
@@ -203,7 +195,7 @@ Chi phí lớn nhất là phí cố định WAF WebACL ($5,00/tháng). Ở mức
 
 #### Sản phẩm kỹ thuật
 
-1. **Tám CDK stack có thể triển khai độc lập** bao gồm toàn bộ nền tảng — xác thực, cơ sở dữ liệu, API, xử lý sự kiện, giám sát, bảo mật và phân phối frontend.
+1. **Tám CDK stack có thể triển khai độc lập** bao gồm cotoàn bộ nền tảng — xác thực, cơ sở dữ liệu, API, xử lý sự kiện, giám sát, bảo mật và phân phối frontend.
 
 2. **Ba Lambda function cấp sản xuất** xử lý duyệt catalog sản phẩm công khai (với lọc danh mục, tìm kiếm text, sắp xếp theo giá và URL theo slug) cùng quản lý giỏ hàng và đơn hàng có xác thực.
 
@@ -218,7 +210,7 @@ Chi phí lớn nhất là phí cố định WAF WebACL ($5,00/tháng). Ở mức
 #### Kết quả học tập
 
 - Áp dụng AWS CDK TypeScript cho infrastructure-as-code trên 8 stack và khoảng 2.000 dòng định nghĩa CDK.
-- Triển khai thiết kế DynamoDB single-table với access pattern dựa trên GSI và không có thao tác Scan.
+- Triển khai thiết kế DynamoDB single-table vớiláy access pattern dựa trên GSI và không có thao tác Scan.
 - Xây dựng pipeline xử lý bất đồng bộ theo hướng sự kiện với EventBridge, SQS và Lambda.
 - Áp dụng AWS Well-Architected Framework trên tất cả năm trụ cột trong triển khai thực tế.
 - Hoàn thành ứng dụng fullstack serverless từ tài khoản AWS trống đến URL CloudFront có thể truy cập công khai.

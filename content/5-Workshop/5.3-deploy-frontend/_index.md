@@ -49,7 +49,7 @@ This step takes **5–10 minutes** — CDK uploads all assets to S3 and creates 
 
 Expected:
 ```
-✅  FrontendStack
+FrontendStack
 
 Outputs:
 FrontendStack.CloudFrontDistributionId = EXXXXXXXXXXXXXXXXX
@@ -57,24 +57,6 @@ FrontendStack.CloudFrontDomainName = dXXXXXXXXXXXXXX.cloudfront.net
 FrontendStack.FrontendBucketName = ecommerce-frontend-123456789012-ap-southeast-1
 FrontendStack.FrontendUrl = https://dXXXXXXXXXXXXXX.cloudfront.net
 ```
-
-**Verify the site loads:**
-```bash
-curl -o /dev/null -s -w "%{http_code}" \
-  "https://dXXXXXXXXXXXXXX.cloudfront.net"
-# Expected: 200
-```
-
-**Verify security headers:**
-```bash
-curl -sI "https://dXXXXXXXXXXXXXX.cloudfront.net" \
-  | grep -iE "x-frame|strict-transport|x-content"
-# Expected:
-# x-frame-options: SAMEORIGIN
-# strict-transport-security: max-age=31536000; includeSubDomains
-# x-content-type-options: nosniff
-```
-
 ---
 
 ### 5.3.3 Configure Runtime Config
@@ -123,7 +105,7 @@ Expected — Lambda functions updated:
 ApiStack |  UPDATE_COMPLETE | AWS::Lambda::Function | ProductServiceFunction
 ApiStack |  UPDATE_COMPLETE | AWS::Lambda::Function | CartServiceFunction
 ApiStack |  UPDATE_COMPLETE | AWS::Lambda::Function | OrderServiceFunction
-✅  ApiStack
+ApiStack
 ```
 
 **Step 3 — Rebuild frontend and redeploy FrontendStack** to regenerate `config.json` with the correct values:
@@ -155,7 +137,7 @@ npx cdk deploy InfrastructureStack --require-approval never
 
 Expected:
 ```
-✅  InfrastructureStack (no changes)
+InfrastructureStack (no changes)
 ```
 
 This stack contains no resources — it is a dependency orchestration placeholder.

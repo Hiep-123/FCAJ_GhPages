@@ -27,20 +27,20 @@ Kết quả mong đợi:
 ```
 🌱 Seeding table: EcommerceTable (region: ap-southeast-1)
 
-  ✅ prod-laptop-001          | ProBook X15 Laptop
-  ✅ prod-laptop-002          | UltraSlim Air 13
-  ✅ prod-laptop-003          | GameForce RTX Laptop
-  ✅ prod-phone-001           | Nova Pro 12 Smartphone
-  ✅ prod-phone-002           | Budget Buddy 5G
-  ✅ prod-phone-003           | FoldPro Z Flip
-  ✅ prod-audio-001           | SoundMax ANC Headphones
-  ✅ prod-audio-002           | BassBoost TWS Earbuds
-  ✅ prod-acc-001             | ProCharge 65W GaN Charger
-  ✅ prod-acc-002             | MechaStrike RGB Keyboard
-  ✅ prod-game-001            | StreamBox 4K Console
-  ✅ prod-game-002            | ProAim Gaming Mouse
+  prod-laptop-001          | ProBook X15 Laptop
+  prod-laptop-002          | UltraSlim Air 13
+  prod-laptop-003          | GameForce RTX Laptop
+  prod-phone-001           | Nova Pro 12 Smartphone
+  prod-phone-002           | Budget Buddy 5G
+  prod-phone-003           | FoldPro Z Flip
+  prod-audio-001           | SoundMax ANC Headphones
+  prod-audio-002           | BassBoost TWS Earbuds
+  prod-acc-001             | ProCharge 65W GaN Charger
+  prod-acc-002             | MechaStrike RGB Keyboard
+  prod-game-001            | StreamBox 4K Console
+  prod-game-002            | ProAim Gaming Mouse
 
-📊 Seed complete: 12 succeeded, 0 failed out of 12 products.
+Seed complete: 12 succeeded, 0 failed out of 12 products.
 ```
 
 **Xác minh một sản phẩm đã được ghi:**
@@ -97,10 +97,10 @@ Kết quả mong đợi:
 ```
 👤 Creating demo users in pool: ap-southeast-1_XXXXXXXXX (region: ap-southeast-1)
 
-  ✅ Created CUSTOMER  | customer@demo.com
-  ✅ Created ADMIN     | admin@demo.com
+  Created CUSTOMER  | customer@demo.com
+  Created ADMIN     | admin@demo.com
 
-✅ Demo users ready.
+Demo users ready.
 
   Customer: customer@demo.com
   Admin:    admin@demo.com
@@ -161,6 +161,6 @@ Dùng giá trị `AuthStack.UserPoolClientId` từ outputs ở bước 5.2.1 cho
 |-----|----------|
 | `Could not resolve table name` | Đảm bảo `CDK_DEFAULT_REGION=ap-southeast-1` trong `.env` và DatabaseStack đã được deploy |
 | `AccessDeniedException` khi seed | IAM user cần quyền `dynamodb:PutItem` trên EcommerceTable |
-| `⚠️ Demo user env vars not set` | Đặt tất cả năm biến trong `infrastructure/.env` |
+| `Demo user env vars not set` | Đặt tất cả năm biến trong `infrastructure/.env` |
 | `InvalidPasswordException` | Mật khẩu phải có chữ hoa, chữ thường, số và ký tự đặc biệt — ví dụ `Demo@Pass2024!` |
 | Người dùng tồn tại nhưng status là `FORCE_CHANGE_PASSWORD` | Script không hoàn thành việc đặt mật khẩu vĩnh viễn; xóa người dùng trong Cognito console và chạy lại `seed:users` |

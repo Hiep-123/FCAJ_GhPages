@@ -1,44 +1,41 @@
 ---
 title: "Events Participated"
-date: 2024-01-01
+date: 2026-07-09
 weight: 4
 chapter: false
 pre: " <b> 4. </b> "
 ---
 
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy it verbatim** for your report, including this warning.
-{{% /notice %}}
+During my internship at **First Cloud AI Journey**, I participated in **two major technical events** organized by the program. Each event provided valuable knowledge about Artificial Intelligence (AI), Cloud Computing, DevOps, and modern technology trends. In addition to learning from experienced speakers, I had the opportunity to interact with industry professionals, broaden my career perspective, and gain practical experience.
 
-> In this section, you should list and describe in detail the events you have participated in during your internship or work experience.  
-> 
-> Each event should be presented in the format Event 1, Event 2, Event 3…, along with the following details:
-> * Event name
-> * Date and time
-> * Location (if applicable)
-> * Your role in the event (attendee, event support, speaker, etc.)
-> * A brief description of the event’s content and main activities
-> * Outcomes or value gained (lessons learned, new skills, contribution to the team/project)
-> * This listing helps demonstrate your actual participation as well as the soft skills and experience you have gained from each event.
+### Event 1
 
-During my internship, I participated in two events. Each one was a memorable experience that provided new, interesting, and useful knowledge, along with gifts and wonderful moments.
+**Event Name:** AI Summit Day 1 – Technical Sharing Sessions
 
-### [Event 1](4.1-Event1/)  
-&emsp;**Event Name:** GenAI-powered App-DB Modernization workshop  
+**Time:** 23/05/2026
 
-&emsp;**Date & Time:** 09:00, August 13, 2025  
+**Location:** First Cloud AI Journey Program (official event venue)
 
-&emsp;**Location:** 26th Floor, Bitexco Tower, 02 Hai Trieu Street, Saigon Ward, Ho Chi Minh City  
+**Role:** Attendee
 
-&emsp;**Role:** Attendee  
+**Description:** This event consisted of multiple technical sessions covering topics such as Build Second Brain, Amazon Quick Suite, Amazon CloudFront, LotusHacks, Large Language Models (LLMs), and Enterprise Multi-Agent Systems. The speakers shared practical experiences in building AI systems, developing products, and implementing AWS-based solutions.
+
+**Value Gained:** I strengthened my knowledge of AI, Cloud Computing, system architecture, Context Engineering, Multi-Agent Systems, and AWS services. These insights have been directly applied to my AWS Serverless E-Commerce project and have also helped shape my career path toward becoming a Cloud Engineer.
 
 ---
 
-### [Event 2](4.2-Event2/)  
-&emsp;**Event Name:** GenAI-powered App-DB Modernization workshop  
+### Event 2
 
-&emsp;**Date & Time:** 09:00, August 13, 2025  
+**Event Name:** AI Summit Day 2 – Enterprise AI & Cloud Applications
 
-&emsp;**Location:** 26th Floor, Bitexco Tower, 02 Hai Trieu Street, Saigon Ward, Ho Chi Minh City  
+**Time:** 27/06/2026
 
-&emsp;**Role:** Attendee  
+**Location:** First Cloud AI Journey Program (official event venue)
+
+**Role:** Attendee
+
+**Description:** This event focused on AI Agents for Cloud Operations, Voice AI, DevOps AI Agents, Amazon Quick, Workforce Planning, and secure MCP Server connectivity in enterprise environments. The sessions combined technical presentations with live demonstrations, providing practical insights into deploying AI solutions in production.
+
+**Value Gained:** I gained a deeper understanding of applying AI to Cloud Operations, DevOps, security, Voice AI, and Enterprise AI. I also learned important principles related to security, access control, observability, and enterprise AI architecture, which will be valuable for future projects.
+
+Overall, these two events significantly expanded my technical knowledge, kept me updated with emerging technologies, strengthened my self-learning ability, and improved my problem-solving mindset. They also contributed greatly to the successful completion of my internship and the development of my AWS Serverless E-Commerce project.

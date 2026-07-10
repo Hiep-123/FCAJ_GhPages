@@ -27,20 +27,20 @@ Expected:
 ```
 🌱 Seeding table: EcommerceTable (region: ap-southeast-1)
 
-  ✅ prod-laptop-001          | ProBook X15 Laptop
-  ✅ prod-laptop-002          | UltraSlim Air 13
-  ✅ prod-laptop-003          | GameForce RTX Laptop
-  ✅ prod-phone-001           | Nova Pro 12 Smartphone
-  ✅ prod-phone-002           | Budget Buddy 5G
-  ✅ prod-phone-003           | FoldPro Z Flip
-  ✅ prod-audio-001           | SoundMax ANC Headphones
-  ✅ prod-audio-002           | BassBoost TWS Earbuds
-  ✅ prod-acc-001             | ProCharge 65W GaN Charger
-  ✅ prod-acc-002             | MechaStrike RGB Keyboard
-  ✅ prod-game-001            | StreamBox 4K Console
-  ✅ prod-game-002            | ProAim Gaming Mouse
+  prod-laptop-001          | ProBook X15 Laptop
+  prod-laptop-002          | UltraSlim Air 13
+  prod-laptop-003          | GameForce RTX Laptop
+  prod-phone-001           | Nova Pro 12 Smartphone
+  prod-phone-002           | Budget Buddy 5G
+  prod-phone-003           | FoldPro Z Flip
+  prod-audio-001           | SoundMax ANC Headphones
+  prod-audio-002           | BassBoost TWS Earbuds
+  prod-acc-001             | ProCharge 65W GaN Charger
+  prod-acc-002             | MechaStrike RGB Keyboard
+  prod-game-001            | StreamBox 4K Console
+  prod-game-002            | ProAim Gaming Mouse
 
-📊 Seed complete: 12 succeeded, 0 failed out of 12 products.
+Seed complete: 12 succeeded, 0 failed out of 12 products.
 ```
 
 **Verify a product was written:**
@@ -97,10 +97,10 @@ Expected:
 ```
 👤 Creating demo users in pool: ap-southeast-1_XXXXXXXXX (region: ap-southeast-1)
 
-  ✅ Created CUSTOMER  | customer@demo.com
-  ✅ Created ADMIN     | admin@demo.com
+  Created CUSTOMER  | customer@demo.com
+  Created ADMIN     | admin@demo.com
 
-✅ Demo users ready.
+Demo users ready.
 
   Customer: customer@demo.com
   Admin:    admin@demo.com
@@ -161,6 +161,6 @@ Use the `AuthStack.UserPoolClientId` value from the outputs in step 5.2.1 for `<
 |---------|---------|
 | `Could not resolve table name` | Ensure `CDK_DEFAULT_REGION=ap-southeast-1` is in `.env` and DatabaseStack is deployed |
 | `AccessDeniedException` on seed | Your IAM user needs `dynamodb:PutItem` on EcommerceTable |
-| `⚠️ Demo user env vars not set` | Set all five variables in `infrastructure/.env` |
+| `Demo user env vars not set` | Set all five variables in `infrastructure/.env` |
 | `InvalidPasswordException` | Password must have uppercase, lowercase, digit, and symbol — e.g. `Demo@Pass2024!` |
 | Users exist but status is `FORCE_CHANGE_PASSWORD` | Script did not finish setting permanent password; delete the users in Cognito console and re-run `seed:users` |

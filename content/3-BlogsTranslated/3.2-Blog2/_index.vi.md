@@ -1,127 +1,60 @@
 ---
 title: "Blog 2"
-date: 2024-01-01
+date: 2026-07-08
 weight: 1
 chapter: false
 pre: " <b> 3.2. </b> "
 ---
 
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
 
-# Bắt đầu với healthcare data lakes: Sử dụng microservices
+# AWS GenAIIC Partner Agent Factory – Đưa các AI Agent vào AWS Marketplace
 
-Các data lake có thể giúp các bệnh viện và cơ sở y tế chuyển dữ liệu thành những thông tin chi tiết về doanh nghiệp và duy trì hoạt động kinh doanh liên tục, đồng thời bảo vệ quyền riêng tư của bệnh nhân. **Data lake** là một kho lưu trữ tập trung, được quản lý và bảo mật để lưu trữ tất cả dữ liệu của bạn, cả ở dạng ban đầu và đã xử lý để phân tích. data lake cho phép bạn chia nhỏ các kho chứa dữ liệu và kết hợp các loại phân tích khác nhau để có được thông tin chi tiết và đưa ra các quyết định kinh doanh tốt hơn.
+Chào mọi người trong cộng đồng AWS Study Group VN!
 
-Bài đăng trên blog này là một phần của loạt bài lớn hơn về việc bắt đầu cài đặt data lake dành cho lĩnh vực y tế. Trong bài đăng blog cuối cùng của tôi trong loạt bài, *“Bắt đầu với data lake dành cho lĩnh vực y tế: Đào sâu vào Amazon Cognito”*, tôi tập trung vào các chi tiết cụ thể của việc sử dụng Amazon Cognito và Attribute Based Access Control (ABAC) để xác thực và ủy quyền người dùng trong giải pháp data lake y tế. Trong blog này, tôi trình bày chi tiết cách giải pháp đã phát triển ở cấp độ cơ bản, bao gồm các quyết định thiết kế mà tôi đã đưa ra và các tính năng bổ sung được sử dụng. Bạn có thể truy cập các code samples cho giải pháp tại Git repo này để tham khảo.
+Khi AI Agent ngày càng được ứng dụng rộng rãi trong doanh nghiệp, thách thức lớn nhất không còn là xây dựng bản thử nghiệm mà là triển khai thực tế ở quy mô lớn. Để hỗ trợ doanh nghiệp rút ngắn khoảng cách này, AWS đã giới thiệu Generative AI Innovation Center Partner Agent Factory (PAF).
 
----
+Đây là chương trình hợp tác giữa AWS Generative AI Innovation Center và các AWS Partners, nhằm phát triển những AI Agent đã được kiểm chứng và sẵn sàng triển khai thông qua AWS Marketplace.
 
-## Hướng dẫn kiến trúc
+Trong bài viết này, chúng ta sẽ cùng tìm hiểu:
 
-Thay đổi chính kể từ lần trình bày cuối cùng của kiến trúc tổng thể là việc tách dịch vụ đơn lẻ thành một tập hợp các dịch vụ nhỏ để cải thiện khả năng bảo trì và tính linh hoạt. Việc tích hợp một lượng lớn dữ liệu y tế khác nhau thường yêu cầu các trình kết nối chuyên biệt cho từng định dạng; bằng cách giữ chúng được đóng gói riêng biệt với microservices, chúng ta có thể thêm, xóa và sửa đổi từng trình kết nối mà không ảnh hưởng đến những kết nối khác. Các microservices được kết nối rời thông qua tin nhắn publish/subscribe tập trung trong cái mà tôi gọi là “pub/sub hub”.
+- Partner Agent Factory là gì
+- Vì sao chương trình này mang lại giá trị cho doanh nghiệp
+- Những AI Agent nổi bật vừa được giới thiệu trên AWS Marketplace
 
-Giải pháp này đại diện cho những gì tôi sẽ coi là một lần lặp nước rút hợp lý khác từ last post của tôi. Phạm vi vẫn được giới hạn trong việc nhập và phân tích cú pháp đơn giản của các **HL7v2 messages** được định dạng theo **Quy tắc mã hóa 7 (ER7)** thông qua giao diện REST.
+## 1. Partner Agent Factory là gì?
 
-**Kiến trúc giải pháp bây giờ như sau:**
+PAF là mô hình đồng phát triển (co-innovation) giữa AWS và các đối tác nhằm tạo ra các AI Agent phục vụ những bài toán thực tế trong nhiều lĩnh vực.
 
-> *Hình 1. Kiến trúc tổng thể; những ô màu thể hiện những dịch vụ riêng biệt.*
+Các giải pháp được xây dựng trên Amazon Bedrock, Amazon Bedrock AgentCore và Strands Agents, giúp doanh nghiệp triển khai AI nhanh hơn mà không phải bắt đầu từ đầu.
 
----
+## 2. Lợi ích của chương trình
 
-Mặc dù thuật ngữ *microservices* có một số sự mơ hồ cố hữu, một số đặc điểm là chung:  
-- Chúng nhỏ, tự chủ, kết hợp rời rạc  
-- Có thể tái sử dụng, giao tiếp thông qua giao diện được xác định rõ  
-- Chuyên biệt để giải quyết một việc  
-- Thường được triển khai trong **event-driven architecture**
+So với việc tự phát triển AI Agent, các giải pháp trong PAF mang đến nhiều ưu điểm:
 
-Khi xác định vị trí tạo ranh giới giữa các microservices, cần cân nhắc:  
-- **Nội tại**: công nghệ được sử dụng, hiệu suất, độ tin cậy, khả năng mở rộng  
-- **Bên ngoài**: chức năng phụ thuộc, tần suất thay đổi, khả năng tái sử dụng  
-- **Con người**: quyền sở hữu nhóm, quản lý *cognitive load*
+- rút ngắn thời gian từ ý tưởng đến triển khai thực tế
+- ứng dụng kinh nghiệm từ AWS và các đối tác chuyên ngành
+- tận dụng các dịch vụ AI mới nhất của AWS
+- triển khai và mua sắm dễ dàng thông qua AWS Marketplace, đồng thời tích hợp với chi phí sử dụng AWS hiện có
 
----
+## 3. Một số AI Agent nổi bật
 
-## Lựa chọn công nghệ và phạm vi giao tiếp
+Trong đợt công bố mới, AWS giới thiệu nhiều giải pháp AI phục vụ các nhu cầu khác nhau, tiêu biểu như:
 
-| Phạm vi giao tiếp                        | Các công nghệ / mô hình cần xem xét                                                        |
-| ---------------------------------------- | ------------------------------------------------------------------------------------------ |
-| Trong một microservice                   | Amazon Simple Queue Service (Amazon SQS), AWS Step Functions                               |
-| Giữa các microservices trong một dịch vụ | AWS CloudFormation cross-stack references, Amazon Simple Notification Service (Amazon SNS) |
-| Giữa các dịch vụ                         | Amazon EventBridge, AWS Cloud Map, Amazon API Gateway                                      |
+- **AIR Document Translation**: tự động phân tích, dịch và kiểm tra chất lượng tài liệu bằng AI.
+- **SPACE LENS**: khai thác dữ liệu từ video bằng ngôn ngữ tự nhiên để tạo ra các thông tin hữu ích.
+- **AIR Agent Governance**: quản lý toàn bộ vòng đời AI Agent, từ triển khai, vận hành đến kiểm soát chi phí và tuân thủ.
 
----
+Các giải pháp này hướng đến nhiều lĩnh vực như tài chính, bán lẻ, chăm sóc khách hàng, y tế và quản trị AI trong doanh nghiệp.
 
-## The pub/sub hub
+## Kết luận
 
-Việc sử dụng kiến trúc **hub-and-spoke** (hay message broker) hoạt động tốt với một số lượng nhỏ các microservices liên quan chặt chẽ.  
-- Mỗi microservice chỉ phụ thuộc vào *hub*  
-- Kết nối giữa các microservice chỉ giới hạn ở nội dung của message được xuất  
-- Giảm số lượng synchronous calls vì pub/sub là *push* không đồng bộ một chiều
+Partner Agent Factory là một bước tiến mới của AWS trong việc đưa các AI Agent từ giai đoạn thử nghiệm đến triển khai thực tế. Với sự kết hợp giữa Amazon Bedrock, Amazon Bedrock AgentCore, Strands Agents và AWS Marketplace, chương trình giúp doanh nghiệp:
 
-Nhược điểm: cần **phối hợp và giám sát** để tránh microservice xử lý nhầm message.
+- rút ngắn thời gian triển khai AI
+- tiếp cận các AI Agent đã được kiểm chứng
+- giảm độ phức tạp trong quá trình phát triển
+- dễ dàng mở rộng và quản lý AI ở quy mô doanh nghiệp
 
----
+Đối với các tổ chức đang tìm kiếm giải pháp Generative AI trên AWS, đây là một hướng tiếp cận đáng tham khảo để tăng tốc quá trình chuyển đổi số và khai thác hiệu quả sức mạnh của AI.
 
-## Core microservice
-
-Cung cấp dữ liệu nền tảng và lớp truyền thông, gồm:  
-- **Amazon S3** bucket cho dữ liệu  
-- **Amazon DynamoDB** cho danh mục dữ liệu  
-- **AWS Lambda** để ghi message vào data lake và danh mục  
-- **Amazon SNS** topic làm *hub*  
-- **Amazon S3** bucket cho artifacts như mã Lambda
-
-> Chỉ cho phép truy cập ghi gián tiếp vào data lake qua hàm Lambda → đảm bảo nhất quán.
-
----
-
-## Front door microservice
-
-- Cung cấp API Gateway để tương tác REST bên ngoài  
-- Xác thực & ủy quyền dựa trên **OIDC** thông qua **Amazon Cognito**  
-- Cơ chế *deduplication* tự quản lý bằng DynamoDB thay vì SNS FIFO vì:
-  1. SNS deduplication TTL chỉ 5 phút
-  2. SNS FIFO yêu cầu SQS FIFO
-  3. Chủ động báo cho sender biết message là bản sao
-
----
-
-## Staging ER7 microservice
-
-- Lambda “trigger” đăng ký với pub/sub hub, lọc message theo attribute  
-- Step Functions Express Workflow để chuyển ER7 → JSON  
-- Hai Lambda:
-  1. Sửa format ER7 (newline, carriage return)
-  2. Parsing logic  
-- Kết quả hoặc lỗi được đẩy lại vào pub/sub hub
-
----
-
-## Tính năng mới trong giải pháp
-
-### 1. AWS CloudFormation cross-stack references
-Ví dụ *outputs* trong core microservice:
-```yaml
-Outputs:
-  Bucket:
-    Value: !Ref Bucket
-    Export:
-      Name: !Sub ${AWS::StackName}-Bucket
-  ArtifactBucket:
-    Value: !Ref ArtifactBucket
-    Export:
-      Name: !Sub ${AWS::StackName}-ArtifactBucket
-  Topic:
-    Value: !Ref Topic
-    Export:
-      Name: !Sub ${AWS::StackName}-Topic
-  Catalog:
-    Value: !Ref Catalog
-    Export:
-      Name: !Sub ${AWS::StackName}-Catalog
-  CatalogArn:
-    Value: !GetAtt Catalog.Arn
-    Export:
-      Name: !Sub ${AWS::StackName}-CatalogArn
+Nguồn tham khảo: https://aws.amazon.com

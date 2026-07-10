@@ -49,7 +49,7 @@ Bước này mất **5–10 phút** — CDK tải tất cả asset lên S3 và t
 
 Kết quả mong đợi:
 ```
-✅  FrontendStack
+FrontendStack
 
 Outputs:
 FrontendStack.CloudFrontDistributionId = EXXXXXXXXXXXXXXXXX
@@ -57,24 +57,6 @@ FrontendStack.CloudFrontDomainName = dXXXXXXXXXXXXXX.cloudfront.net
 FrontendStack.FrontendBucketName = ecommerce-frontend-123456789012-ap-southeast-1
 FrontendStack.FrontendUrl = https://dXXXXXXXXXXXXXX.cloudfront.net
 ```
-
-**Xác minh trang web tải được:**
-```bash
-curl -o /dev/null -s -w "%{http_code}" \
-  "https://dXXXXXXXXXXXXXX.cloudfront.net"
-# Kết quả mong đợi: 200
-```
-
-**Xác minh security headers:**
-```bash
-curl -sI "https://dXXXXXXXXXXXXXX.cloudfront.net" \
-  | grep -iE "x-frame|strict-transport|x-content"
-# Kết quả mong đợi:
-# x-frame-options: SAMEORIGIN
-# strict-transport-security: max-age=31536000; includeSubDomains
-# x-content-type-options: nosniff
-```
-
 ---
 
 ### 5.3.3 Cấu hình Runtime Config
@@ -123,7 +105,7 @@ Kết quả mong đợi — Lambda function được cập nhật:
 ApiStack |  UPDATE_COMPLETE | AWS::Lambda::Function | ProductServiceFunction
 ApiStack |  UPDATE_COMPLETE | AWS::Lambda::Function | CartServiceFunction
 ApiStack |  UPDATE_COMPLETE | AWS::Lambda::Function | OrderServiceFunction
-✅  ApiStack
+ApiStack
 ```
 
 **Bước 3 — Rebuild frontend và redeploy FrontendStack** để tái tạo `config.json` với các giá trị đúng:
@@ -155,7 +137,7 @@ npx cdk deploy InfrastructureStack --require-approval never
 
 Kết quả mong đợi:
 ```
-✅  InfrastructureStack (no changes)
+InfrastructureStack (no changes)
 ```
 
 Stack này không có tài nguyên — đây là placeholder điều phối dependency.

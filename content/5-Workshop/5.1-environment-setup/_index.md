@@ -14,7 +14,7 @@ Before deploying anything to AWS, you need to install the required tools, config
 
 ### Estimated deployment cost
 
-Approximate monthly cost: ~$9.09/month.
+Approximate monthly cost: ~$10.92/month.
 
 Reminder: destroy the resources after testing to avoid ongoing charges.
 
@@ -167,6 +167,11 @@ CDK_DEFAULT_REGION=ap-southeast-1
 # ── Fill AFTER FrontendStack deploy ──────────────────────────────────
 ALLOWED_ORIGIN=                         # https://dXXXX.cloudfront.net
 
+# ── VNPay (used by ApiStack to create secret VNPayConfig) ────────────
+VNP_TMN_CODE=                           # your VNPay merchant code
+VNP_HASH_SECRET=                        # your VNPay hash secret
+VNP_URL=https://sandbox.vnpayment.vn/paymentv2/vpcpay.html
+
 # ── Alarm email ───────────────────────────────────────────────────────
 ALERT_EMAIL=your@email.com
 
@@ -179,8 +184,6 @@ COGNITO_USER_POOL_ID=                   # ap-southeast-1_XXXXXXXXX
 # ── Demo user credentials ─────────────────────────────────────────────
 DEMO_CUSTOMER_EMAIL=customer@demo.com
 DEMO_CUSTOMER_PASSWORD=Demo@Pass2024!  # min 8 chars, upper+lower+digit+symbol
-DEMO_ADMIN_EMAIL=admin@demo.com
-DEMO_ADMIN_PASSWORD=Admin@Pass2024!
 ```
 
 #### Create the frontend environment file
@@ -205,6 +208,44 @@ VITE_ENABLE_MOCKS=false
 cd ../infrastructure
 ```
 
+### 5.1.4.1 Prepare VNPay credentials (required for full checkout flow)
+
+In the current architecture, `ApiStack` reads VNPay values from `infrastructure/.env` and uses them to create the Secrets Manager secret `VNPayConfig` automatically during deployment. The Lambda payment handler then reads the secret at runtime.
+
+#### Values to set in `infrastructure/.env`
+
+- `VNP_TMN_CODE`: your VNPay merchant code from the sandbox account.
+- `VNP_HASH_SECRET`: the VNPay hash secret associated with that merchant.
+- `VNP_URL`: the VNPay payment endpoint. For sandbox testing, use `https://sandbox.vnpayment.vn/paymentv2/vpcpay.html`.
+- `ALLOWED_ORIGIN`: your deployed CloudFront origin, for example `https://d123abc.cloudfront.net`. The stack builds `VNP_RETURN_URL` as `${ALLOWED_ORIGIN}/payment/vnpay-return`.
+
+Example:
+
+```bash
+VNP_TMN_CODE=YOUR_TMN_CODE
+VNP_HASH_SECRET=YOUR_HASH_SECRET
+VNP_URL=https://sandbox.vnpayment.vn/paymentv2/vpcpay.html
+ALLOWED_ORIGIN=https://YOUR_CLOUDFRONT_DOMAIN
+```
+
+The secret created by the stack contains these JSON fields:
+
+- `VNP_TMN_CODE`
+- `VNP_HASH_SECRET`
+- `VNP_URL`
+- `VNP_RETURN_URL`
+
+If you are only testing catalog, cart, and order flows, you can skip this step, but the VNPay checkout flow will not be fully functional.
+
+#### Verify the secret after deployment
+
+```bash
+aws secretsmanager describe-secret --secret-id VNPayConfig --region ap-southeast-1
+aws secretsmanager get-secret-value --secret-id VNPayConfig --region ap-southeast-1 --query SecretString --output text
+```
+
+You should see the four fields above in the secret payload.
+
 #### Verify TypeScript compiles
 
 ```bash
@@ -228,7 +269,7 @@ npx cdk bootstrap aws://123456789012/ap-southeast-1
 
 Expected:
 ```
-✅  Environment aws://123456789012/ap-southeast-1 bootstrapped.
+Environment aws://123456789012/ap-southeast-1 bootstrapped.
 ```
 
 #### Bootstrap us-east-1 (required for WAF WebACL)
@@ -241,7 +282,7 @@ npx cdk bootstrap aws://123456789012/us-east-1
 
 Expected:
 ```
-✅  Environment aws://123456789012/us-east-1 bootstrapped.
+Environment aws://123456789012/us-east-1 bootstrapped.
 ```
 
 #### Verify

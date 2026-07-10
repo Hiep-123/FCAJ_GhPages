@@ -3,7 +3,7 @@ title: "Proposal"
 date: 2026-07-04
 weight: 2
 chapter: false
-pre: "2."
+pre: "2. "
 ---
 
 # AWS Serverless E-commerce Platform
@@ -18,6 +18,8 @@ The platform is deployed to the **ap-southeast-1 (Singapore)** region using **AW
 
 The project was developed and delivered during a three-month internship as a practical demonstration of cloud architecture design, serverless development, and production deployment on AWS.
 
+### Downloadable Project File
+A supporting estimate file is available for download here: <a href="/files/my-estimate.csv" download>Download my-estimate.csv</a>.
 
 ## 2. Problem Statement
 
@@ -74,63 +76,27 @@ A customer interacts with a React 19 single-page application served from CloudFr
 
 ## 5. AWS Architecture Overview
 
-```text
-Browser
-└── CloudFront (HTTPS, HTTP/2 + HTTP/3, WAF, OAC, PRICE_CLASS_200)
-    └── S3 FrontendBucket (private, SSE-S3, versioned)
-
-API Gateway REST (ap-southeast-1, 100 rps / 200 burst)
-├── Cognito Authorizer (5-minute cache, JWT validation)
-├── GET /products[?category][?search][?sort]      → ProductServiceFunction
-├── GET /products/{slugOrId}                      → ProductServiceFunction
-├── GET /cart, POST /cart, PUT /cart, DELETE /cart/{productId} → CartServiceFunction
-└── POST /orders, GET /orders, GET /orders/{id}   → OrderServiceFunction
-    └── PutEvents
-        └── EcommerceEventBus (EventBridge custom bus)
-            └── Rule: OrderCreated
-                └── OrderQueue (SQS, 180s visibility, maxReceiveCount=3)
-                    ├── OrderProcessorFunction (ARM64, Node.js 22)
-                    │   ├── DynamoDB UpdateItem (PROCESSING / COMPLETED / FAILED)
-                    │   └── PutEvents (OrderProcessing / OrderCompleted / OrderFailed)
-                    └── OrderDLQ (SQS, 14-day retention)
-
-EcommerceTable (DynamoDB, PAY_PER_REQUEST, PITR, SSE, TTL)
-├── GSI1 — CATEGORY#{category} → products by category
-├── GSI2 — USER#{userId}       → orders by user, newest first
-└── GSI3 — PRODUCT             → full product catalog access
-
-CloudWatch Dashboard + 6 Alarms
-└── SNS Topic
-    └── Email notification
-
-WAF WebACL (us-east-1)
-├── IP Reputation List
-├── OWASP Common Rule Set
-├── Known Bad Inputs
-└── Rate limit: 1000 requests / 5 minutes / IP
-
-Cognito UserPool
-└── Email authentication, SRP, CUSTOMER and ADMIN groups
-```
+![AWS Serverless Architecture](/images/2-Proposal/diagram.png)
 
 
 ## 6. AWS Services
 
 | Service | Role in the Platform |
 |---------|---------------------|
-| **Amazon Cognito** | User registration and authentication. Email-based sign-up with verification, SRP and USER_PASSWORD auth flows, CUSTOMER and ADMIN groups, JWT tokens attached to every protected API request. |
-| **Amazon API Gateway** | REST API entry point. 100 rps steady-state throttle, 200 burst. Cognito JWT authorizer with 5-minute result cache. Structured JSON access logs with 30-day retention. Public routes for products, protected routes for cart and orders. |
-| **AWS Lambda** | Four functions on ARM64 Graviton2 (Node.js 22): ProductServiceFunction, CartServiceFunction, OrderServiceFunction, OrderProcessorFunction. All bundled with esbuild (minified, source-mapped). All traced with AWS X-Ray. |
-| **Amazon DynamoDB** | Single-table design. PAY_PER_REQUEST billing. Point-in-time recovery enabled. AWS managed key encryption. TTL attribute for cart item expiry. Three GSIs covering category queries, user order history, and full product catalog access. |
-| **Amazon EventBridge** | Custom event bus `EcommerceEventBus`. OrderCreated events routed to SQS via pattern matching on `source=ecommerce.orders, detail-type=OrderCreated`. |
-| **Amazon SQS** | `EcommerceOrderQueue` (primary, 180s visibility timeout, 4-day retention) and `EcommerceOrderDLQ` (dead-letter, 14-day retention, maxReceiveCount=3). SQS-managed encryption. |
-| **Amazon S3** | Private bucket (`ecommerce-frontend-{account}-ap-southeast-1`) hosting the React SPA. Block all public access, SSE-S3 encryption, versioning enabled, HTTPS-only enforced. Accessed exclusively via CloudFront OAC. |
-| **Amazon CloudFront** | Global CDN serving the React SPA. OAC (not legacy OAI). HTTP/2+3. PRICE_CLASS_200. TLS 1.2 minimum. Two cache behaviors: CACHING_DISABLED for `index.html`/`config.json`, CachingOptimized for `/assets/*` (Vite content-hashed bundles). OWASP security headers via managed response headers policy. SPA routing via 403/404 → `index.html`. |
-| **AWS WAF v2** | WebACL attached to CloudFront (us-east-1). Four managed rule groups: IP Reputation List, Common Rule Set (OWASP CRS), Known Bad Inputs (Log4j, Spring4Shell, SSRF). Rate-based rule: 1000 requests per 5 minutes per IP. WAF logs to CloudWatch (30-day retention). |
-| **Amazon CloudWatch** | Dashboard (`EcommerceDashboard`) with five rows: API Gateway, EventBridge, OrderService, OrderProcessor, SQS. Six alarms covering Lambda errors, Lambda throttles, DLQ messages, and API 5XX errors. All alarms publish to SNS on breach. |
-| **Amazon SNS** | `EcommerceAlarmsTopic` receives alarm notifications. Email subscription delivers alerts to the operations mailbox. |
-| **AWS CDK (TypeScript)** | All infrastructure defined as code across eight stacks: AuthStack, DatabaseStack, EventStack, ApiStack, MonitoringStack, SecurityStack, FrontendStack, InfrastructureStack. Deployed to ap-southeast-1. |
-| **AWS X-Ray** | Active tracing enabled on all four Lambda functions. Traces downstream DynamoDB and EventBridge calls end-to-end. |
+| **Amazon Cognito** | User registration and authentication. Email-based sign-up with verification, SRP and USER_PASSWORD auth flows, CUSTOMER and ADMIN groups, and JWT tokens for every protected API request. |
+| **Amazon API Gateway** | REST API entry point with throttling, Cognito JWT authorizer, structured logging, and public/protected routes for catalog, cart, orders, and payments. |
+| **AWS Lambda** | The current system uses five Lambda functions: ProductServiceFunction, CartServiceFunction, OrderServiceFunction, PaymentServiceFunction, and OrderProcessorFunction. They run on ARM64 Graviton2 (Node.js 22), are bundled with esbuild, and use active X-Ray tracing. |
+| **Amazon DynamoDB** | Single-table design with PAY_PER_REQUEST billing, PITR, TTL for cart expiry, and GSIs for catalog, order history, and user access patterns. |
+| **Amazon EventBridge** | Custom event bus `EcommerceEventBus` is used to publish `OrderCreated` events and drive asynchronous order processing. |
+| **Amazon SQS** | `EcommerceOrderQueue` and `EcommerceOrderDLQ` provide reliable asynchronous processing, retry handling, and dead-letter isolation for failed order workflows. |
+| **Amazon Secrets Manager** | Stores VNPay credentials for the PaymentServiceFunction so sensitive configuration is not hardcoded in source code. |
+| **Amazon S3** | Private bucket hosting the React SPA build. It is encrypted, versioned, HTTPS-only, and only accessible through CloudFront via OAC. |
+| **Amazon CloudFront** | Global CDN serving the frontend with OAC, TLS 1.2+, HTTP/2 and HTTP/3, SPA routing fallback, and cache policies for the Vite build output. |
+| **AWS WAF v2** | WebACL attached to CloudFront in us-east-1 for IP reputation filtering, OWASP attack rule sets, known-bad-input detection, and rate limiting. |
+| **Amazon CloudWatch** | Operational dashboard, alarms, and log aggregation for API Gateway, Lambda, EventBridge, and SQS metrics. |
+| **Amazon SNS** | `EcommerceAlarmsTopic` receives CloudWatch alarm notifications for the operations email channel. |
+| **AWS CDK (TypeScript)** | All infrastructure is defined as code in eight CDK stacks: AuthStack, DatabaseStack, EventStack, ApiStack, MonitoringStack, SecurityStack, FrontendStack, and InfrastructureStack. |
+| **AWS X-Ray** | Active tracing is enabled across Lambda functions to inspect end-to-end calls from API requests into DynamoDB and EventBridge. |
 
 
 ## 7. Well-Architected Considerations
@@ -158,38 +124,40 @@ ARM64 Graviton2 processors consume less energy per unit of compute compared to x
 
 | Phase | Description | Duration |
 |-------|-------------|---------|
-| **Phase 1** | Infrastructure foundation: CDK project setup, AuthStack (Cognito), DatabaseStack (DynamoDB single-table design with GSI1/GSI2/GSI3), initial project structure | Week 1–2 |
-| **Phase 2–4** | Core API development: ProductServiceFunction (public catalog with category filter), CartServiceFunction (authenticated CRUD), OrderServiceFunction (order placement) | Week 3–4 |
-| **Phase 5–6** | Event-driven order processing: EventBridge custom bus, SQS OrderQueue + DLQ, OrderProcessorFunction (PENDING → PROCESSING → COMPLETED lifecycle), X-Ray tracing | Week 5–6 |
-| **Phase 7** | Frontend delivery: React 19 + Vite SPA, FrontendStack (S3 + CloudFront OAC), runtime config injection via `config.json`, Cognito SDK integration, SPA routing | Week 7–8 |
-| **Phase 8** | Security hardening: WAF WebACL (SecurityStack in us-east-1), IP reputation, OWASP CRS, Known Bad Inputs, rate limiting, HTTPS enforcement, security response headers | Week 9 |
-| **Phase 9** | Observability: MonitoringStack (CloudWatch Dashboard, 6 alarms, SNS email subscription), structured access logs, alarm action wiring | Week 10 |
-| **Phase 10** | Product improvements and UX refinement: live search, price sorting, slug-based URLs, cart product name enrichment, order status polling, frontend clean-up | Week 11 |
-| **Finalization** | Backend security fixes (order ownership check, input validation, env var guards), backend and frontend cleanup, documentation | Week 12 |
+| **Phase 1** | Infrastructure foundation: CDK project setup, Cognito, DynamoDB single-table design, API Gateway, and initial Lambda scaffolding | Week 1 |
+| **Phase 2–4** | Core API development: ProductServiceFunction, CartServiceFunction, OrderServiceFunction, and PaymentServiceFunction; EventBridge and SQS setup | Week 1–2 |
+| **Phase 5–6** | Event-driven order processing: custom EventBridge bus, OrderQueue + DLQ, OrderProcessorFunction, and X-Ray tracing | Week 2 |
+| **Phase 7** | Frontend delivery: React 19 + Vite SPA, FrontendStack (S3 + CloudFront OAC), runtime config injection via `config.json`, and Cognito SDK integration | Week 2–3 |
+| **Phase 8** | Security hardening: WAF WebACL (SecurityStack in us-east-1), IP reputation, OWASP CRS, Known Bad Inputs, and rate limiting | Week 3 |
+| **Phase 9** | Observability: MonitoringStack (CloudWatch dashboard, alarms, SNS email subscription), logging, and alert wiring | Week 3 |
+| **Phase 10** | UX refinement: search, price sorting, order status polling, and frontend cleanup | Week 3 |
+| **Finalization** | Backend/frontend hardening, security verification, testing, and documentation | Week 3 |
 
 
 ## 9. Cost Estimation
 
-All cost estimates use the **AWS Asia Pacific (Singapore) ap-southeast-1** region and reflect expected usage for a demo-scale platform with moderate traffic (approximately 1,000 API requests per day).
+For reference, the supporting estimate file can be downloaded here: <a href="/files/my-estimate.csv" download>Download my-estimate.csv</a>.
+
+All cost estimates use the **AWS Asia Pacific (Singapore) ap-southeast-1** region and reflect expected usage for a demo-scale platform with moderate traffic (approximately 1,000 API requests per day). Figures are calculated using the **AWS Pricing Calculator** (ap-southeast-1, July 2025).
 
 | Service | Usage Assumption | Estimated Monthly Cost |
 |---------|-----------------|----------------------|
-| AWS Lambda | 30,000 invocations/month, 512 MB, avg 200ms | ~$0.00 (free tier: 1M invocations) |
-| Amazon API Gateway | 30,000 REST API calls/month | ~$0.11 |
-| Amazon DynamoDB | PAY_PER_REQUEST, ~50,000 reads + 10,000 writes/month | ~$0.04 |
+| AWS Lambda | 30,000 invocations/month, ARM64, 512 MB, avg 200ms | ~$0.00 (free tier: 1M invocations) |
+| Amazon API Gateway | 30,000 REST API calls/month | ~$0.13 |
+| Amazon DynamoDB | PAY_PER_REQUEST, 0.1 GB storage, PITR 1 GB | ~$0.27 |
 | Amazon SQS | ~1,000 order messages/month | ~$0.00 (free tier: 1M requests) |
-| Amazon EventBridge | ~1,000 custom events/month | ~$0.00 (free tier: 1M events) |
-| Amazon S3 | ~100 MB SPA assets, ~10,000 CloudFront requests | ~$0.01 |
-| Amazon CloudFront | ~5 GB data transfer/month, PRICE_CLASS_200 | ~$0.43 |
-| AWS WAF | 1 WebACL, ~30,000 requests/month | ~$5.00 (WebACL: $5.00/month) |
-| Amazon Cognito | <50,000 MAU | ~$0.00 (free tier: 50,000 MAU) |
-| Amazon CloudWatch | 1 dashboard, 6 alarms, ~5 GB logs/month | ~$3.50 |
+| Amazon EventBridge | ~3,000 custom events/month | ~$0.00 (free tier: 1M events) |
+| Amazon S3 | ~10 MB SPA assets, 100 PUT requests | ~$0.00 |
+| Amazon CloudFront | ~1 GB data transfer/month, PRICE_CLASS_200 | ~$0.14 |
+| **AWS WAF** | 1 WebACL, 1 custom rule, 3 managed rule groups, ~30,000 requests | **~$9.02** |
+| Amazon Cognito | <50,000 MAU, Lite Tier | ~$0.01 |
+| Amazon CloudWatch | 1 dashboard, 6 alarms, 0.5 GB logs/month | ~$0.95 |
 | Amazon SNS | <1,000 email notifications/month | ~$0.00 |
-| **Total** | | **~$9.09/month** |
+| **Total** | | **$10,92/tháng (~$131,07/năm)** |
 
-The dominant cost is the WAF WebACL flat fee ($5.00/month). At zero traffic, the platform costs approximately $5.00/month. All other services fall within AWS free tier limits at demo scale.
+The dominant cost is **AWS WAF (~$9.02/month, 86% of total)** comprising: $5.00 WebACL flat fee + $3.00 for 3 managed rule groups + $1.00 for 1 custom rate-limit rule. At zero traffic, the platform costs approximately **$9.10/month** (WAF fixed fees + CloudWatch only).
 
-For a production-scale deployment with 100,000 requests/day and 10,000 monthly active users, estimated cost would be approximately $35–$60/month, still substantially below equivalent server-based deployments.
+For a production-scale deployment with 100,000 requests/day and 10,000 monthly active users, estimated cost would be approximately **$40–$70/month**, still substantially below equivalent server-based deployments.
 
 
 ## 10. Risk Assessment

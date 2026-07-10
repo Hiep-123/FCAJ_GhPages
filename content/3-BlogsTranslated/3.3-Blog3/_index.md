@@ -1,126 +1,63 @@
 ---
 title: "Blog 3"
-date: 2024-01-01
+date: 2026-07-08
 weight: 1
 chapter: false
 pre: " <b> 3.3. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy verbatim** for your report, including this warning.
-{{% /notice %}}
 
-# Getting Started with Healthcare Data Lakes: Using Microservices
+# Strengthening AWS Management Console Security with Sign-in Resource-based Policies and RCPs
 
-Data lakes can help hospitals and healthcare facilities turn data into business insights, maintain business continuity, and protect patient privacy. A **data lake** is a centralized, managed, and secure repository to store all your data, both in its raw and processed forms for analysis. Data lakes allow you to break down data silos and combine different types of analytics to gain insights and make better business decisions.
+Hello everyone in the AWS Study Group VN community!
 
-This blog post is part of a larger series on getting started with setting up a healthcare data lake. In my final post of the series, *“Getting Started with Healthcare Data Lakes: Diving into Amazon Cognito”*, I focused on the specifics of using Amazon Cognito and Attribute Based Access Control (ABAC) to authenticate and authorize users in the healthcare data lake solution. In this blog, I detail how the solution evolved at a foundational level, including the design decisions I made and the additional features used. You can access the code samples for the solution in this Git repo for reference.
+AWS has recently introduced a new feature that strengthens the security of the AWS Management Console and AWS CLI through Sign-in Resource-based Policies and Resource Control Policies (RCPs).
 
----
+This solution allows organizations to permit users to sign in to AWS only from trusted networks, reducing the risk of unauthorized access and helping meet security requirements.
 
-## Architecture Guidance
+In this article, we will explore:
 
-The main change since the last presentation of the overall architecture is the decomposition of a single service into a set of smaller services to improve maintainability and flexibility. Integrating a large volume of diverse healthcare data often requires specialized connectors for each format; by keeping them encapsulated separately as microservices, we can add, remove, and modify each connector without affecting the others. The microservices are loosely coupled via publish/subscribe messaging centered in what I call the “pub/sub hub.”
+- how Sign-in Resource-based Policies work
+- how RCPs help manage access centrally
+- the benefits of this approach for businesses
 
-This solution represents what I would consider another reasonable sprint iteration from my last post. The scope is still limited to the ingestion and basic parsing of **HL7v2 messages** formatted in **Encoding Rules 7 (ER7)** through a REST interface.
+## 1. What are Sign-in Resource-based Policies?
 
-**The solution architecture is now as follows:**
+Previously, login control was usually based on IAM or authentication policies. With this new feature, AWS allows policies to be applied directly during the sign-in process, helping control the access source before a user can enter the AWS Management Console.
 
-> *Figure 1. Overall architecture; colored boxes represent distinct services.*
+For example, an organization can allow sign-in only from:
 
----
+- the company’s internal network
+- the enterprise VPN
+- a specified Amazon VPC
 
-While the term *microservices* has some inherent ambiguity, certain traits are common:  
-- Small, autonomous, loosely coupled  
-- Reusable, communicating through well-defined interfaces  
-- Specialized to do one thing well  
-- Often implemented in an **event-driven architecture**
+Any request coming from the public internet or from unapproved locations will be denied at the sign-in step.
 
-When determining where to draw boundaries between microservices, consider:  
-- **Intrinsic**: technology used, performance, reliability, scalability  
-- **Extrinsic**: dependent functionality, rate of change, reusability  
-- **Human**: team ownership, managing *cognitive load*
+## 2. How RCPs help with centralized management
 
----
+When using AWS Organizations, Resource Control Policies (RCPs) make it possible to apply the same security rule across many AWS accounts.
 
-## Technology Choices and Communication Scope
+This helps organizations maintain a consistent network perimeter, reduce configuration errors, and ensure all accounts follow the same security policy.
 
-| Communication scope                       | Technologies / patterns to consider                                                        |
-| ----------------------------------------- | ------------------------------------------------------------------------------------------ |
-| Within a single microservice              | Amazon Simple Queue Service (Amazon SQS), AWS Step Functions                               |
-| Between microservices in a single service | AWS CloudFormation cross-stack references, Amazon Simple Notification Service (Amazon SNS) |
-| Between services                          | Amazon EventBridge, AWS Cloud Map, Amazon API Gateway                                      |
+## 3. Key benefits
 
----
+This new solution offers several important advantages:
 
-## The Pub/Sub Hub
+- only trusted networks are allowed to sign in
+- reduces the risk of access from public Wi-Fi or unmanaged devices
+- allows designated administrative accounts to remain accessible to avoid lockout
+- records successful and denied sign-in attempts through AWS CloudTrail, which supports auditing and compliance
 
-Using a **hub-and-spoke** architecture (or message broker) works well with a small number of tightly related microservices.  
-- Each microservice depends only on the *hub*  
-- Inter-microservice connections are limited to the contents of the published message  
-- Reduces the number of synchronous calls since pub/sub is a one-way asynchronous *push*
+## Conclusion
 
-Drawback: **coordination and monitoring** are needed to avoid microservices processing the wrong message.
+With Sign-in Resource-based Policies and Resource Control Policies, AWS adds another layer of protection at the sign-in stage, allowing organizations to control access to the AWS Management Console more strictly.
 
----
+Combined with AWS Organizations, AWS CloudTrail, and other security services, this solution helps:
 
-## Core Microservice
+- strengthen AWS account security
+- establish an effective network perimeter
+- manage policies centrally across many accounts
+- support auditing and compliance requirements
 
-Provides foundational data and communication layer, including:  
-- **Amazon S3** bucket for data  
-- **Amazon DynamoDB** for data catalog  
-- **AWS Lambda** to write messages into the data lake and catalog  
-- **Amazon SNS** topic as the *hub*  
-- **Amazon S3** bucket for artifacts such as Lambda code
+For businesses operating workloads on AWS, this is a new feature worth considering to improve the safety of the cloud environment.
 
-> Only allow indirect write access to the data lake through a Lambda function → ensures consistency.
-
----
-
-## Front Door Microservice
-
-- Provides an API Gateway for external REST interaction  
-- Authentication & authorization based on **OIDC** via **Amazon Cognito**  
-- Self-managed *deduplication* mechanism using DynamoDB instead of SNS FIFO because:  
-  1. SNS deduplication TTL is only 5 minutes  
-  2. SNS FIFO requires SQS FIFO  
-  3. Ability to proactively notify the sender that the message is a duplicate  
-
----
-
-## Staging ER7 Microservice
-
-- Lambda “trigger” subscribed to the pub/sub hub, filtering messages by attribute  
-- Step Functions Express Workflow to convert ER7 → JSON  
-- Two Lambdas:  
-  1. Fix ER7 formatting (newline, carriage return)  
-  2. Parsing logic  
-- Result or error is pushed back into the pub/sub hub  
-
----
-
-## New Features in the Solution
-
-### 1. AWS CloudFormation Cross-Stack References
-Example *outputs* in the core microservice:
-```yaml
-Outputs:
-  Bucket:
-    Value: !Ref Bucket
-    Export:
-      Name: !Sub ${AWS::StackName}-Bucket
-  ArtifactBucket:
-    Value: !Ref ArtifactBucket
-    Export:
-      Name: !Sub ${AWS::StackName}-ArtifactBucket
-  Topic:
-    Value: !Ref Topic
-    Export:
-      Name: !Sub ${AWS::StackName}-Topic
-  Catalog:
-    Value: !Ref Catalog
-    Export:
-      Name: !Sub ${AWS::StackName}-Catalog
-  CatalogArn:
-    Value: !GetAtt Catalog.Arn
-    Export:
-      Name: !Sub ${AWS::StackName}-CatalogArn
+Source: https://aws.amazon.com/vi/blogs/security/restrict-aws-management-console-access-to-expected-networks-with-sign-in-resource-based-policies-and-rcps/
