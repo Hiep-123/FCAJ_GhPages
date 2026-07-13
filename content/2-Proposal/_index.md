@@ -16,10 +16,8 @@ This project delivers a fully functional, production-grade e-commerce platform b
 
 The platform is deployed to the **ap-southeast-1 (Singapore)** region using **AWS Cloud Development Kit (CDK) with TypeScript** as the infrastructure-as-code framework. It demonstrates applied knowledge of AWS Well-Architected principles across security, reliability, performance, cost optimization, and operational excellence.
 
-The project was developed and delivered during a three-month internship as a practical demonstration of cloud architecture design, serverless development, and production deployment on AWS.
+The project was developed and delivered during a one-month internship as a practical demonstration of cloud architecture design, serverless development, and production deployment on AWS.
 
-### Downloadable Project File
-A supporting estimate file is available for download here: <a href="/files/my-estimate.csv" download>Download my-estimate.csv</a>.
 
 ## 2. Problem Statement
 
@@ -130,8 +128,8 @@ ARM64 Graviton2 processors consume less energy per unit of compute compared to x
 | **Phase 7** | Frontend delivery: React 19 + Vite SPA, FrontendStack (S3 + CloudFront OAC), runtime config injection via `config.json`, and Cognito SDK integration | Week 2–3 |
 | **Phase 8** | Security hardening: WAF WebACL (SecurityStack in us-east-1), IP reputation, OWASP CRS, Known Bad Inputs, and rate limiting | Week 3 |
 | **Phase 9** | Observability: MonitoringStack (CloudWatch dashboard, alarms, SNS email subscription), logging, and alert wiring | Week 3 |
-| **Phase 10** | UX refinement: search, price sorting, order status polling, and frontend cleanup | Week 3 |
-| **Finalization** | Backend/frontend hardening, security verification, testing, and documentation | Week 3 |
+| **Phase 10** | UX refinement: search, price sorting, order status polling, and frontend cleanup | Week 4 |
+| **Finalization** | Backend/frontend hardening, security verification, testing, and documentation | Week 4 |
 
 
 ## 9. Cost Estimation

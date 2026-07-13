@@ -19,7 +19,7 @@ Dự án này xây dựng một nền tảng thương mại điện tử hoàn c
 
 Nền tảng được triển khai tại region **ap-southeast-1 (Singapore)** sử dụng **AWS Cloud Development Kit (CDK) với TypeScript** làm framework infrastructure-as-code. Dự án chứng minh khả năng áp dụng thực tế các nguyên tắc AWS Well-Architected Framework trên cả năm trụ cột: bảo mật, độ tin cậy, hiệu năng, tối ưu chi phí và xuất sắc vận hành.
 
-Dự án được nghiên cứu và triển khai trong suốt kỳ thực tập ba tháng như một minh chứng thực tiễn về thiết kế kiến trúc cloud, phát triển serverless và triển khai trên AWS.
+Dự án được nghiên cứu và triển khai trong suốt kỳ thực tập 1 tháng như một minh chứng thực tiễn về thiết kế kiến trúc cloud, phát triển serverless và triển khai trên AWS.
 
 ### 2. Tuyên bố vấn đề
 
@@ -136,8 +136,8 @@ Bộ xử lý ARM64 Graviton2 tiêu thụ ít năng lượng hơn trên mỗi đ
 | **Giai đoạn 7** | Phát triển frontend: React 19 + Vite SPA, FrontendStack (S3 + CloudFront OAC), tiêm cấu hình runtime qua `config.json` và tích hợp Cognito SDK | Tuần 2–3 |
 | **Giai đoạn 8** | Tăng cường bảo mật: WAF WebACL (SecurityStack tại us-east-1), IP reputation, OWASP CRS, Known Bad Inputs và rate limiting | Tuần 3 |
 | **Giai đoạn 9** | Quan sát hệ thống: MonitoringStack (CloudWatch Dashboard, alarm, SNS email subscription) và cấu hình logging | Tuần 3 |
-| **Giai đoạn 10** | Cải tiến UX và tối ưu hóa: tìm kiếm, sắp xếp giá, polling trạng thái đơn hàng và dọn dẹp frontend | Tuần 3 |
-| **Hoàn thiện** | Kiểm thử, hardening backend/frontend, xử lý bảo mật và hoàn thiện tài liệu | Tuần 3 |
+| **Giai đoạn 10** | Cải tiến UX và tối ưu hóa: tìm kiếm, sắp xếp giá, polling trạng thái đơn hàng và dọn dẹp frontend | Tuần 4 |
+| **Hoàn thiện** | Kiểm thử, hardening backend/frontend, xử lý bảo mật và hoàn thiện tài liệu | Tuần 4 |
 
 
 ### 9. Ước tính chi phí
