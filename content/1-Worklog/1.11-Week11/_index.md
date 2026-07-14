@@ -21,7 +21,7 @@ pre: " <b> 1.11. </b> "
 | Wed | Learned how CloudWatch provides monitoring, logs, and alarms for AWS services | 01/07/2026 | 01/07/2026 | https://000008.awsstudygroup.com/ |
 | Thu | Reviewed distributed tracing concepts and the role of X-Ray in debugging serverless applications | 02/07/2026 | 02/07/2026 | https://000085.awsstudygroup.com/ |
 | Fri | Practiced connecting monitoring and alerting concepts to a serverless workflow | 03/07/2026 | 03/07/2026 | https://000085.awsstudygroup.com/ |
-| Sat-Sun | Summarized the observability approach for the completed project design | 04/07/2026 | 05/07/2026 | Personal notes |
+| Sat-Sun | Summarized the observability approach for the completed project design | 04/07/2026 | 05/07/2026 | |
 
 ### Week 11 Achievements:
 

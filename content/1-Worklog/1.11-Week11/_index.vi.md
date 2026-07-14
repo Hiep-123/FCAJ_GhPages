@@ -21,7 +21,7 @@ pre: " <b> 1.11. </b> "
 | 4 | Tìm hiểu CloudWatch cung cấp logging, metric và alarm cho dịch vụ AWS | 01/07/2026 | 01/07/2026 | https://000008.awsstudygroup.com/ |
 | 5 | Ôn lại khái niệm distributed tracing và vai trò của X-Ray trong debug ứng dụng serverless | 02/07/2026 | 02/07/2026 | https://000085.awsstudygroup.com/ |
 | 6 | Liên hệ các nguyên tắc giám sát và cảnh báo với quy trình serverless | 03/07/2026 | 03/07/2026 | https://000085.awsstudygroup.com/ |
-| 7 | Tổng hợp cách tiếp cận observability cho thiết kế dự án | 04/07/2026 | 05/07/2026 | Ghi chú cá nhân |
+| 7 | Tổng hợp cách tiếp cận observability cho thiết kế dự án | 04/07/2026 | 05/07/2026 | |
 
 ### Kết quả đạt được tuần 11:
 

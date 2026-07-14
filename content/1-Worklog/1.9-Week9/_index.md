@@ -21,7 +21,7 @@ pre: " <b> 1.9. </b> "
 | Wed | Practiced deploying a simple CDK stack and reviewed basic IAM role setup for infrastructure deployment | 17/06/2026 | 17/06/2026 | https://000038.awsstudygroup.com/ |
 | Thu | Learned how API Gateway routes requests to Lambda functions in a serverless API | 18/06/2026 | 18/06/2026 | https://000066.awsstudygroup.com/ |
 | Fri | Reviewed the serverless backend pattern using Lambda, S3, and DynamoDB | 19/06/2026 | 19/06/2026 | https://000078.awsstudygroup.com/ |
-| Sat-Sun | Documented the deployment flow and summarized the key lessons learned | 20/06/2026 | 21/06/2026 | Personal notes |
+| Sat-Sun | Documented the deployment flow and summarized the key lessons learned | 20/06/2026 | 21/06/2026 | |
 
 ### Week 9 Achievements:
 

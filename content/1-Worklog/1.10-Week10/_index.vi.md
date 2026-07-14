@@ -21,7 +21,7 @@ pre: " <b> 1.10. </b> "
 | 4 | Tìm hiểu cách AWS WAF bảo vệ ứng dụng web khỏi các tấn công thường gặp | 24/06/2026 | 24/06/2026 | https://000026.awsstudygroup.com/ |
 | 5 | Thực hành cấu hình chính sách bảo mật và quyền truy cập tối thiểu | 25/06/2026 | 25/06/2026 | https://000044.awsstudygroup.com/ |
 | 6 | Nghiên cứu cách Secrets Manager giúp bảo mật thông tin đăng nhập và cấu hình ứng dụng | 26/06/2026 | 26/06/2026 | https://000096.awsstudygroup.com/ |
-| 7 | Tổng hợp các lựa chọn thiết kế bảo mật phù hợp với dự án | 27/06/2026 | 28/06/2026 | Ghi chú cá nhân |
+| 7 | Tổng hợp các lựa chọn thiết kế bảo mật phù hợp với dự án | 27/06/2026 | 28/06/2026 | |
 
 ### Kết quả đạt được tuần 10:
 

@@ -21,7 +21,7 @@ pre: " <b> 1.9. </b> "
 | 4 | Thực hành triển khai một stack CDK đơn giản và xem lại cấu hình IAM cơ bản cho triển khai hạ tầng | 17/06/2026 | 17/06/2026 | https://000038.awsstudygroup.com/ |
 | 5 | Tìm hiểu cách API Gateway định tuyến yêu cầu tới Lambda trong một API serverless | 18/06/2026 | 18/06/2026 | https://000066.awsstudygroup.com/ |
 | 6 | Ôn lại mẫu kiến trúc backend serverless dùng Lambda, S3 và DynamoDB | 19/06/2026 | 19/06/2026 | https://000078.awsstudygroup.com/ |
-| 7 | Ghi chép quy trình triển khai và tổng hợp bài học chính | 20/06/2026 | 21/06/2026 | Ghi chú cá nhân |
+| 7 | Ghi chép quy trình triển khai và tổng hợp bài học chính | 20/06/2026 | 21/06/2026 | |
 
 ### Kết quả đạt được tuần 9:
 

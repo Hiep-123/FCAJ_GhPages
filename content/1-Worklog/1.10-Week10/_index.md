@@ -21,7 +21,7 @@ pre: " <b> 1.10. </b> "
 | Wed | Learned how WAF protects web applications from common attack patterns | 24/06/2026 | 24/06/2026 | https://000026.awsstudygroup.com/ |
 | Thu | Practiced configuring security policies and least-privilege access for services | 25/06/2026 | 25/06/2026 | https://000044.awsstudygroup.com/ |
 | Fri | Reviewed how Secrets Manager helps secure application credentials and configuration | 26/06/2026 | 26/06/2026 | https://000096.awsstudygroup.com/ |
-| Sat-Sun | Summarized the security design choices relevant to the project | 27/06/2026 | 28/06/2026 | Personal notes |
+| Sat-Sun | Summarized the security design choices relevant to the project | 27/06/2026 | 28/06/2026 | |
 
 ### Week 10 Achievements:
 
