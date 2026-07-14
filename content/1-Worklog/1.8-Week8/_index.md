@@ -22,7 +22,7 @@ pre: " <b> 1.8. </b> "
 | Wed     | Build CI/CD pipeline for frontend deployment                                         | 10/06/2026 | 10/06/2026      | https://cloudjourney.awsstudygroup.com/ |
 | Thu     | Serverless Bookstore Lab: AWS Lambda, S3, IAM, and DynamoDB integration              | 11/06/2026 | 11/06/2026      | https://cloudjourney.awsstudygroup.com/ |
 | Fri     | Build frontend applications integrated with API Gateway and Lambda                   | 12/06/2026 | 12/06/2026      | https://cloudjourney.awsstudygroup.com/ |
-| Sat-Sun | Deploy applications to EC2 using CodeCommit, CodeBuild, CodeDeploy, and CodePipeline | 13/06/2026 | 14/06/2026      | https://cloudjourney.awsstudygroup.com/ |
+| Sat | Deploy applications to EC2 using CodeCommit, CodeBuild, CodeDeploy, and CodePipeline | 13/06/2026 | 14/06/2026      | https://cloudjourney.awsstudygroup.com/ |
 
 ---
 

@@ -15,13 +15,13 @@ pre: " <b> 1.12. </b> "
 ### Công việc triển khai trong tuần:
 | Ngày | Công việc | Ngày bắt đầu | Ngày hoàn thành | Tài liệu / Tham khảo |
 |------|----------|--------------|-----------------|----------------------|
-| Thứ Hai  | Operate: Tự động tắt server & gửi Slack bằng **AWS Lambda** | 06/07/2026 | 06/07/2026 | https://000022.awsstudygroup.com/ |
-| Thứ Ba  | Operate: Tạo dashboard giám sát với **CloudWatch + Grafana** | 07/07/2026 | 07/07/2026 | https://000029.awsstudygroup.com/ |
-| Thứ Tư | Operate: Dùng **AWS Systems Manager (Session Manager)** để truy cập instance an toàn | 08/07/2026 | 08/07/2026 | https://000058.awsstudygroup.com/ |
-| Thứ Năm  | Operate/IaC: Khởi tạo template **CloudFormation** đơn giản để provision tài nguyên | 09/07/2026 | 09/07/2026 | https://000037.awsstudygroup.com/ |
-| Thứ Sáu  | Security: Bảo vệ ứng dụng và API bằng **AWS WAF** | 10/07/2026 | 10/07/2026 | https://000026.awsstudygroup.com/ |
-| Thứ Bảy  | Performance: Containerize và deploy ứng dụng lên **Amazon ECS** | 11/07/2026 | 11/07/2026 | https://000016.awsstudygroup.com/ |
-| Chủ Nhật  | Cost Optimization: So sánh Savings Plans / RIs và visualise chi phí | 12/07/2026 | 12/07/2026 | https://000042.awsstudygroup.com/ |
+| 2  | Operate: Tự động tắt server & gửi Slack bằng **AWS Lambda** | 06/07/2026 | 06/07/2026 | https://000022.awsstudygroup.com/ |
+| 3  | Operate: Tạo dashboard giám sát với **CloudWatch + Grafana** | 07/07/2026 | 07/07/2026 | https://000029.awsstudygroup.com/ |
+| 4 | Operate: Dùng **AWS Systems Manager (Session Manager)** để truy cập instance an toàn | 08/07/2026 | 08/07/2026 | https://000058.awsstudygroup.com/ |
+| 5  | Operate/IaC: Khởi tạo template **CloudFormation** đơn giản để provision tài nguyên | 09/07/2026 | 09/07/2026 | https://000037.awsstudygroup.com/ |
+| 6 | Security: Bảo vệ ứng dụng và API bằng **AWS WAF** | 10/07/2026 | 10/07/2026 | https://000026.awsstudygroup.com/ |
+| 7 | Performance: Containerize và deploy ứng dụng lên **Amazon ECS** | 11/07/2026 | 11/07/2026 | https://000016.awsstudygroup.com/ |
+| 8  | Cost Optimization: So sánh Savings Plans / RIs và visualise chi phí | 12/07/2026 | 12/07/2026 | https://000042.awsstudygroup.com/ |
 
 ### Kết quả đạt được:
 

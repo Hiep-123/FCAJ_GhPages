@@ -21,7 +21,7 @@ pre: " <b> 1.7. </b> "
 | 4 | Lab 40: Phân tích chi phí và hiệu năng bằng AWS Glue và Athena | 03/06/2026 | 03/06/2026 | https://cloudjourney.awsstudygroup.com/ |
 | 5 | Lab 60: Thực hành Amazon DynamoDB (CRUD, GSI, SDK, CLI) | 04/06/2026 | 04/06/2026 | https://cloudjourney.awsstudygroup.com/ |
 | 6 | Lab 39: Amazon DynamoDB Immersion Day (Modeling, Streams, Global Tables, CDC) | 05/06/2026 | 05/06/2026 | https://cloudjourney.awsstudygroup.com/ |
-| 7 | Lab 70, 72, 73: Data Lake, Analytics Pipeline và Dashboard với QuickSight | 06/06/2026 | 07/06/2026 | https://cloudjourney.awsstudygroup.com/ |
+| 7-8 | Lab 70, 72, 73: Data Lake, Analytics Pipeline và Dashboard với QuickSight | 06/06/2026 | 07/06/2026 | https://cloudjourney.awsstudygroup.com/ |
 
 ---
 
