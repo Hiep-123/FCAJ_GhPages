@@ -21,9 +21,9 @@ pre: " <b> 1.6. </b> "
 | 2 | Module 06-01: Database Concepts Review | 25/05/2026 | 25/05/2026 | https://cloudjourney.awsstudygroup.com/ |
 | 3 | Module 06-02: Amazon RDS & Amazon Aurora | 26/05/2026 | 26/05/2026 | https://cloudjourney.awsstudygroup.com/ |
 | 4 | Module 06-03: Amazon Redshift & ElastiCache | 27/05/2026 | 27/05/2026 | https://cloudjourney.awsstudygroup.com/ |
-| 5 | Lab 05: Amazon RDS | 28/05/2026 | 28/05/2026 | AWS Study Group Labs |
-| 6 | Lab 43: Database Schema Conversion & Migration (Phần 1) | 29/05/2026 | 29/05/2026 | AWS Study Group Labs |
-| 7 | Lab 43: Database Schema Conversion & Migration (Phần 2) | 30/05/2026 | 30/05/2026 | AWS Study Group Labs |
+| 5 | Lab 05: Amazon RDS | 28/05/2026 | 28/05/2026 |  https://cloudjourney.awsstudygroup.com/ |
+| 6 | Lab 43: Database Schema Conversion & Migration (Phần 1) | 29/05/2026 | 29/05/2026 |  https://cloudjourney.awsstudygroup.com/ |
+| 7 | Lab 43: Database Schema Conversion & Migration (Phần 2) | 30/05/2026 | 30/05/2026 |  https://cloudjourney.awsstudygroup.com/ |
 
 ---
 

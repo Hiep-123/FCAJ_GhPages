@@ -15,14 +15,14 @@
   ### Tasks to be carried out this week:
   | Day | Task | Start Date | Completion Date | Reference Material |
   | --- | ---- | ---------- | --------------- | ------------------ |
-  | Mon (06/07/2026) | Operate: Automate server shutdown & Slack notification with **AWS Lambda**; set up basic monitoring with **CloudWatch + Grafana** | 06/07/2026 | 06/07/2026 | https://000022.awsstudygroup.com/ , https://000029.awsstudygroup.com/ |
-  | Mon (06/07/2026) | Operate: Automate server shutdown & Slack notification with **AWS Lambda** | 06/07/2026 | 06/07/2026 | https://000022.awsstudygroup.com/ |
-  | Tue (07/07/2026) | Operate: Create monitoring dashboard with **CloudWatch + Grafana** | 07/07/2026 | 07/07/2026 | https://000029.awsstudygroup.com/ |
-  | Wed (08/07/2026) | Operate: Use **AWS Systems Manager (Session Manager)** for secure instance access | 08/07/2026 | 08/07/2026 | https://000058.awsstudygroup.com/ |
-  | Thu (09/07/2026) | Operate/IaC: Initialize a simple **CloudFormation** template to provision resources | 09/07/2026 | 09/07/2026 | https://000037.awsstudygroup.com/ |
-  | Fri (10/07/2026) | Security: Secure applications and APIs with **AWS WAF** | 10/07/2026 | 10/07/2026 | https://000026.awsstudygroup.com/ |
-  | Sat (11/07/2026) | Performance: Containerize and deploy app to **Amazon ECS** | 11/07/2026 | 11/07/2026 | https://000016.awsstudygroup.com/ |
-  | Sun (12/07/2026) | Cost Optimization: Compare Savings Plans / RIs and visualize cost | 12/07/2026 | 12/07/2026 | https://000042.awsstudygroup.com/ |
+  | Mon | Operate: Automate server shutdown & Slack notification with **AWS Lambda**; set up basic monitoring with **CloudWatch + Grafana** | 06/07/2026 | 06/07/2026 | https://000022.awsstudygroup.com/ , https://000029.awsstudygroup.com/ |
+  | Mon  | Operate: Automate server shutdown & Slack notification with **AWS Lambda** | 06/07/2026 | 06/07/2026 | https://000022.awsstudygroup.com/ |
+  | Tue  | Operate: Create monitoring dashboard with **CloudWatch + Grafana** | 07/07/2026 | 07/07/2026 | https://000029.awsstudygroup.com/ |
+  | Wed  | Operate: Use **AWS Systems Manager (Session Manager)** for secure instance access | 08/07/2026 | 08/07/2026 | https://000058.awsstudygroup.com/ |
+  | Thu | Operate/IaC: Initialize a simple **CloudFormation** template to provision resources | 09/07/2026 | 09/07/2026 | https://000037.awsstudygroup.com/ |
+  | Fri | Security: Secure applications and APIs with **AWS WAF** | 10/07/2026 | 10/07/2026 | https://000026.awsstudygroup.com/ |
+  | Sat | Performance: Containerize and deploy app to **Amazon ECS** | 11/07/2026 | 11/07/2026 | https://000016.awsstudygroup.com/ |
+  | Sun  | Cost Optimization: Compare Savings Plans / RIs and visualize cost | 12/07/2026 | 12/07/2026 | https://000042.awsstudygroup.com/ |
 
   ### Week 12 Achievements:
 

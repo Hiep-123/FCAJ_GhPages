@@ -21,9 +21,9 @@ pre: " <b> 1.5. </b> "
 | Mon | Shared Responsibility Model, IAM, Cognito | 18/05/2026 | 18/05/2026 | https://cloudjourney.awsstudygroup.com/ |
 | Tue | AWS Organizations, Identity Center, AWS KMS | 19/05/2026 | 19/05/2026 | https://cloudjourney.awsstudygroup.com/ |
 | Wed | Security Hub & Additional Research | 20/05/2026 | 20/05/2026 | https://cloudjourney.awsstudygroup.com/ |
-| Thu | Lab 18 & 22: Security Hub, Lambda Cost Optimization | 21/05/2026 | 21/05/2026 | AWS Study Group Labs |
-| Fri | Lab 27, 28 & 30: Tags, IAM Policy, Permission Boundary | 22/05/2026 | 22/05/2026 | AWS Study Group Labs |
-| Sat | Lab 33, 44 & 48: KMS, IAM Role & Condition | 23/05/2026 | 23/05/2026 | AWS Study Group Labs |
+| Thu | Lab 18 & 22: Security Hub, Lambda Cost Optimization | 21/05/2026 | 21/05/2026 | https://cloudjourney.awsstudygroup.com/s |
+| Fri | Lab 27, 28 & 30: Tags, IAM Policy, Permission Boundary | 22/05/2026 | 22/05/2026 | https://cloudjourney.awsstudygroup.com/|
+| Sat | Lab 33, 44 & 48: KMS, IAM Role & Condition | 23/05/2026 | 23/05/2026 | https://cloudjourney.awsstudygroup.com/ |
 
 ---
 

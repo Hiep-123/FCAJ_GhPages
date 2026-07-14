@@ -21,9 +21,9 @@ pre: " <b> 1.5. </b> "
 | 2 | Module 05-01 → 05-03: Shared Responsibility Model, IAM, Cognito | 18/05/2026 | 18/05/2026 | https://cloudjourney.awsstudygroup.com/ |
 | 3 | Module 05-04 → 05-06: AWS Organizations, Identity Center, AWS KMS | 19/05/2026 | 19/05/2026 | https://cloudjourney.awsstudygroup.com/ |
 | 4 | Module 05-07 & 05-08: Security Hub, Hands-on Research | 20/05/2026 | 20/05/2026 | https://cloudjourney.awsstudygroup.com/ |
-| 5 | Lab 18 & Lab 22: Security Hub, Optimizing EC2 Costs with Lambda | 21/05/2026 | 21/05/2026 | AWS Study Group Labs |
-| 6 | Lab 27, 28 & 30: Tags, IAM Policy, Permission Boundary | 22/05/2026 | 22/05/2026 | AWS Study Group Labs |
-| 7 | Lab 33, 44 & 48: AWS KMS, IAM Role & Condition, IAM Role for EC2 | 23/05/2026 | 23/05/2026 | AWS Study Group Labs |
+| 5 | Lab 18 & Lab 22: Security Hub, Optimizing EC2 Costs with Lambda | 21/05/2026 | 21/05/2026 | https://cloudjourney.awsstudygroup.com/ |
+| 6 | Lab 27, 28 & 30: Tags, IAM Policy, Permission Boundary | 22/05/2026 | 22/05/2026 | https://cloudjourney.awsstudygroup.com/ |
+| 7 | Lab 33, 44 & 48: AWS KMS, IAM Role & Condition, IAM Role for EC2 | 23/05/2026 | 23/05/2026 | https://cloudjourney.awsstudygroup.com/ |
 
 ---
 

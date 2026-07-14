@@ -21,9 +21,9 @@ pre: " <b> 1.6. </b> "
 | Mon | Database Concepts Review | 25/05/2026 | 25/05/2026 | https://cloudjourney.awsstudygroup.com/ |
 | Tue | Amazon RDS & Amazon Aurora | 26/05/2026 | 26/05/2026 | https://cloudjourney.awsstudygroup.com/ |
 | Wed | Amazon Redshift & ElastiCache | 27/05/2026 | 27/05/2026 | https://cloudjourney.awsstudygroup.com/ |
-| Thu | Lab 05: Amazon RDS | 28/05/2026 | 28/05/2026 | AWS Study Group Labs |
-| Fri | Lab 43: Database Migration (Part 1) | 29/05/2026 | 29/05/2026 | AWS Study Group Labs |
-| Sat | Lab 43: Database Migration (Part 2) | 30/05/2026 | 30/05/2026 | AWS Study Group Labs |
+| Thu | Lab 05: Amazon RDS | 28/05/2026 | 28/05/2026 |  https://cloudjourney.awsstudygroup.com/ |
+| Fri | Lab 43: Database Migration (Part 1) | 29/05/2026 | 29/05/2026 |  https://cloudjourney.awsstudygroup.com/ |
+| Sat | Lab 43: Database Migration (Part 2) | 30/05/2026 | 30/05/2026 |  https://cloudjourney.awsstudygroup.com/ |
 
 ---
 
