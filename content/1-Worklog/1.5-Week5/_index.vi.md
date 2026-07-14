@@ -38,7 +38,7 @@ pre: " <b> 1.5. </b> "
 - Theo dõi Security Score
 - Clean up resources
 
-👉 Hiểu:
+ Hiểu:
 - Centralized security monitoring
 - Security compliance & recommendations
 
@@ -50,7 +50,7 @@ pre: " <b> 1.5. </b> "
 - Tự động Start/Stop EC2 bằng Lambda
 - Tích hợp Slack Webhook notifications
 
-👉 Hiểu:
+ Hiểu:
 - Cost optimization automation
 - Event-driven architecture với Lambda
 
@@ -63,7 +63,7 @@ pre: " <b> 1.5. </b> "
 - Sử dụng Tags với AWS CLI
 - Tạo Resource Groups
 
-👉 Hiểu:
+ Hiểu:
 - Resource organization & management
 - Quản lý tài nguyên theo môi trường / project
 
@@ -75,7 +75,7 @@ pre: " <b> 1.5. </b> "
 - Restrict EC2 access dựa trên Tags
 - Test IAM permissions theo Region & Tags
 
-👉 Hiểu:
+ Hiểu:
 - Attribute-Based Access Control (ABAC)
 - Fine-grained access control với IAM
 
@@ -87,7 +87,7 @@ pre: " <b> 1.5. </b> "
 - Tạo IAM Limited User
 - Test quyền bị giới hạn
 
-👉 Hiểu:
+ Hiểu:
 - Permission Boundary hoạt động như guardrail
 - Giới hạn maximum permissions cho IAM User/Role
 
@@ -100,7 +100,7 @@ pre: " <b> 1.5. </b> "
 - Logging với CloudTrail
 - Query logs bằng Athena
 
-👉 Hiểu:
+ Hiểu:
 - Data encryption at rest
 - Audit logging & monitoring
 
@@ -114,7 +114,7 @@ pre: " <b> 1.5. </b> "
   - IP Address
   - Time condition
 
-👉 Hiểu:
+ Hiểu:
 - IAM Role Assume process
 - Conditional access control
 
@@ -126,7 +126,7 @@ pre: " <b> 1.5. </b> "
 - Sử dụng Access Key
 - Gắn IAM Role vào EC2
 
-👉 Hiểu:
+ Hiểu:
 - Best practice:
   - dùng IAM Role thay vì hardcode Access Key
 - Secure application access tới AWS services

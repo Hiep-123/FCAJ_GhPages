@@ -58,4 +58,4 @@ pre: " <b> 1.1. </b> "
 - Able to combine:
   - AWS Console (web interface)
   - AWS CLI (command line)
-  → to manage AWS resources effectively
+To manage AWS resources effectively

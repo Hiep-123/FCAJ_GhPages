@@ -58,4 +58,4 @@ pre: " <b> 1.1. </b> "
 - Có khả năng kết hợp:
   - AWS Console (giao diện web)
   - AWS CLI (command line)
-  → để quản lý tài nguyên hiệu quả
+Để quản lý tài nguyên hiệu quả
